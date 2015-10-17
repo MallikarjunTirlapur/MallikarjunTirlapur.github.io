@@ -1,0 +1,146 @@
+---
+layout: default
+---
+
+
+
+
+
+    <div class="post p2 p-responsive wrap" role="main">
+      <div class="measure">
+        <div class="home">
+
+  <div class="posts">
+    
+      <div class="post py3">
+        <p class="post-meta">April 01, 2015 to September 30, 2015</p>
+        <a href="/predicting-facial-attractiveness/" class="post-link"><h3 class="h3 post-title">A framework for non-expert robot programming facilitated by a self-localizing smart device.  </h3></a>
+        <p class="post-summary">
+          
+            A guess post that I wrote for LearnOpencv.com.
+          
+        </p>
+      </div>
+    
+      <div class="post py3">
+        <p class="post-meta">Jun 8, 2015</p>
+        <a href="/vision/monocular-vo/" class="post-link"><h3 class="h3 post-title">Monocular Visual Odometry using OpenCV</h3></a>
+        <p class="post-summary">
+          
+            A tutorial with code for implementing a Monocular Visual Odometry system using OpenCV and C++.
+          
+        </p>
+      </div>
+    
+      <div class="post py3">
+        <p class="post-meta">Jun 2, 2015</p>
+        <a href="/machinelearning/classifying-human-activities-kinect-2/" class="post-link"><h3 class="h3 post-title">Recognizing Human Activities with Kinect - The implementation</h3></a>
+        <p class="post-summary">
+          
+            A continuation of my previous post on how I implemented an activity recognition system using a Kinect.
+          
+        </p>
+      </div>
+    
+      <div class="post py3">
+        <p class="post-meta">May 27, 2015</p>
+        <a href="/machinelearning/classifying-human-activities-kinect/" class="post-link"><h3 class="h3 post-title">Recognizing Human Activities with Kinect - Choosing a temporal model</h3></a>
+        <p class="post-summary">
+          
+            An overview of HMMs, MEMMs and CRFs for temporal modelling.
+          
+        </p>
+      </div>
+    
+      <div class="post py3">
+        <p class="post-meta">May 25, 2015</p>
+        <a href="/vision/visual-odometry-full/" class="post-link"><h3 class="h3 post-title">Visual Odmetry from scratch - A tutorial for beginners</h3></a>
+        <p class="post-summary">
+          
+            Code+Tutorial for implementing Stereo Visual Odometry from scratch in MATLAB.
+          
+        </p>
+      </div>
+    
+      <div class="post py3">
+        <p class="post-meta">May 23, 2015</p>
+        <a href="/vision/stichting-story/" class="post-link"><h3 class="h3 post-title">Stitching Intra-Oral Images</h3></a>
+        <p class="post-summary">
+          
+            Using ASIFT feature matching for stiching images captured from an intraoral camera.
+          
+        </p>
+      </div>
+    
+      <div class="post py3">
+        <p class="post-meta">May 23, 2015</p>
+        <a href="/vision/segmenting-teeth/" class="post-link"><h3 class="h3 post-title">Every Tooth Tracked</h3></a>
+        <p class="post-summary">
+          
+            Experimenting various segmentation algorithms to segment every tooth from an intraoral image.
+          
+        </p>
+      </div>
+    
+      <div class="post py3">
+        <p class="post-meta">Jul 29, 2014</p>
+        <a href="/vision/visual-odometry-read/" class="post-link"><h3 class="h3 post-title">Visual Odometry - The Reading List</h3></a>
+        <p class="post-summary">
+          
+            Some resources for getting started with Visual Odometry
+          
+        </p>
+      </div>
+    
+      <div class="post py3">
+        <p class="post-meta">Jul 21, 2014</p>
+        <a href="/stats/ransac/" class="post-link"><h3 class="h3 post-title">RANSAC</h3></a>
+        <p class="post-summary">
+          
+            An introduction to the popular RANSAC algorithm for outlier rejection.
+          
+        </p>
+      </div>
+    
+      <div class="post py3">
+        <p class="post-meta">Jul 21, 2014</p>
+        <a href="/gpu/parallel-programming-with-cuda/" class="post-link"><h3 class="h3 post-title">Parallel Programming with CUDA</h3></a>
+        <p class="post-summary">
+          
+            Why use GPUs, and a "Hello World" example in CUDA/C.
+          
+        </p>
+      </div>
+    
+  </div>
+
+  <div class="pagination clearfix mb1 mt4">
+  <div class="left">
+    
+      <span class="pagination-item disabled">Newer</span>
+    
+  </div>
+  <div class="right">
+    
+      <span class="pagination-item disabled">Older</span>
+    
+  </div>
+</div>
+
+</div>
+
+      </div>
+    </div>
+  </div>
+
+  <footer class="center">
+  <div class="measure">
+    <small>
+      Powered by <a href="https://jekyllrb.com/">Jekyll</a> using <a href="https://pixyll.com/">Pixyll</a> theme. Hosted on <a href="https://pages.github.com/">Github Pages</a>. <br>
+      © Avi Singh
+    </small>
+  </div>
+</footer>
+
+</body>
+</html>
