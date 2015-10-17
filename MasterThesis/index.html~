@@ -121,7 +121,7 @@ that we can directly pass it to the feature tracking step, described below:</p>
   <span class="c1">//getting rid of points for which the KLT tracking failed or those who have gone outside the frame</span>
   <span class="kt">int</span> <span class="n">indexCorrection</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
   <span class="k">for</span><span class="p">(</span> <span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">status</span><span class="p">.</span><span class="n">size</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
-     <span class="p">{</span>  <span class="n">Point2f</span> <span class="n">pt</span> <span class="o">=</span> <span class="n">points2</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">i</span><span class="o">-</span> <span class="n">indexCorrection</span><span class="p">);</span>
+     <span class="p">{</span>  <span class="n">Point2f</span> <span class="n">pt</span> <span classMasterThesis/="o">=</span> <span class="n">points2</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">i</span><span class="o">-</span> <span class="n">indexCorrection</span><span class="p">);</span>
      	<span class="k">if</span> <span class="p">((</span><span class="n">status</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span><span class="o">||</span><span class="p">(</span><span class="n">pt</span><span class="p">.</span><span class="n">x</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">)</span><span class="o">||</span><span class="p">(</span><span class="n">pt</span><span class="p">.</span><span class="n">y</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">))</span>	<span class="p">{</span>
      		  <span class="k">if</span><span class="p">((</span><span class="n">pt</span><span class="p">.</span><span class="n">x</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">)</span><span class="o">||</span><span class="p">(</span><span class="n">pt</span><span class="p">.</span><span class="n">y</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">))</span>	<span class="p">{</span>
      		  	<span class="n">status</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
@@ -159,7 +159,7 @@ after a fixed number of iterations, and the Essential matrix with which the maxi
 
 <p>Using the above in OpenCV is again pretty straightforward, and all you need is one line:</p>
 
-<div class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="n">E</span> <span class="o">=</span> <span class="n">findEssentialMat</span><span class="p">(</span><span class="n">points2</span><span class="p">,</span> <span class="n">points1</span><span class="p">,</span> <span class="n">focal</span><span class="p">,</span> <span class="n">pp</span><span class="p">,</span> <span class="n">RANSAC</span><span class="p">,</span> <span class="mf">0.999</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">mask</span><span class="p">);</span></code></pre></div>
+<div class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="n">E</span> <span class="o">=</span> <span class="n">findEssentialMat</span><span class="p">(</span><span class="n">points2</span><span class="p">,</span> <span class="n">points1</span><span class="p">,</span> <span class="n">focal</span><span class="p">,</span> <span class="n">pp</span><span class="p">,</span> <span class="n">RANSAC</span><span class="p">,</span> <span class="mf">0.999</span><span class="p">,</spaMasterThesis/n> <span class="mf">1.0</span><span class="p">,</span> <span class="n">mask</span><span class="p">);</span></code></pre></div>
 
 <h3 id="computing-r-t-from-the-essential-matrix">Computing R, t from the Essential Matrix</h3>
 <p>Another definition of the Essential Matrix (consistent) with the definition mentioned earlier is as follows:
@@ -185,7 +185,7 @@ Here, <script type="math/tex">R</script> is the rotation matrix, while <script t
 
 <script type="math/tex; mode=display">t_{pos} = t_{pos} + t R_{pos}</script>
 
-<p>Note that the scale information of the translation vector <script type="math/tex">t</script> has to be obtained from some other source before concatenating.
+<p>Note that the scale information of the translation vector <script type="math/tex">t</script> hasMasterThesis/ to be obtained from some other source before concatenating.
 In my implementation, I extract this information from the ground truth that is supplied by the KITTI dataset.</p>
 
 <h3 id="heuristics">Heuristics</h3>
@@ -229,8 +229,8 @@ I hope I’ll soon implement a more robust relative scale computation pipeline, 
 
   <div id="disqus_thread"></div>
   <script type="text/javascript">
-    var disqus_shortname  = 'MallikarjunTirlapur';
-    var disqus_identifier = '/MasterThesis';
+    var disqus_shortname  = 'avisingh599';
+    var disqus_identifier = '/vision/visual-odometry-read';
     var disqus_title      = '';
     (function() {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
