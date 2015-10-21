@@ -28,13 +28,32 @@ layout: default
 </div>
 <article class="post-content">
   <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<p>PICAutoDroid was my hobby project. The brain of the robot is the <a href="http://www.microchip.com/wwwproducts/Devices.aspx?product=PIC18F452">PIC18F452 8-bit microcontroller</a> coupled with <a href="http://www.microchip.com/wwwproducts/Devices.aspx?product=RN42">RN-42 Bluetooth module</a>. The robot is controlled by an android app. The app reads the built-in gyroscope. The control commands to the robot are the function of gyroscope sensor data. The orientation of the robot depends on the device orientation. The commands are sent to the robot over wireless Bluetooth communication link. Also, the robot is commanded through voice commands. </p>.   
+<p>PICAutoDroid was my hobby project. The brain of the robot is the <a href="http://www.microchip.com/wwwproducts/Devices.aspx?product=PIC18F452">PIC18F452 8-bit microcontroller</a> coupled with <a href="http://www.microchip.com/wwwproducts/Devices.aspx?product=RN42">RN-42 Bluetooth module</a>. 
+The robot is controlled by an android app. an android device with built-in gyroscope which senses angular velocity of the device and outputs the 
+digital information. The orientation of the robot depends on the device orientation. The commands are sent to the robot over wireless Bluetooth communication link. Also, the robot is commanded through voice commands. </p>.   
 </article>
 
 <figure>
   <img src="/assets/picauto.png" />
   <figcaption>The components and android app</figcaption>
 </figure>
+
+<h3 id="formulation-of-the-problem">Design</h3>
+
+<h4 id="input">Input</h4>
+<p>The control commands to the robot are the function of gyroscope sensor data. The angular position of the android device is input to the robot. 
+The voice commands from the android device are also used to teach the robot.</p>
+
+<h4 id="output">Output</h4>
+<p>Microcontroller generates PWM signals to control the speed of the DC motor based on the i/p commands.</p>
+
+<h3 id="algorithm-outline">Hardware</h3>
+
+<p>Bluetooth module RN-42 interfaced with the microcontroller over RS-232 communication protocol at 19200 baud rate. The RN-42 receives commands from android device and feeds them to the microcontroller.</p>
+<p>  <a href="http://probots.co.in/index.php?main_page=product_info&cPath=54&products_id=361#.Vidkta2lyko">L293 based Motor Driver</a> has been used to control the speed and the direction of the DC motors.</p> 
+
+<h3 id="algorithm-outline">Software</h3>
+The working code will be uploaded soon on the GitHub.
 
 <h2 id="demo">Demo</h2>
 Have a look at the robot in action!
@@ -44,9 +63,9 @@ Have a look at the robot in action!
 
 
 
+<h2 id="what-next">Future Work</h2>
 
-
-The future work is to make the robot to work autonomously.
+Making this robot to work autonomously.
 
 
 
