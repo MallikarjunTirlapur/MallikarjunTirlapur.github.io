@@ -1177,7 +1177,7 @@ blockquote footer {
 }
  
 .menu {
-    width:1000px;
+    width:100px;
     margin:0px auto;
 }
  
@@ -1217,11 +1217,11 @@ blockquote footer {
 .menu > ul > li > a {
     padding:10px 40px;
     display:inline-block;
-    text-shadow:0px 1px 0px rgba(0,0,0,0.4);
+  /*  text-shadow:0px 1px 0px rgba(0,0,0,0.4);*/
 }
  
 .menu > ul > li:hover > a, .menu > ul > .current-item > a {
-    background:#2e2728;
+   /* background:#2e2728;*/
 }
  
 /*----- Bottom Level -----*/
