@@ -1177,8 +1177,11 @@ blockquote footer {
 }
  
 .menu {
+ /*   width:1000px;
+    margin:0px auto;*/
     width:1000px;
-    margin:0px auto;
+    float: right;
+    margin-top: .25rem;
 }
  
 .menu li {
