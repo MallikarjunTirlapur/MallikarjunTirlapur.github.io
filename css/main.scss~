@@ -1234,7 +1234,7 @@ blockquote footer {
 }
  
 .sub-menu {
-    width:172%;
+    width:173%;
     padding:10px 2px;
     position:absolute;
     top:100%;
@@ -1248,6 +1248,7 @@ blockquote footer {
  
 .sub-menu li {
     display:block;
+    text-align: left;
     font-size:2px;
 }
  
