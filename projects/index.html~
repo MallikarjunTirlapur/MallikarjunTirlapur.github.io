@@ -24,7 +24,7 @@ layout: default
 
       <div class="post py3">
         <p class="post-meta">September, 2014 to February, 2015</p>
-        <a href="http://MallikarjunTirlapur.github.io/Internship/" class="post-link"><h3 class="h3 post-title">Developing pick-and-place robotic applications using Project Tango smartphone on ROS (Robot Operating System) platform.  </h3></a>
+        <a href="http://MallikarjunTirlapur.github.io/Internship/" class="post-link"><h3 class="h3 post-title">Developing pick-and-place robotic applications using Project Tango smartphone on ROS (Robot Operating System) platform </h3></a>
         <p class="post-summary">
           
             Internship project at KUKA Roboter GmbH, Augsburg.
@@ -67,7 +67,7 @@ layout: default
 
 <div class="post py3">
         <p class="post-meta">February, 2010 to June, 2010</p>
-        <a href="http://MallikarjunTirlapur.github.io/BachelorThesis/" class="post-link"><h3 class="h3 post-title">Wireless multichannel data acquisition with alerting and automatic control system. </h3></a>
+        <a href="http://MallikarjunTirlapur.github.io/BachelorThesis/" class="post-link"><h3 class="h3 post-title">Wireless multichannel data acquisition with alerting and automatic control system </h3></a>
         <p class="post-summary">
           
             An academic project, Industrial application for keeping the machines safe from fire and labors from hazardous gases.
