@@ -1,0 +1,101 @@
+---
+layout: default
+---
+<body class="site">
+  <div class="site-wrap">
+    <header class="site-header px2 px-responsive">
+  
+
+    
+
+      
+    </div>
+  </div>
+</header>
+
+
+    <div class="post p2 p-responsive wrap" role="main">
+      <div class="measure">
+<div class="post-header mb2">
+  <h2>PICAutoDroid, Mobile Robot using PIC18F452 8-bit microcontroller</h2>
+  <span class="post-meta">December 1, 2012 to March 15, 2013</span><br>
+  
+  <span class="post-meta small">
+  
+    4 minutes read
+  
+  </span>
+</div>
+<article class="post-content">
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<p>PICAutoDroid was my hobby project. The brain of the robot is the <a href="http://www.microchip.com/wwwproducts/Devices.aspx?product=PIC18F452">PIC18F452 8-bit microcontroller</a> coupled with <a href="http://www.microchip.com/wwwproducts/Devices.aspx?product=RN42">RN-42 Bluetooth module</a>. 
+The robot is controlled by an android app. An android device with built-in gyroscope has been used. Gyroscope senses angular velocity of the device and outputs the 
+digital data. The commands are derived from the data. The commands are sent to the robot over wireless Bluetooth communication link. Also, the robot is commanded through voice commands. </p>.   
+</article>
+
+<figure>
+  <img src="/assets/picauto.png" />
+  <figcaption>The components and android app</figcaption>
+</figure>
+
+<h3 id="formulation-of-the-problem">Design</h3>
+
+<h4 id="input">Input</h4>
+<p>The control commands to the robot are the function of gyroscope sensor data. The angular position of the android device is input to the robot. 
+The voice commands from the android device are also used to teach the robot.</p>
+
+<h4 id="output">Output</h4>
+<p>Microcontroller generates PWM signals to control the speed of the DC motor based on the input commands.</p>
+
+<h3 id="algorithm-outline">Hardware</h3>
+
+<p>Bluetooth module RN-42 communicates with the microcontroller through UART at 19200 baud rate. The RN-42 receives commands from the android device and feeds them to microcontroller.</p>
+<p>  <a href="http://probots.co.in/index.php?main_page=product_info&cPath=54&products_id=361#.Vidkta2lyko">L293 based Motor Driver</a> has been used to control the speed and the direction of the DC motors.</p> 
+
+<h3 id="algorithm-outline">Software</h3>
+The working code will be uploaded soon on the GitHub.
+
+<h2 id="demo">Demo</h2>
+Have a look at the robot in action!
+
+<style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style>
+<div class="embed-container"><iframe src="https://www.youtube.com/embed/Q9CIeremf6I" frameborder="0" allowfullscreen=""></iframe></div>
+
+
+
+<h2 id="what-next">Future Work</h2>
+
+Making this robot to work autonomously.
+
+
+
+
+  
+
+
+
+
+
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_shortname  = 'MallikarjunTirlapur';
+    var disqus_identifier = '/MasterThesis';
+    var disqus_title      = '';
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+      </div>
+    </div>
+  </div>
+
+
+</body>
+</html>

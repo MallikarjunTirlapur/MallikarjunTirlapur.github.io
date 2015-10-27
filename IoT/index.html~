@@ -1,0 +1,61 @@
+---
+layout: default
+---
+<body class="site">
+  <div class="site-wrap">
+    <header class="site-header px2 px-responsive">
+  
+
+    
+
+      
+    </div>
+  </div>
+</header>
+
+
+    <div class="post p2 p-responsive wrap" role="main">
+      <div class="measure">
+<div class="post-header mb2">
+  <h2>Developing pick-and-place robotic applications using Project Tango smartphone on ROS (Robot Operating System) platform</h2>
+  <span class="post-meta">September, 2014 to February, 2015</span><br>
+  
+  <span class="post-meta small">
+  
+    site will be updated with the project content soon.
+  
+  </span>
+</div>
+
+
+
+
+  
+
+
+
+
+
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_shortname  = 'MallikarjunTirlapur';
+    var disqus_identifier = '/MasterThesis';
+    var disqus_title      = '';
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+      </div>
+    </div>
+  </div>
+
+
+</body>
+</html>

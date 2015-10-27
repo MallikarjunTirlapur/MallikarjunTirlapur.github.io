@@ -13,11 +13,21 @@ layout: default
   <div class="posts">
     
       <div class="post py3">
-        <p class="post-meta">April 01, 2015 to September 30, 2015</p>
+        <p class="post-meta">April, 2015 to September, 2015</p>
         <a href="http://MallikarjunTirlapur.github.io/MasterThesis/" class="post-link"><h3 class="h3 post-title">A framework for non-expert robot programming facilitated by a self-localizing smart device  </h3></a>
         <p class="post-summary">
           
             Master Thesis project at KUKA Roboter GmbH, Augsburg.
+          
+        </p>
+      </div>
+
+      <div class="post py3">
+        <p class="post-meta">September, 2014 to February, 2015</p>
+        <a href="http://MallikarjunTirlapur.github.io/Internship/" class="post-link"><h3 class="h3 post-title">Developing pick-and-place robotic applications using Project Tango smartphone on ROS (Robot Operating System) platform.  </h3></a>
+        <p class="post-summary">
+          
+            Internship project at KUKA Roboter GmbH, Augsburg.
           
         </p>
       </div>
@@ -27,17 +37,51 @@ layout: default
         <a href="http://MallikarjunTirlapur.github.io/PICAutoDroid/" class="post-link"><h3 class="h3 post-title">PICAutoDroid  </h3></a>
         <p class="post-summary">
           
-            A hobby project.
+            A hobby project, mobile robot controlled by an android application over wireless Bluetooth communication link.
           
         </p>
       </div>
       
        <div class="post py3">
         <p class="post-meta">Jun, 2012 to August, 2013</p>
-        <a href="http://MallikarjunTirlapur.github.io/MagneticStripeReader/" class="post-link"><h3 class="h3 post-title">Magnetic Stripe Reader </h3></a>
+        <a href="http://MallikarjunTirlapur.github.io/MagneticStripeReader/" class="post-link"><h3 class="h3 post-title">Magnetic Stripe Card Reader </h3></a>
         <p class="post-summary">
           
-            A Reference Design.
+            As an application engineer designed this prototype at Microchip Technology Private Ltd, Bangalore
+            
+          
+        </p>
+      </div>
+
+
+<div class="post py3">
+        <p class="post-meta">March, 2014 to June, 2014</p>
+        <a href="http://MallikarjunTirlapur.github.io/SensorSuit/" class="post-link"><h3 class="h3 post-title">Sensor suit </h3></a>
+        <p class="post-summary">
+
+            An academic project, Inertial sensor suit with full-body motion verification module.
+            
+          
+        </p>
+      </div>
+
+<div class="post py3">
+        <p class="post-meta">February, 2010 to June, 2010</p>
+        <a href="http://MallikarjunTirlapur.github.io/BachelorThesis/" class="post-link"><h3 class="h3 post-title">Wireless multichannel data acquisition with alerting and automatic control system. </h3></a>
+        <p class="post-summary">
+          
+            An academic project, Industrial application for keeping the machines safe from fire and labors from hazardous gases.
+            
+          
+        </p>
+      </div>
+
+<div class="post py3">
+        <p class="post-meta">April, 2014 to July, 2014</p>
+        <a href="http://MallikarjunTirlapur.github.io/IoT/" class="post-link"><h3 class="h3 post-title">IoT Home Automation </h3></a>
+        <p class="post-summary">
+          
+            A hobby project, motivation is to save the money on the energy bills.
             
           
         </p>
