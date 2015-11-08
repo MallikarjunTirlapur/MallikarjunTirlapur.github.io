@@ -1,0 +1,169 @@
+---
+layout: default
+---
+<body class="site">
+  <div class="site-wrap">
+    <header class="site-header px2 px-responsive">
+  
+
+    
+
+      
+    </div>
+  </div>
+</header>
+
+
+    <div class="post p2 p-responsive wrap" role="main">
+      <div class="measure">
+<div class="post-header mb2">
+  <h2>Geldautomat using Java Card</h2>
+  <span class="post-meta">November 1, 2015 to Novemeber 8, 2015</span><br>
+  
+  <span class="post-meta small">
+  
+    4 minutes read
+  
+  </span>
+</div>
+<article class="post-content">
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<p>Enthusiasm towards learning Java Card technology has motivated me to develop this application. The application would be very useful for the beginners to study and develop smart card applications. Also, it helps user to understand the ISO-7816 protocol. The implementation that I describe in this post is freely available on my github repo.</p>   
+
+<p>Two applications have been developed, one is a <a href="http://www.oracle.com/technetwork/java/javacard/intro-139322.html">wallet applet</a> which runs in the smartcart. The features like Debit, Credit, Balance, PIN Verification, and Card Un-blocking have been added to the applet. The other one is, a terminal application which runs on the PC and communicates with the applet using APDU (application protocol data units). The applications are developed in Java utilizing java card APIs such as <a href="http://askra.de/software/jcdocs/apduio-2.2.2/com/sun/javacard/apduio/package-summary.html">apduio</a> on NetBeans environment. The emulator listens for communication on TCP socket 9025. So, I programmed the socket to establish communication between applet and termianl application. Also, I built the GUI to choose the commands and set the data.</p>  
+</article>
+
+
+<h2 id="demo">Demo</h2>
+
+
+
+
+
+
+<p>Now let's study the fundamentals of Java Card technology.</p>  
+
+<h3>Overview </h3>
+<p>When a Java Card applet is executed an instance is created and registered with the (Java card runtime environment) JCRE's registry table. Also, it opens a connection to the localhost on port 9025. Terminal application sets up the connection to the port 9025 to communicate with the applet. The JCRE selects an applet on the card based on the incoming select commands. Each applet is identified and selected by its application identifier (AID). Commands such as the selection command are formatted and transmitted in the form of application protocol data units (APDUs). Applets reply to each APDU command with a status word (SW) that indicates the result of the operation. An applet can optionally reply to an APDU command with other data.</p> 
+
+<h3>Samrt card </h3>
+<p>A smart card size of credit card stores and processes information through the electronic circuits embedded in silicon in the plastic substrate of its body. An intelligent smart card contains a microprocessor and offers read, write, and calculating capability, like a small microcomputer. A smart card does not contain its own power supply, display, or keyboard. It interacts with a Card Acceptance Device (CAD) through using a communication interface, provided by a collection of eight electrical or optical contact points, as shown in fig, </p> 
+
+<figure>
+  <center><img src="/assets/scard.gif" /><center>
+  <figcaption><center><span class="post-meta small">Eight contact pints of the smart card</span><center></figcaption>
+</figure>
+
+
+
+<h3>Java card </h3>
+<p>A Java Card is a smart card that is capable of running Java programs. The applications are devoloped in java following the ISO-7816 standard.
+According to java card specification it supports only few primitive data types from  Java programming language: byte, short, and boolean. A byte is an 8-bit signed two’s complement number with a possible range of values between -128 to 127. A short is a 16-bit signed two’s complement number with a possible range of values between -32768 to 32767. Internally, Java Card technology represents the boolean type as a byte. The Java Card platform does not support threads because current smart card central processing units (CPUs) cannot support efficient multitasking. As a result, none of the thread keywords are supported. There is also no support in the Java Card platform for synchronized or volatile.</p>
+
+<figure>
+  <center><img src="/assets/arch.gif" /><center>
+  <figcaption><center><span class="post-meta small"> Java Card Technology Architecture</span><center></figcaption>
+</figure>
+
+<h4>The Virtual Machine</h4>
+<p>The Java Card Virtual Machine (VM) provides bytecode execution and Java language support, including exception handling. The Java Card Runtime Environment (JCRE) includes a virtual machine (VM) and core classes to support APDU routing, ISO communication protocols, and transaction-based processing. The Java Card VM is actually split into two parts, one for running off-card on a PC or workstation and the other for running on-card. The on-card Java Card VM executes bytecode, manages classes and objects, enforces separation between applications (firewalls), and enables secure data sharing. The off-card Java Card VM contains a Java Card Converter tool for providing many of the verifications, preparations, optimizations, and resolutions that the Java VM performs at class-loading time. The Java Card Converter tool is an “early-binding” implementation of the Java VM. Every class referenced directly or indirectly by an applet must be bound into the applet’s binary image when the applet is installed on the card. The Java Card Converter acts as an early-binding post-processor on the Java platform class files.</p>
+
+
+
+<h4>Application Protocol Data Units</h4>
+<p>When two computers communicate with each other, they exchange data packets, which are constructed following a set of protocols. Similarly, smart cards speak to the outside world using their own data packets -- called APDU (Application Protocol Data Units). Smart cards are reactive communicators—that is, they never initiate communications, they only respond to APDUs from the CAD (Card acceptance device). The communication model is command-response based—that is, the card receives a command APDU, performs the processing requested by the command, and returns a response APDU.</p>
+
+<p>The following tables illustrate command and response APDU formats, respectively. APDU structure shown below is as described in ISO-7816.
+<br />
+
+<figure>
+  <center><img src="/assets/cmd.gif" /><center>
+  <figcaption><center><span class="post-meta small">Command APDU</span><center></figcaption>
+</figure>
+
+The header codes the selected command. It consists of four fields: class (CLA), instruction (INS), and parameters 1 and 2 (P1 and P2). Each field contains 1 byte:<br />
+
+CLA: Class byte. In many smart cards, this byte is used to identify an application.<br />
+INS: Instruction byte. This byte indicates the instruction code.<br />
+P1-P2: Parameter bytes. These provide further qualification to the APDU command.<br />
+Lc denotes the number of bytes in the data field of the command APDU. <br />
+Le denotes the maximum number of bytes expected in the data field of the following response APDU.<br />
+
+<figure>
+  <center><img src="/assets/resp.gif" /><center>
+  <figcaption><center><span class="post-meta small">Response APDU</span><center></figcaption>
+</figure>
+
+Status bytes SW1 and SW2 denote the processing status of the command APDU in a card. </p>
+
+Now let's discuss the implementation.
+<h4>Creating Java Card applet</h4>
+<p>Off-the-shelf Java technology development tools can be used to create and compile the source code for Java Card applets. For my project I used the tools, <br />
+1. NetBeans IDE 8.0.2<br />
+2. Java card development kit 3.0.2 Connected Edition<br />
+Once the Java software source code is compiled into a class file, a post-processed version of the applet, suitable for loading on Java technology smart cards is created using the Java Card Converter tool</p>
+
+<p>If you are new to Java Card and you really want to develop an application using java card, I suggest having a look at the <a href="https://netbeans.org/kb/docs/javame/java-card.html">Java Card Development Quick Start Guide</a>. It will teach how to start with the java card and also it will be very easy to follow this post. </p>
+
+<h3>input</h3>
+<p>Applet receives APDU commands and data as an input and executes piece of the code for the desired operation.</p>
+
+<h3>output</h3>
+<p>Applet outputs the response APDU by setting the status words and data field (optional) in the APDU to indicate the processing state of the card to termainal application.</p>
+
+<h3>methods of the javacard applet</h3>
+1. install (byte[] bArray, short bOffset, byte bLength)<br />
+The JCRE calls this static method to create an instance of the Applet subclass.<br />
+<br />
+2. select ()<br />
+Called by the JCRE to inform the applet that it has been selected.<br />
+<br />
+3. deselect ()<br />
+Called by the JCRE to inform the currently selected applet that another (or the same) applet will be selected.<br />
+	<br />
+4. process (APDU apdu)<br />
+Called by the JCRE to process an incoming APDU command.<br />
+<br />
+5. register ()<br />
+This method is used by the applet to register this applet instance with the JCRE and assign the default AID in the CAD file to the applet instance.<br />
+	<br />
+6. register (byte[] bArray, short bOffset, byte bLength)<br />
+This method is used by the applet to register this applet instance with the JCRE and to assign the specified AID in the array bArray to the applet instance.<br />
+
+
+<h4>Creating Terminal Application</h4>
+
+
+
+
+
+
+  
+
+
+
+
+
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_shortname  = 'MallikarjunTirlapur';
+    var disqus_identifier = '/JavaCard';
+    var disqus_title      = '';
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+      </div>
+    </div>
+  </div>
+
+
+</body>
+</html>
