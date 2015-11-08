@@ -139,15 +139,16 @@ The Track1 and Track2 signals are amplified and fed the output of the Op-Amp to 
 Step 1: Start<br />
 Step 2: Configure the ADC with Auto-Sample enabled. <br />
 Step 3: Configure the Timer for computing the duration between 2 peaks. <br />
-<figure>
-  <center><img src="/assets/scope_30.png" /><center>
-  <figcaption><center><span class="post-meta small">The output of Op-Amp and peak detection</span><center></figcaption>
-</figure>
 Step 4: Configure UART for 9600 Baudrate.  <br />
 Step 5: Decode the F2F signal.       <br />
 Step 6: Encrypt the data using AES symmetric encryption algorithm. <br />
 Step 7: Transmit the data to the PC’s HyperTerminal program via an RS-232 coomunication protocol.<br />
 Step 8: Stop<br />
+
+<figure>
+  <center><img src="/assets/scope_30.png" /><center>
+  <figcaption><center><span class="post-meta small">The output of Op-Amp and peak detection</span><center></figcaption>
+</figure>
 
 <h4>Output on the HyperTerminal </h4>
 
@@ -156,6 +157,8 @@ Step 8: Stop<br />
   <figcaption><center><span class="post-meta small">The card information on the HyperTerminal</span><center></figcaption>
 </figure>
 
+<h4>Program memory:</h4> 8.0K bytes
+<h4>Data memory:</h4>    3.4 K bytes
 
   <div id="disqus_thread"></div>
   <script type="text/javascript">
