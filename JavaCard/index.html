@@ -28,7 +28,7 @@ layout: default
 </div>
 <article class="post-content">
   <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<p>Enthusiasm towards learning Java Card technology has motivated me to develop this application. The application would be very useful for the beginners to study and develop smart card applications. Also, it helps user to understand the <strong>ISO-7816 standard</strong>. The implementation that I describe in this post is freely available on my github repo.</p>   
+<p>Enthusiasm towards learning Java Card technology has motivated me to develop this application. The application would be very useful for the beginners to study and develop smart card applications. Also, it helps user to understand the <strong>ISO-7816 standard</strong>. I uploaded the code which I developed for the implementation on my <a href="https://github.com/MallikarjunTirlapur/Java-Card-Applications">github</a> repo.</p>   
 
 <p>Two applications have been developed, one is a <a href="http://www.oracle.com/technetwork/java/javacard/intro-139322.html">wallet applet</a> which runs in the smartcart. The features like Debit, Credit, Balance, PIN Verification, and Card Un-blocking have been added to the applet. The other one is, a <strong>host application</strong> which runs on the PC and communicates with the applet using <strong>APDU</strong> (application protocol data units). The applications are developed in Java utilizing java card APIs on NetBeans environment. The simulator listens for communication on TCP socket <strong>9025</strong>. So, I programmed the socket to establish communication between applet and host application. Also, I designed the Swing GUI to set the commands and data for the interaction with host application.</p>  
 
@@ -118,31 +118,31 @@ Once the Java software source code is compiled into a class file, a post-process
 <p>Applet outputs the response APDU by setting the status words and data field (optional) in the APDU to indicate the processing state of the card to termainal application.</p>
 
 <h4>methods of the javacard applet</h4>
-1. install (byte[] bArray, short bOffset, byte bLength)<br />
+1. <strong>install (byte[] bArray, short bOffset, byte bLength)</strong><br />
 The JCRE calls this static method to create an instance of the Applet subclass.<br />
 <br />
-2. select ()<br />
+2. <strong>select ()</strong><br />
 Called by the JCRE to inform the applet that it has been selected.<br />
 <br />
-3. deselect ()<br />
+3. <strong>deselect ()</strong><br />
 Called by the JCRE to inform the currently selected applet that another (or the same) applet will be selected.<br />
 	<br />
-4. process (APDU apdu)<br />
+4. <strong>process (APDU apdu)</strong><br />
 Called by the JCRE to process an incoming APDU command.<br />
 <br />
-5. register ()<br />
+5. <strong>register ()</strong><br />
 This method is used by the applet to register this applet instance with the JCRE and assign the default AID in the CAD file to the applet instance.<br />
 	<br />
-6. register (byte[] bArray, short bOffset, byte bLength)<br />
+6. <strong>register (byte[] bArray, short bOffset, byte bLength)</strong><br />
 This method is used by the applet to register this applet instance with the JCRE and to assign the specified AID in the array bArray to the applet instance.<br />
 <br />
-7. credit(APDU apdu)<br />
+7. <strong>credit(APDU apdu)</strong><br />
 This method is used to add amount to the balance. The amount is specified in the data field of the APDU.<br />
 <br />
-8. debit(APDU apdu)<br />
+8. <strong>debit(APDU apdu)</strong><br />
 In this method, the APDU object contains a data field that specifies the amount to be debited from the balance.<br />
 <br />
-9. getBalance(APDU apdu)<br />
+9. <strong>getBalance(APDU apdu)</strong><br />
 The method getBalance returns the Wallet's balance in the data field of the response APDU. Because the data field in the response APDU is optional, the applet must explicitly inform the JCRE of the additional data. <br />
 
 
@@ -153,41 +153,41 @@ The same tool chains are used to create and compile java card host application. 
 
 <h4>methods of the java card host application</h4>
 
-1. establishConnectionToSimulator()<br />
+1. <strong>establishConnectionToSimulator()</strong><br />
 This method establishes a T=1 connection to a simulator listening to port 9025 on localhost.<br />
 <br />
-2. pwrUp ()<br />
+2. <strong>pwrUp ()</strong><br />
 In this method powerUp coomand is sent to power up the card<br />
 <br />
-3. setTheAPDUCommands (byte[] cmnds)<br />
+3. <strong>setTheAPDUCommands (byte[] cmnds)</strong><br />
 This method sets the header of the APDU to be sent with commands (CLA, INS, P1, and P2) in APDU.<br />
 	<br />
-4. setTheDataLength (byte ln)<br />
+4. <strong>setTheDataLength (byte ln)</strong><br />
 This method sets the (number of bytes present in the data field) Lc field of the APDU<br />
 <br />
 
-5. setTheDataIn (byte[] data)<br />
+5. <strong>setTheDataIn (byte[] data)</strong><br />
 In this method data fields of the APDU are set with data.<br />
 	<br />
-6. setExpctdByteLength (byte ln)<br />
+6. <strong>setExpctdByteLength (byte ln)</strong><br />
 This method sets the number of bytes expected into the apdu.Le field.<br />
 <br />
-7. exchangeTheAPDUWithSimulator()<br />
+7. <strong>exchangeTheAPDUWithSimulator()</strong><br />
 This method exchanges the APDU with a card or simulator.<br />
 <br />
-8. byte[] decodeDataOut()<br />
+8. <strong>byte[] decodeDataOut()</strong><br />
 In this method, the data from the applet in response APDU are decoded and the method returns the hex numbers to display on the GUI.<br />
 <br />
-9. byte[] decodeStatusBytes()<br />
+9. <strong>byte[] decodeStatusBytes()</strong><br />
 This method decodes status words SW1 and SW2 of the response APDU and returns the status bytes to display on the GUI. <br />
 <br />
-10. String atrToHex(byte atCode)<br />
+10. <strong>String atrToHex(byte atCode)</strong><br />
 This method converts atr commands to hex numbers and returns the numbers in the form of strings. <br />
 <br />
-11. pwrDown()<br />
+11. <strong>pwrDown()</strong><br />
 This method is used to power down the card. <br />
 <br />
-12. closeConnection()<br />
+12. <strong>closeConnection()</strong><br />
 This method closes the socket connection. <br />
 
 <h3>The GUI</h3>
