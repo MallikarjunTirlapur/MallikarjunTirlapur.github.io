@@ -117,7 +117,7 @@ Once the Java software source code is compiled into a class file, a post-process
 <h4>output</h4>
 <p>Applet outputs the response APDU by setting the status words and data field (optional) in the APDU to indicate the processing state of the card to termainal application.</p>
 
-<h4>methods of the javacard applet</h4>
+<h3>Methods of the javacard applet</h3>
 1. <strong>install (byte[] bArray, short bOffset, byte bLength)</strong><br />
 The JCRE calls this static method to create an instance of the Applet subclass.<br />
 <br />
@@ -151,7 +151,7 @@ The method getBalance returns the Wallet's balance in the data field of the resp
 
 The same tool chains are used to create and compile java card host application. A swing GUI is designed to interact with the application. The GUI consists of buttons and text fields to set the commands and data in the APDU. 
 
-<h4>methods of the java card host application</h4>
+<h3>Methods of the java card host application</h3>
 
 1. <strong>establishConnectionToSimulator()</strong><br />
 This method establishes a T=1 connection to a simulator listening to port 9025 on localhost.<br />
