@@ -33,22 +33,58 @@ layout: default
 
 
 <h3> Use Cases I imagined </h3>
-1.&ensp;Updating firmware of distributed embedded devices by sitting at one central location. For instance, <br />
+<strong>1.</strong>&ensp;Updating firmware of distributed embedded devices by sitting at one central location. For instance, <br />
 &ensp;&ensp;&ensp;&ensp;&ensp;&ensp; If embedded device is located thousand kilo meters far away from the central location, embedded device manufacturer must be able to update device firmware by sending the firmware to user’s android/ios device. <br />
 &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;     Ex: Bluetooth enabled - headphone, speakers, home automation system, television etc<br />
 
-2.&ensp;Program PIC without using Microchip programmer/debugger. <br/>
+<strong>2.</strong>&ensp;Program PIC without using Microchip programmer/debugger. <br/>
 
 <p>These 2 use cases motivated me building this small system.</p>
   
-<p>The system consists of PIC microcontroller, android device and Bluetooth interface module.  This post would be focusing on PIC18f microcontroller boot loader, Android application, and implementation of them.</p>
+<p>The system consists of PIC18f4431 microcontroller, android device and Bluetooth interface module.  This post would be focusing on PIC18f microcontroller boot loader, Android application, and implementation of them.</p>
   
 <h3>PIC Boot Loader </h3>
 <p>Boot loader is a special firmware loaded into the microcontroller. The boot loader receives application binaries externally via one of the microcontroller serial port and loads it into the pre-determined section of the flash as shown in the figure 1.1.  In this project, USART has been employed for getting binaries in.</p>
 
+  
+<p>The processor will always start executing a code from a particular (start-up) memory location on reset. Usually in the microcontroller, the application is flashed at the start-up memory location in the absence of bootloader. In the presence of boot loader as shown in the figure 1.1, the boot loader puts the application code in any part of the memory location which user determines (in this case 0x0400). Whereas boot loader code is loaded at the start-up memory location of the microcontroller.</p> 
 
+<p>The job of the boot loader is to erase the application memory and flash the new incoming binaries via communication port. The application code has the reset vector section as shown in the figure 1.2. The boot program sets the flow of execution to reset vector location after loading the binaries to execute the application code.</p> 
 
-      </div>
+  <h3>HexToBin convertor</h3>
+  
+  <p>Application .hex file must be converted to binaries before loading into the PIC flash memory. This can be achieved using the tool HexToBin. </p> 
+  
+  <p>HexToBin is a tool which converts hex file to binary file. For the tool, .hex file must be either in the intel or Motorola hex format. MPLAB C compiler generates .hex in the intel hex format. Before building the application source code in the MPLAB IDE, one must specify the ROM range (after 0x0400h) to load the binaries in to another part of flash memory other than start-up memory location. ROM range can be specified in the IDE as shown in the figure 1.3 </p>
+  
+  
+  
+  <h3>Boot Loader Source Code</h3>
+  
+  <p>The source code of the boot loader is the PIC18f low level driver and is implemented in C.  The source code and documentation of it is freely available on the github.</p>
+  
+  <h4>Algorithm</h4>
+1.	Configure IO port<br />
+2.	Configure USART at baud rate of <strong>115200</strong> to communicate with Bluetooth module.<br />
+3.	Receive START command from the host (Android device) <br />
+4.	Send ready for FIRMWARE_HEADER command to the host.<br />
+5.	Receive firmware header. Header consists of header id (0x55 0x55 0x55 0x55), Application firmware size, and reset vector address. <br />
+6.	Erase application program area and update flash table pointer with the reset vector address of the application.<br />
+7.	Receive application binary chunks in packets each of size 64 bytes (nvm page size). Load the binaries into the application program memory.<br />
+8.	Jump to the reset vector location of the app to execute the program.<br />
+
+    <h3>Android application (Host)</h3>
+ <p> A small host application consisting of user friendly GUI and software which handles inputs from the user. </p>
+  
+ <h4> GUI</h4>
+  <p>Through GUI user can select and connect with the Bluetooth module to communicate with PIC.  The binary file generated from the HexToBin tool is stored on the external storage of the android device. Any number of binary files can be stored on the device. The GUI facilitates user to scan the available binary files from the storage and select one of them to send it across Bluetooth communication link to PIC. ROM ranges set while building the application code in the MPLAB IDE must be provided as inputs in the GUI.</p>
+  
+  <h4> Software</h4>
+  
+  <p>Software is implemented in JAVA again the source code and documentation of it is freely available on the github.</p>
+  
+  <h4>Algorithm</h4>
+  </div>
     </div>
   </div>
 
