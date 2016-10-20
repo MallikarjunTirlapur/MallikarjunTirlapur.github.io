@@ -37,14 +37,14 @@ layout: default
 &ensp;&ensp;&ensp;&ensp;&ensp;&ensp; If embedded device is located thousand kilo meters far away from the central location, embedded device manufacturer must be able to update device firmware by sending the firmware to user’s android/ios device. <br />
 &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;     Ex: Bluetooth enabled - headphone, speakers, home automation system, television etc<br />
 
-<strong>2.</strong>&ensp;Program PIC without using Microchip programmer/debugger. <br/>
-
+<strong>2.</strong>&ensp;Program PIC without using Microchip <a href="">programmer/debugger</a>. <br/>
+<br/>
 <p>These 2 use cases motivated me building this small system.</p>
   
-<p>The system consists of PIC18f4431 microcontroller, android device and Bluetooth interface module.  This post would be focusing on PIC18f microcontroller boot loader, Android application, and implementation of them.</p>
+<p>The system consists of <a href="http://ww1.microchip.com/downloads/en/devicedoc/39616b.pdf">PIC18f4431</a> microcontroller, android device and Bluetooth interface module.  This post would be focusing on PIC18f microcontroller boot loader, Android application, and implementation of them.</p>
   
 <h3>PIC Boot Loader </h3>
-<p>Boot loader is a special firmware loaded into the microcontroller. The boot loader receives application binaries externally via one of the microcontroller serial port and loads it into the pre-determined section of the flash as shown in the figure 1.1.  In this project, USART has been employed for getting binaries in.</p>
+<p>Boot loader is a special firmware loaded into the microcontroller. The boot loader receives application binaries externally via one of the microcontroller serial port and loads it into the pre-determined section of the flash as shown in the figure 1.1.  In this project, <a href="http://ww1.microchip.com/downloads/en/devicedoc/39616b.pdf">USART</a> has been employed for getting binaries in.</p>
 
   
 <p>The processor will always start executing a code from a particular (start-up) memory location on reset. Usually in the microcontroller, the application is flashed at the start-up memory location in the absence of bootloader. In the presence of boot loader as shown in the figure 1.1, the boot loader puts the application code in any part of the memory location which user determines (in this case 0x0400). Whereas boot loader code is loaded at the start-up memory location of the microcontroller.</p> 
