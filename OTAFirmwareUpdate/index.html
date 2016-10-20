@@ -33,16 +33,20 @@ layout: default
 
 
 <h2 id="use"> Use Cases I imagined </h2>
-1.Updating firmware of distributed embedded devices by sitting at one central location. For instance, <br />
-&ensp;&ensp;&ensp; If embedded device is located thousand kilo meters far away from the central location, embedded device manufacturer must be able to update device firmware by sending the firmware to user’s android/ios device. <br />
-     Ex: Bluetooth enabled - headphone, speakers, home automation system, television etc<br />
+1.&ensp;Updating firmware of distributed embedded devices by sitting at one central location. For instance, <br />
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp; If embedded device is located thousand kilo meters far away from the central location, embedded device manufacturer must be able to update device firmware by sending the firmware to user’s android/ios device. <br />
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;     Ex: Bluetooth enabled - headphone, speakers, home automation system, television etc<br />
 
+<br/>
+2.&ensp;Program PIC without using Microchip programmer/debugger. <br/>
 
-2.Program PIC without using Microchip programmer/debugger. <br/>
-
-
-
-
+  <br/>
+<p>These 2 use cases motivated me building this small system.</p>
+  
+<p>The system consists of PIC microcontroller, android device and Bluetooth interface module.  This post would be focusing on PIC18f microcontroller boot loader, Android application, and implementation of them.</p>
+  
+<h3>PIC Boot Loader </h3>
+<p>Boot loader is a special firmware loaded into the microcontroller. The boot loader receives application binaries externally via one of the microcontroller serial port and loads it into the pre-determined section of the flash as shown in the figure 1.1.  In this project, USART has been employed for getting binaries in.</p>
 
 
 
