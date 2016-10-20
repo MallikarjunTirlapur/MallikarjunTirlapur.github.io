@@ -88,11 +88,11 @@ layout: default
 2.	Read selected binary file.<br />
 3.	Get the Application code size from the GUI <br />
 4.	Divide the huge number of binary data into packets .<br />
-5.  Send the START command to PIC.
-6.  Receive FIRMWARE_HEADER request to PIC.
+5.  Send the START command to PIC.<br />
+6.  Receive FIRMWARE_HEADER request fron PIC.<br />
 7.	Send firmware header. Header consists of header id (0x55 0x55 0x55 0x55), Application firmware size, and reset vector address. <br />
 8.	Receive Header acknowledgement.<br />
-9.	Send application binary chunks in packets each of size 64 bytes (nvm page size).<br />
+  9.	Send application binary chunks in packets each of size <strong>64 bytes</strong> (nvm page size).<br />
   
   </div>
     </div>
