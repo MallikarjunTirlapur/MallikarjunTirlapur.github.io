@@ -10,11 +10,11 @@ layout: default
   <div class="posts">
     
       <div class="post py3">
-        <p class="post-meta">Jun, 2012 to August, 2013</p>
-        <a href="http://MallikarjunTirlapur.github.io/MagneticStripeReader/" class="post-link"><h3 class="h3 post-title">Magnetic Stripe Card Reader </h3></a>
+        <p class="post-meta">May, 2016 to October, 2016</p>
+        <a href="http://MallikarjunTirlapur.github.io/OTAFirmwareUpdate/" class="post-link"><h3 class="h3 post-title">OTA Firmware Update </h3></a>
         <p class="post-summary">
           
-            As an application engineer, I designed this prototype at Microchip Technology Private Ltd, Bangalore
+           Private hobby project, An Embedded system which updates Microcontroller Firmware remotely.
             
           
         </p>
@@ -53,6 +53,19 @@ layout: default
         <p class="post-summary">
           
             Master Thesis project at KUKA Roboter GmbH, Augsburg.
+          
+        </p>
+      </div>
+
+  <div class="posts">
+    
+      <div class="post py3">
+        <p class="post-meta">Jun, 2012 to August, 2013</p>
+        <a href="http://MallikarjunTirlapur.github.io/MagneticStripeReader/" class="post-link"><h3 class="h3 post-title">Magnetic Stripe Card Reader </h3></a>
+        <p class="post-summary">
+          
+            As an application engineer, I designed this prototype at Microchip Technology Private Ltd, Bangalore
+            
           
         </p>
       </div>
