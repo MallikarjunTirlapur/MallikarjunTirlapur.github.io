@@ -1,0 +1,98 @@
+---
+layout: default
+---
+<body class="site">
+  <div class="site-wrap">
+    <header class="site-header px2 px-responsive">
+  
+
+    
+
+      </header>
+    </div>
+
+
+
+
+    <div class="post p2 p-responsive wrap" role="main">
+      <div class="measure">
+<div class="post-header mb2">
+  <h2>IntelHexToBin Convertor</h2>
+  <span class="post-meta">December 4, 2016 to December 15, 2016</span><br>
+  
+  <span class="post-meta small">
+  
+    8 minutes read
+  
+  </span>
+</div>
+<article class="post-content">
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<p>It is a simple command line tool and can be used to convert hex files in to binary files.  </p>
+
+<h3> Hex File  </h3>
+<p>The Intel hex generally called as a .hex file. The hex file is an encoded binary file, coded in ASCII text form. This file format is widely used for programming all kinds of processors. Programs written in assembly, C , C++ etc are converted into corresponding .hex files by the compilers, which are then imported by programmers to decode and burn the binary code into microcontroller’s ROM.</p>
+
+
+<p>Intel HEX consists of lines of ASCII alphanumeric characters. Each line starts with a character ‘:’. The lines are termed as a record. Each record contains blocks of hexadecimal characters that encode  record type, length, memory load address, and checksum.</p> 
+
+
+
+
+<strong>RECORD MARK:</strong>&ensp;Field contains the ASCII code for the colon (’ : ’) character. <br /><br />
+
+<strong>RECLEN:</strong>&ensp;Field specifies the number of bytes of data. The maximum
+value of the RECLEN field is 255. <br /><br />
+
+<strong>LOAD OFFSET:</strong>&ensp;Field specifies the 16-bit starting load offset of the data bytes, therefore
+this field is only used for Data Records. In other records where this field is not used, it should be coded as four ASCII zero characters (’0000’ or 03030303OH). <br /><br />
+
+<strong>RECTYP::</strong>&ensp;Field specifies the record type of this record. The RECTYP field is used to
+interpret the remaining information within the record. The encoding for all the current record types are: <br /><br />
+
+’00’ Data Record<br />
+’01’ End of File Record<br />
+’02’ Extended Segment Address Record<br />
+’03’ Start Segment Address Record<br />
+’04’ Extended Linear Address Record<br />
+’05’ Start Linear Address Record<br /><br />
+
+
+<strong>CHKSUM:</strong>&ensp;Field contains the ASCII hexadecimal, which is the sum of all the ASCII pairs in a record after converting to binary, form the RECLEN field to and including the CHKSUM field, is zero. <br /><br />
+
+  
+<h3>Bin File </h3>
+<p>A binary file  with a name extension of ".bin" is a file which contains the machine language code, stored in binary format. Processors understand only the code in the binary files not the hex files. So hex file is first converted into binary and then flashed into the microcontroller ROM. File contains sequence of bytes, which means the binary digits (bits) that are grouped in eights. which means the binary digits (bits) that are grouped in eights.</p>
+
+<h3>How to use the Tool? </h3>  
+<p>The source code of the tool is written in Java. Two classes are defined, one reads the hex file and writes the converted binary data into the binary file. And other one processes and parses the hex file to get the binary data. The algorithm of the system is written as per the specification.</p>
+
+<p>The project is exported as a .jar file which is then executed through command line.</p>
+
+
+<h4>IntelHexToBin [option] .hex [option] .bin [option] 0xYYYY [option] 0xZZZZ.</h4>
+
+<p>All the options are case sensitive.</p>
+-- help,<br /><br />
+<h4>IntelHexToBin -h</h4>
+-h prints usage of the tool.<br /><br /><br />
+<h4>IntelHexToBin –i iiii.hex –o oooo.hex</h4>
+--input <br /><br />
+-i  valid filename / path, If the file iiii.hex doesn't exist, the program throws an error
+“File access failed!!!!!provide a vaild input/output path”.<br />
+--output<br /><br />
+-o valid filename with path, If the file oooo.hex doesn't exist, the program creates a new file to write the bin data. <br /><br />
+If you want to decode hex file for a specified memory range, then you must provide the start and end address.<br /><br />
+<h4>IntelHexToBin –i iiii.hex –o oooo.hex –s 0xYYYY -e 0xZZZZ</h4>
+--start address<br /><br />
+-s valid hexadecimal number<br /><br />
+--end address<br /><br />
+-e valid hexadecimal number<br /><br />																						
+  
+  </div>
+    </div>
+  </div>
+
+
+</body>
+</html>

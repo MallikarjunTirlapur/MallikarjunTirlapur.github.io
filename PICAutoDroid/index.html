@@ -28,9 +28,7 @@ layout: default
 </div>
 <article class="post-content">
   <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<p>PICAutoDroid was my hobby project. The brain of the robot is the <a href="http://www.microchip.com/wwwproducts/Devices.aspx?product=PIC18F452">PIC18F452 8-bit microcontroller</a> coupled with <a href="http://www.microchip.com/wwwproducts/Devices.aspx?product=RN42">RN-42 Bluetooth module</a>. 
-The robot is controlled by an android app. An android device with built-in gyroscope has been used. Gyroscope senses angular velocity of the device and outputs the 
-digital data. The commands are derived from the data. The commands are sent to the robot over wireless Bluetooth communication link. Also, the robot is commanded through voice commands. </p>.   
+<p>PICAutoDroid was my first hobby project. PICAutoDroid is a simple mobile robot controlled by an android device. <a href="http://www.microchip.com/wwwproducts/Devices.aspx?product=PIC18F452">PIC18F452 8-bit microcontroller</a> coupled with <a href="http://www.microchip.com/wwwproducts/Devices.aspx?product=RN42">RN-42 Bluetooth module</a> drives the robot as per the instructions received from the android device. An app in the android device takes the instant reading from the built-in sensor gyroscope. Gyroscope senses angular velocity of the device and provides the data in the digital form. The commands are framed by calculating the angular position of the device in the air. Then the commands are sent to the robot over wireless Bluetooth communication link to drive robot left/right. In addition to this, the robot is also commanded via the voice commands. </p>.   
 </article>
 
 <figure>
@@ -38,19 +36,14 @@ digital data. The commands are derived from the data. The commands are sent to t
   <figcaption>The components and android app</figcaption>
 </figure>
 
-<h3 id="formulation-of-the-problem">Design</h3>
-
-<h4 id="input">Input</h4>
 <p>The control commands to the robot are the function of gyroscope sensor data. The angular position of the android device is input to the robot. 
-The voice commands from the android device are also used to teach the robot.</p>
-
-<h4 id="output">Output</h4>
-<p>Microcontroller generates PWM signals to control the speed of the DC motor based on the input commands.</p>
+The voice commands from the android device are also used to teach the robot.
+Microcontroller generates PWM signals to control the speed of the DC motor based on the input commands.</p>
 
 <h3 id="algorithm-outline">Hardware</h3>
 
-<p>Bluetooth module RN-42 communicates with the microcontroller through UART at 19200 baud rate. The RN-42 receives commands from the android device and feeds them to microcontroller.</p>
-<p>  <a href="http://probots.co.in/index.php?main_page=product_info&cPath=54&products_id=361#.Vidkta2lyko">L293 based Motor Driver</a> has been used to control the speed and the direction of the DC motors.</p> 
+<p>Bluetooth module RN-42 communicates with the microcontroller through UART at 115200 baud rate. The RN-42 receives commands from the android device and feeds them to microcontroller.</p>
+<p>  <a href="http://probots.co.in/index.php?main_page=product_info&cPath=54&products_id=361#.Vidkta2lyko">L293 based Motor Driver</a> is used to control the speed and the direction of the DC motors.</p> 
 
 <h3 id="algorithm-outline">Software</h3>
 The working code will be uploaded soon on the GitHub.
@@ -60,12 +53,6 @@ Have a look at the robot in action!
 
 <style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style>
 <div class="embed-container"><iframe src="https://www.youtube.com/embed/Q9CIeremf6I" frameborder="0" allowfullscreen=""></iframe></div>
-
-
-
-<h2 id="what-next">Future Work</h2>
-
-Making this robot to work autonomously.
 
 
 
