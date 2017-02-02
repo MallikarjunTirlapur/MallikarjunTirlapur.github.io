@@ -17,8 +17,7 @@ layout: default
     <div class="post p2 p-responsive wrap" role="main">
       <div class="measure">
 <div class="post-header mb2">
-  <h2>Magnetic Stripe Card Reader</h2>
-  <span class="post-meta">Jun, 2012 to August, 2013</span><br>
+  <h2>Magnetic Stripes</h2>
   
   <span class="post-meta small">
   
@@ -33,7 +32,6 @@ layout: default
 tiny iron-based magnetic particles on a band of magnetic material on the card. The data on the stripe is read by swiping 
 against a <a href="http://www.magneticheads.com/"> magnetic reading head</a>. Magnetic stripe cards are commonly used in credit cards, identity cards, and transportation tickets.  </p>  
 
-<p>For the prototype we employed <a href="http://ww1.microchip.com/downloads/en/DeviceDoc/39996f.pdf">PIC24FJ128GA310</a> 16-bit microcontroller. The on chip ADC, an <a href="http://ww1.microchip.com/downloads/en/DeviceDoc/21668d.pdf"> operational amplifier</a>, and a fast controller core enabled the integration of magnetic card reader functionality in a very small space with few external components. An external operational amplifier is used to amplify the signal and to make the signal suitable for unipolar ADC. An android application coupled with a <a href="http://www.seeedstudio.com/depot/Hijack-Development-Pack-p-865.html">power hijack board</a> are used to power up the microcontroller. Android app generates the tone at 1kHz-5kHz through audio jack. The power hijack board generates power using on board step-up transformer and AC-DC converter as explained in the <a href="https://web.eecs.umich.edu/~prabal/pubs/papers/kuo10hijack-islped.pdf">literature</a>. Output is communicated to the PC’s terminal program via an RS-232 connection for the data visualization. </p> 
 </article>
 
 
@@ -103,62 +101,16 @@ Each data character is in a 5-bit (4 plus parity) numeric format. The data is in
 Example: Track2 Information read on a Credit card.<br />
 ;0123456789101112=01020304050607080910?:<br />
 
-</p>
-
-<figure>
-  <center><img src="/assets/image004.png" /><center>
-  <figcaption><center><span class="post-meta small">System Interconnection</span><center></figcaption>
-</figure>
-
-<h4>Hardware Set Up </h4>
-
-<figure>
-  <center><img src="/assets/explorer16.png" /><center>
-  <figcaption><center><span class="post-meta small">Prototype design using Explorer-16 board</span><center></figcaption>
-</figure>
-
-<p>
-1. Magnetic Card Reader Head. <br />
-2. Op-Amp 6142. <br />
-3. PIC24F Device. <br />
-4. 9 V Power Supply. <br />
-5. RS -232 Connectivity (MCP2200). <br />
-6. Debugger Connectivity.  <br />
-7. <a href="http://www.microchip.com/Developmenttools/ProductDetails.aspx?PartNO=DM240001">Explorer-16 board</a>. <br />
-
-</p>
 
 <figure>
   <center><img src="/assets/scope_0.png" /><center>
   <figcaption><center><span class="post-meta small">The output of magnetic read head</span><center></figcaption>
 </figure>
 
-<h4>The Algorithm </h4>
-The Track1 and Track2 signals are amplified and fed the output of the Op-Amp to PIC24F microcontroller through analog ANx and ANy channels.<br />
- 
-Step 1: Start<br />
-Step 2: Configure the ADC with Auto-Sample enabled. <br />
-Step 3: Configure the Timer for computing the duration between 2 peaks. <br />
-Step 4: Configure UART for 9600 Baudrate.  <br />
-Step 5: Decode the F2F signal.       <br />
-Step 6: Encrypt the data using AES symmetric encryption algorithm. <br />
-Step 7: Transmit the data to the PC’s HyperTerminal program via an RS-232 coomunication protocol.<br />
-Step 8: Stop<br />
-
 <figure>
   <center><img src="/assets/scope_30.png" /><center>
   <figcaption><center><span class="post-meta small">The output of Op-Amp and peak detection</span><center></figcaption>
 </figure>
-
-<h4>Output on the HyperTerminal </h4>
-
-<figure>
-  <center><img src="/assets/vlcsnap-2015-10-26-10h59m14s992.png" /><center>
-  <figcaption><center><span class="post-meta small">The card information on the HyperTerminal</span><center></figcaption>
-</figure>
-
-<h4>Program memory:</h4> 8.0K bytes
-<h4>Data memory:</h4>    3.4 K bytes
 
   <div id="disqus_thread"></div>
   <script type="text/javascript">
