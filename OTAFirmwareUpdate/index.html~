@@ -11,7 +11,21 @@ layout: default
       </header>
     </div>
 
+	<style>
+	.boxes{
+	width:50%;
+	float:left;
+	}
+	#mainDiv{
+		width:50%;
+margin:auto;
+	}
+	img{
+		max-width:100%;
+	}
+</style>
 
+<br/> <script type="text/javascript" src="https://counter4.01counter.com/private/countertab.js?c=fd589b7fcbbb6761218a25ec12f6b186"></script> <noscript><a href="http://www.freecounterstat.com" title="free counter"><img src="https://counter4.01counter.com/private/freecounterstat.php?c=fd589b7fcbbb6761218a25ec12f6b186" border="0" title="free counter" alt="free counter"></a> </noscript> 
 
 
     <div class="post p2 p-responsive wrap" role="main">
@@ -34,13 +48,19 @@ layout: default
 
 <h3> Use Cases </h3>
 <strong>1.</strong>&ensp;Updating firmware of distributed embedded devices by sitting at one central location. For instance, <br />
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp; If embedded device is located thousand kilo meters far away from the central location, embedded device manufacturer must be able to update device firmware by sending the firmware to user’s android/ios device. <br />
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp; If embedded device is located thousand kilo meters far away from the central location, embedded device manufacturer must be able to update device firmware by sending the firmware to user’s android/ios device through cloud. <br />
 &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;     Ex: Bluetooth enabled - headphone, speakers, home automation system, television etc<br />
 
 <strong>2.</strong>&ensp;Program PIC without using Microchip <a href="http://www.microchipdirect.com/ProductDetails.aspx?Catalog=BuyMicrochip&Category=Cat4_SubCat9&mid=10">programmer/debugger</a>. <br/>
 <br/>
-<p>These 2 use cases motivated me building this small system.</p>
-  
+<p>These use cases motivated me for building this small system.</p>
+
+<h2 id="demo">Demo</h2>
+
+
+<style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style>
+<div class="embed-container"><iframe src="https://www.youtube.com/embed/uS3xlvWdbrw" frameborder="0" allowfullscreen=""></iframe></div>
+ 
 <p>The system consists of <a href="http://www.microchip.com/wwwproducts/en/PIC18F4431">PIC18f4431</a> and <a href="http://www.microchip.com/wwwproducts/en/PIC32MX795F512H">pic32mx795f512h</a> microcontrollers, android device and Bluetooth interface module. This post would be focusing on PIC18f microcontroller boot loader, Android application, and implementation of them.</p>
   
 <h3>PIC Boot Loader </h3>
@@ -55,11 +75,24 @@ layout: default
 
 <p>The job of the boot loader is to erase the application program memory and load the new incoming binaries via communication port into program memory. The firmware has the reset vector pointer (0x0A00). Right after loading the binaries, the boot loader sets the program counter to reset vector pointer of the firmware to execute the code.</p> 
 
-<p>Before building the application source code in the MPLAB IDE, one must specify the ROM range (after 0x0800h) to load the binaries in to the flash memory other than start-up memory location. ROM range can be specified in the IDE as shown in the figure</p> 
+<p>Before building the application source code in the MPLAB IDE, one must specify the ROM range (after 0x0800h) to load the binaries in to the flash memory other than start-up memory location. ROM range can be specified in the IDE project->properties->xc8linker->memory model->rom ranges</p> 
+
+<body>
+<div id="mainDiv">
+    <div id="divOne" class="boxes">
+	<img src="/OTAFirmwareUpdate/set2.JPG">
+ <figcaption><right><span class="post-meta small"> PIC32 setup</span><right></figcaption>
+    </div>
+    <div id="divTwo" class="boxes">
+	<img src="/OTAFirmwareUpdate/set1.JPG">
+<figcaption><left><span class="post-meta small"> PIC18F setup</span><left></figcaption>
+    </div>
+</div>
+</body><br /><br /><br /><br /><br /><br />
   
   <h3>Boot Loader Source Code</h3>
   
-  <p>The boot loader is basically the low level driver of PIC and is implemented in C.  The source code and documentation of it is freely available on the GitHub.</p>
+  <p>The boot loader is basically the low level driver of PIC and is implemented in C.  The <a href="https://github.com/MallikarjunTirlapur/PIC_Bootloader">source code</a> and <a href="/OTAFirmwareUpdate/doxyOutPIC18/html/index.html">documentation</a>  of it is freely available on the GitHub.</p>
   
   <h4>Algorithm</h4>
 1.	Configure IO port<br />
@@ -86,11 +119,11 @@ layout: default
 
   <h4> Software</h4>
   
-  <p>Software is implemented in JAVA, again the source code and documentation of it is freely available on the GitHub. </p>
+  <p>Software is implemented in JAVA, again the <a href="https://github.com/MallikarjunTirlapur/Android_RN-31_Bluetooth">source code</a> and <a href="/OTAFirmwareUpdate/doxyOutPIC32/html/index.html">documentation</a> of it is freely available on the GitHub. </p>
 
 <p>Application firmware hex file must be converted to binary file before loading it into the PIC flash memory.</p> 
 
-<p>To convert hex to binary I defined couple of JAVA classes on the android platform. It basically takes hex file as an input and decodes it for the binary, for more information please have look at my another project IntelHexToBin Convertor. For the app, .hex file must be either in the Intel format. MPLAB C compiler generates .hex in the Intel hex format.</p> 
+<p>To convert hex to binary I defined couple of JAVA classes on the android platform. It basically takes hex file as an input and decodes it for the binary, for more information please have look at my another project <a href="/IntelHexToBin/index.html">IntelHexToBin</a> Convertor. For the app, .hex file must be in the Intel format. MPLAB C compiler generates .hex in the Intel hex format.</p> 
 
 <p>The generated application firmware hex file is stored on the internal storage of the android device. Any number of hex files can be stored on the device. The GUI facilitates user to search the available hex files from the storage and select one of them to send it through Bluetooth communication link to PIC. </p> 
   
@@ -104,6 +137,21 @@ layout: default
 7. Send firmware header. Header consists of Application firmware size, and reset vector address. <br />
 8. Receive Header acknowledgement.<br />
 9. Send application binary chunks in packets each of NVM page size of the PIC microcontroller.<br />
+
+
+  
+    <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_shortname  = 'MallikarjunTirlapur';
+    var disqus_identifier = '/OTA Firmware Update';
+    var disqus_title      = '';
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   
   </div>
     </div>
