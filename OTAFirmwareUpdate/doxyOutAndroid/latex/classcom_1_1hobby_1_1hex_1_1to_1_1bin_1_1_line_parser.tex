@@ -1,0 +1,84 @@
+\hypertarget{classcom_1_1hobby_1_1hex_1_1to_1_1bin_1_1_line_parser}{}\section{com.\+hobby.\+hex.\+to.\+bin.\+Line\+Parser Class Reference}
+\label{classcom_1_1hobby_1_1hex_1_1to_1_1bin_1_1_line_parser}\index{com.\+hobby.\+hex.\+to.\+bin.\+Line\+Parser@{com.\+hobby.\+hex.\+to.\+bin.\+Line\+Parser}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+Linked\+Hash\+Map$<$ Long, String $>$ \hyperlink{classcom_1_1hobby_1_1hex_1_1to_1_1bin_1_1_line_parser_acfc2f3e7d365d31f5e7603a4e86c4671}{process\+Record} (Linked\+Hash\+Map$<$ Integer, String $>$ ln\+Tbl)
+\item 
+\hyperlink{classcom_1_1hobby_1_1hex_1_1to_1_1bin_1_1_record}{Record} \hyperlink{classcom_1_1hobby_1_1hex_1_1to_1_1bin_1_1_line_parser_a1c5410cda3414d551d912fe5821c9f85}{parse\+Record} (String record)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classcom_1_1hobby_1_1hex_1_1to_1_1bin_1_1_line_parser_a411062955e40e07d7342e519271b4fa2}\label{classcom_1_1hobby_1_1hex_1_1to_1_1bin_1_1_line_parser_a411062955e40e07d7342e519271b4fa2}} 
+long {\bfseries Start\+Address}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class parses each line from the hex file to fetch address and data which are then inserted into the hash table. Parsing is carried as per the intel hexadecimal object file format specification.
+
+\begin{DoxyAuthor}{Author}
+Mallikarjun Tirlapur 
+\end{DoxyAuthor}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classcom_1_1hobby_1_1hex_1_1to_1_1bin_1_1_line_parser_a1c5410cda3414d551d912fe5821c9f85}\label{classcom_1_1hobby_1_1hex_1_1to_1_1bin_1_1_line_parser_a1c5410cda3414d551d912fe5821c9f85}} 
+\index{com\+::hobby\+::hex\+::to\+::bin\+::\+Line\+Parser@{com\+::hobby\+::hex\+::to\+::bin\+::\+Line\+Parser}!parse\+Record@{parse\+Record}}
+\index{parse\+Record@{parse\+Record}!com\+::hobby\+::hex\+::to\+::bin\+::\+Line\+Parser@{com\+::hobby\+::hex\+::to\+::bin\+::\+Line\+Parser}}
+\subsubsection{\texorpdfstring{parse\+Record()}{parseRecord()}}
+{\footnotesize\ttfamily \hyperlink{classcom_1_1hobby_1_1hex_1_1to_1_1bin_1_1_record}{Record} com.\+hobby.\+hex.\+to.\+bin.\+Line\+Parser.\+parse\+Record (\begin{DoxyParamCaption}\item[{String}]{record }\end{DoxyParamCaption})}
+
+Parses each record and updates the record fields of the class \hyperlink{classcom_1_1hobby_1_1hex_1_1to_1_1bin_1_1_record}{Record}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em record} & record is a line from the hex file which starts with \char`\"{}\+:\char`\"{}\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+instance of \hyperlink{classcom_1_1hobby_1_1hex_1_1to_1_1bin_1_1_record}{Record}. 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classcom_1_1hobby_1_1hex_1_1to_1_1bin_1_1_line_parser_a1c5410cda3414d551d912fe5821c9f85_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classcom_1_1hobby_1_1hex_1_1to_1_1bin_1_1_line_parser_acfc2f3e7d365d31f5e7603a4e86c4671}\label{classcom_1_1hobby_1_1hex_1_1to_1_1bin_1_1_line_parser_acfc2f3e7d365d31f5e7603a4e86c4671}} 
+\index{com\+::hobby\+::hex\+::to\+::bin\+::\+Line\+Parser@{com\+::hobby\+::hex\+::to\+::bin\+::\+Line\+Parser}!process\+Record@{process\+Record}}
+\index{process\+Record@{process\+Record}!com\+::hobby\+::hex\+::to\+::bin\+::\+Line\+Parser@{com\+::hobby\+::hex\+::to\+::bin\+::\+Line\+Parser}}
+\subsubsection{\texorpdfstring{process\+Record()}{processRecord()}}
+{\footnotesize\ttfamily Linked\+Hash\+Map$<$Long, String$>$ com.\+hobby.\+hex.\+to.\+bin.\+Line\+Parser.\+process\+Record (\begin{DoxyParamCaption}\item[{Linked\+Hash\+Map$<$ Integer, String $>$}]{ln\+Tbl }\end{DoxyParamCaption})}
+
+Each line is processed and based on the type of the record, memory load address is determined.
+
+
+\begin{DoxyParams}{Parameters}
+{\em ln\+Tbl} & hash table consisting of keys -\/ line number and values -\/ string record \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+linked hash table containing memory load address and bin data 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classcom_1_1hobby_1_1hex_1_1to_1_1bin_1_1_line_parser_acfc2f3e7d365d31f5e7603a4e86c4671_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classcom_1_1hobby_1_1hex_1_1to_1_1bin_1_1_line_parser_acfc2f3e7d365d31f5e7603a4e86c4671_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+E\+:/\+Bluetooth\+Comm/app/src/main/java/com/hobby/hex/to/bin/Line\+Parser.\+java\end{DoxyCompactItemize}

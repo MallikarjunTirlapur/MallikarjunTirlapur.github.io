@@ -1,0 +1,84 @@
+\hypertarget{_flash_driver_8h}{}\section{H\+:/\+Blt\+P\+I\+C32\+\_\+\+Bootloader.X/\+Flash\+Driver.h File Reference}
+\label{_flash_driver_8h}\index{H\+:/\+Blt\+P\+I\+C32\+\_\+\+Bootloader.\+X/\+Flash\+Driver.\+h@{H\+:/\+Blt\+P\+I\+C32\+\_\+\+Bootloader.\+X/\+Flash\+Driver.\+h}}
+
+
+File contains the declaration of flash functions.  
+
+
+{\ttfamily \#include \char`\"{}system.\+h\char`\"{}}\newline
+Include dependency graph for Flash\+Driver.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_flash_driver_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=208pt]{_flash_driver_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{_flash_driver_8h_a50c7502f90d7f0662d2c725fe5d97b32}{}\label{_flash_driver_8h_a50c7502f90d7f0662d2c725fe5d97b32} 
+\#define {\bfseries N\+V\+M\+O\+P\+\_\+\+W\+O\+R\+D\+\_\+\+P\+GM}~0x4001
+\item 
+\hypertarget{_flash_driver_8h_a416800360d5d95648dd820efc2664147}{}\label{_flash_driver_8h_a416800360d5d95648dd820efc2664147} 
+\#define {\bfseries N\+V\+M\+O\+P\+\_\+\+P\+A\+G\+E\+\_\+\+E\+R\+A\+SE}~0x4004
+\item 
+\hypertarget{_flash_driver_8h_a78462d59d79d93ead544cc01bc8ebfdd}{}\label{_flash_driver_8h_a78462d59d79d93ead544cc01bc8ebfdd} 
+\#define {\bfseries N\+V\+M\+O\+P\+\_\+\+R\+O\+W\+\_\+\+P\+GM}~0x4003
+\item 
+\hypertarget{_flash_driver_8h_a97d62be26684a84da173ff9374335bcc}{}\label{_flash_driver_8h_a97d62be26684a84da173ff9374335bcc} 
+\#define {\bfseries N\+V\+M\+O\+P\+\_\+\+N\+OP}~0x4000
+\item 
+\hypertarget{_flash_driver_8h_a0c620ed67aa11b3aff9ed1ba06881f57}{}\label{_flash_driver_8h_a0c620ed67aa11b3aff9ed1ba06881f57} 
+\#define {\bfseries A\+P\+P\+\_\+\+F\+L\+A\+S\+H\+\_\+\+M\+A\+X\+\_\+\+S\+I\+ZE}~(\hyperlink{system_8h_ae1fe38ff68cf2a6c82c79ef4d9b859d5}{A\+P\+P\+\_\+\+F\+L\+A\+S\+H\+\_\+\+E\+N\+D\+\_\+\+A\+D\+D\+R\+ES} -\/ \hyperlink{system_8h_a7870bb2cfb0fd58d204e2f28c9642c56}{A\+P\+P\+\_\+\+F\+L\+A\+S\+H\+\_\+\+B\+A\+S\+E\+\_\+\+A\+D\+D\+R\+E\+SS} + 1)
+\item 
+\hypertarget{_flash_driver_8h_a54ca0f29e0952e19933b095a7f64834f}{}\label{_flash_driver_8h_a54ca0f29e0952e19933b095a7f64834f} 
+\#define {\bfseries U\+S\+E\+R\+\_\+\+A\+P\+P\+\_\+\+R\+E\+S\+E\+T\+\_\+\+A\+D\+D\+R\+E\+SS}~(0x9d006000 + 0x1000 + 0x970)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{_flash_driver_8h_a1e791257ccfd43de12d49c29689486c2}{update\+Firmware\+\_\+\+\_\+\+Flash} (void)
+\item 
+void \hyperlink{_flash_driver_8h_a4e1dcc221c3ea2da41aaa12dba9d86fe}{erase\+Seq\+\_\+\+\_\+\+Flash} (void)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+File contains the declaration of flash functions. 
+
+\begin{DoxyAuthor}{Author}
+Mallikarjun Tirlapur 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+16 May, 2016 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\hypertarget{_flash_driver_8h_a4e1dcc221c3ea2da41aaa12dba9d86fe}{}\label{_flash_driver_8h_a4e1dcc221c3ea2da41aaa12dba9d86fe} 
+\index{Flash\+Driver.\+h@{Flash\+Driver.\+h}!erase\+Seq\+\_\+\+\_\+\+Flash@{erase\+Seq\+\_\+\+\_\+\+Flash}}
+\index{erase\+Seq\+\_\+\+\_\+\+Flash@{erase\+Seq\+\_\+\+\_\+\+Flash}!Flash\+Driver.\+h@{Flash\+Driver.\+h}}
+\subsubsection{\texorpdfstring{erase\+Seq\+\_\+\+\_\+\+Flash()}{eraseSeq\_\_Flash()}}
+{\footnotesize\ttfamily void erase\+Seq\+\_\+\+\_\+\+Flash (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\hypertarget{_flash_driver_8h_a1e791257ccfd43de12d49c29689486c2}{}\label{_flash_driver_8h_a1e791257ccfd43de12d49c29689486c2} 
+\index{Flash\+Driver.\+h@{Flash\+Driver.\+h}!update\+Firmware\+\_\+\+\_\+\+Flash@{update\+Firmware\+\_\+\+\_\+\+Flash}}
+\index{update\+Firmware\+\_\+\+\_\+\+Flash@{update\+Firmware\+\_\+\+\_\+\+Flash}!Flash\+Driver.\+h@{Flash\+Driver.\+h}}
+\subsubsection{\texorpdfstring{update\+Firmware\+\_\+\+\_\+\+Flash()}{updateFirmware\_\_Flash()}}
+{\footnotesize\ttfamily void update\+Firmware\+\_\+\+\_\+\+Flash (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}

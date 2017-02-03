@@ -1,0 +1,67 @@
+\hypertarget{_u_a_r_t_driver_8h}{}\section{E\+:/\+Blt\+P\+I\+C\+\_\+\+Bootloader.X/\+U\+A\+R\+T\+Driver.h File Reference}
+\label{_u_a_r_t_driver_8h}\index{E\+:/\+Blt\+P\+I\+C\+\_\+\+Bootloader.\+X/\+U\+A\+R\+T\+Driver.\+h@{E\+:/\+Blt\+P\+I\+C\+\_\+\+Bootloader.\+X/\+U\+A\+R\+T\+Driver.\+h}}
+
+
+File contains the declaration of U\+A\+RT functions and uart\+\_\+rxbuffer array.  
+
+
+{\ttfamily \#include \char`\"{}system.\+h\char`\"{}}\newline
+Include dependency graph for U\+A\+R\+T\+Driver.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=332pt]{_u_a_r_t_driver_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_u_a_r_t_driver_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{_u_a_r_t_driver_8h_a381c21700dd763626b378de6cb725317}\label{_u_a_r_t_driver_8h_a381c21700dd763626b378de6cb725317}} 
+void \hyperlink{_u_a_r_t_driver_8h_a381c21700dd763626b378de6cb725317}{driver\+Config\+\_\+\+\_\+\+U\+A\+RT} (void)
+\begin{DoxyCompactList}\small\item\em function configures U\+S\+A\+RT peripheral. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{_u_a_r_t_driver_8h_aa66e9ab50d44d5c68a57cfb3b7833557}\label{_u_a_r_t_driver_8h_aa66e9ab50d44d5c68a57cfb3b7833557}} 
+void \hyperlink{_u_a_r_t_driver_8h_aa66e9ab50d44d5c68a57cfb3b7833557}{send\+Data\+\_\+\+\_\+\+U\+A\+RT} (\hyperlink{system_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t} data)
+\begin{DoxyCompactList}\small\item\em function sends data to the host. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{system_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t} \hyperlink{_u_a_r_t_driver_8h_adafdf4a795e6ef88a633da0f3566ef54}{uart\+\_\+rxbuffer} \mbox{[}\hyperlink{system_8h_a08c4178cfbc31aaa81efee5588c5c6e6}{N\+V\+M\+\_\+\+P\+A\+G\+E\+\_\+\+S\+I\+ZE}\mbox{]}
+\item 
+\hyperlink{system_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t} \hyperlink{_u_a_r_t_driver_8h_a816e5f0aa1205d134039dbfa37338882}{uart\+\_\+rxbuffer\+\_\+counter}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+File contains the declaration of U\+A\+RT functions and uart\+\_\+rxbuffer array. 
+
+\begin{DoxyAuthor}{Author}
+Mallikarjun Tirlapur 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+14 May, 2016 
+\end{DoxyDate}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{_u_a_r_t_driver_8h_adafdf4a795e6ef88a633da0f3566ef54}\label{_u_a_r_t_driver_8h_adafdf4a795e6ef88a633da0f3566ef54}} 
+\index{U\+A\+R\+T\+Driver.\+h@{U\+A\+R\+T\+Driver.\+h}!uart\+\_\+rxbuffer@{uart\+\_\+rxbuffer}}
+\index{uart\+\_\+rxbuffer@{uart\+\_\+rxbuffer}!U\+A\+R\+T\+Driver.\+h@{U\+A\+R\+T\+Driver.\+h}}
+\subsubsection{\texorpdfstring{uart\+\_\+rxbuffer}{uart\_rxbuffer}}
+{\footnotesize\ttfamily \hyperlink{system_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t} uart\+\_\+rxbuffer\mbox{[}\hyperlink{system_8h_a08c4178cfbc31aaa81efee5588c5c6e6}{N\+V\+M\+\_\+\+P\+A\+G\+E\+\_\+\+S\+I\+ZE}\mbox{]}}
+
+uart receive buffer of size N\+VM page. \mbox{\Hypertarget{_u_a_r_t_driver_8h_a816e5f0aa1205d134039dbfa37338882}\label{_u_a_r_t_driver_8h_a816e5f0aa1205d134039dbfa37338882}} 
+\index{U\+A\+R\+T\+Driver.\+h@{U\+A\+R\+T\+Driver.\+h}!uart\+\_\+rxbuffer\+\_\+counter@{uart\+\_\+rxbuffer\+\_\+counter}}
+\index{uart\+\_\+rxbuffer\+\_\+counter@{uart\+\_\+rxbuffer\+\_\+counter}!U\+A\+R\+T\+Driver.\+h@{U\+A\+R\+T\+Driver.\+h}}
+\subsubsection{\texorpdfstring{uart\+\_\+rxbuffer\+\_\+counter}{uart\_rxbuffer\_counter}}
+{\footnotesize\ttfamily \hyperlink{system_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t} uart\+\_\+rxbuffer\+\_\+counter}
+
+uart receive buffer counter. 

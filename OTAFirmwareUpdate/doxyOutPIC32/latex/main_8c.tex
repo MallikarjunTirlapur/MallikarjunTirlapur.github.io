@@ -1,0 +1,70 @@
+\hypertarget{main_8c}{}\section{H\+:/\+Blt\+P\+I\+C32\+\_\+\+Bootloader.X/main.c File Reference}
+\label{main_8c}\index{H\+:/\+Blt\+P\+I\+C32\+\_\+\+Bootloader.\+X/main.\+c@{H\+:/\+Blt\+P\+I\+C32\+\_\+\+Bootloader.\+X/main.\+c}}
+
+
+In this file the functions are defined and processed the commands from the host.  
+
+
+{\ttfamily \#include \char`\"{}system.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Flash\+Driver.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}U\+A\+R\+T\+Driver.\+h\char`\"{}}\newline
+Include dependency graph for main.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{main_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{main_8c_a6288eba0f8e8ad3ab1544ad731eb7667}{}\label{main_8c_a6288eba0f8e8ad3ab1544ad731eb7667} 
+void {\bfseries main} (void)
+\item 
+\hypertarget{main_8c_a41c1c05b540f333971c28ecc6647f6bf}{}\label{main_8c_a41c1c05b540f333971c28ecc6647f6bf} 
+void {\bfseries init\+Var\+Config\+Port} (void)
+\item 
+\hypertarget{main_8c_aff608729dd08ccd2030f4e7409f857ae}{}\label{main_8c_aff608729dd08ccd2030f4e7409f857ae} 
+void \hyperlink{main_8c_aff608729dd08ccd2030f4e7409f857ae}{run\+Applcn} (void)
+\begin{DoxyCompactList}\small\item\em PC is updated with the new pointer to execute loaded binary from the application flash program memory. \end{DoxyCompactList}\item 
+\hypertarget{main_8c_acc7a9b94b14972e9517cd0454254d16a}{}\label{main_8c_acc7a9b94b14972e9517cd0454254d16a} 
+void \hyperlink{main_8c_acc7a9b94b14972e9517cd0454254d16a}{run\+State\+Machine} (void)
+\begin{DoxyCompactList}\small\item\em function executes different states of the system. S\+Y\+S\+\_\+\+S\+N\+D\+\_\+\+A\+D\+D\+R\+S\+\_\+\+R\+A\+N\+GE -\/ Send the P\+IC programmable start and end address of the program memory S\+Y\+S\+\_\+\+W\+A\+I\+T\+\_\+\+F\+O\+R\+\_\+\+S\+T\+A\+R\+T\+\_\+\+C\+M\+ND -\/ The Start command triggers system to start the process and initializes buffer counter S\+Y\+S\+\_\+\+R\+C\+V\+\_\+\+F\+I\+R\+M\+W\+A\+R\+E\+\_\+\+H\+E\+A\+D\+ER -\/ Get the total packet count from the host and applcn start address S\+Y\+S\+\_\+\+C\+O\+N\+F\+I\+G\+\_\+\+F\+L\+A\+SH -\/ Erase application program area and update table pointer S\+Y\+S\+\_\+\+F\+I\+R\+M\+W\+A\+R\+E\+\_\+\+U\+P\+D\+A\+TE -\/ Receive and put the binary chunks in the flash memory S\+Y\+S\+\_\+\+R\+U\+N\+\_\+\+A\+P\+P\+L\+CN -\/ Run the application \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+uint16\+\_\+t {\bfseries prog\+Mem\+Range} \mbox{[}$\,$\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+In this file the functions are defined and processed the commands from the host. 
+
+\begin{DoxyAuthor}{Author}
+Mallikarjun Tirlapur 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+29 Aug, 2016, 11\+:04 PM 
+\end{DoxyDate}
+
+
+\subsection{Variable Documentation}
+\hypertarget{main_8c_ad202d167fac6d1b9168605966aff3baf}{}\label{main_8c_ad202d167fac6d1b9168605966aff3baf} 
+\index{main.\+c@{main.\+c}!prog\+Mem\+Range@{prog\+Mem\+Range}}
+\index{prog\+Mem\+Range@{prog\+Mem\+Range}!main.\+c@{main.\+c}}
+\subsubsection{\texorpdfstring{prog\+Mem\+Range}{progMemRange}}
+{\footnotesize\ttfamily uint16\+\_\+t prog\+Mem\+Range\mbox{[}$\,$\mbox{]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= \{\hyperlink{system_8h_a8afcb8142e824f079a9dbd99e7e39c4caa13f109488d193a43d676706f01038cf}{SYS\_ADDRESS\_RANGE\_TAG}, BYTE\_ROW\_SIZE, 
+                         (uint8\_t)((\hyperlink{system_8h_ae1fe38ff68cf2a6c82c79ef4d9b859d5}{APP\_FLASH\_END\_ADDRES} & 0xff000000) >> 24),
+                         (uint8\_t)((\hyperlink{system_8h_ae1fe38ff68cf2a6c82c79ef4d9b859d5}{APP\_FLASH\_END\_ADDRES} & 0x00ff0000) >> 16),
+                         (uint8\_t)((\hyperlink{system_8h_ae1fe38ff68cf2a6c82c79ef4d9b859d5}{APP\_FLASH\_END\_ADDRES} & 0x0000ff00) >> 8),
+                         (uint8\_t)(\hyperlink{system_8h_ae1fe38ff68cf2a6c82c79ef4d9b859d5}{APP\_FLASH\_END\_ADDRES} & 0x000000ff),
+                         (uint8\_t)((\hyperlink{system_8h_a7870bb2cfb0fd58d204e2f28c9642c56}{APP\_FLASH\_BASE\_ADDRESS} & 0xff000000) >> 24),
+                         (uint8\_t)((\hyperlink{system_8h_a7870bb2cfb0fd58d204e2f28c9642c56}{APP\_FLASH\_BASE\_ADDRESS} & 0x00ff0000) >> 16),
+                         (uint8\_t)((\hyperlink{system_8h_a7870bb2cfb0fd58d204e2f28c9642c56}{APP\_FLASH\_BASE\_ADDRESS} & 0x0000ff00) >> 8),
+                         (uint8\_t)(\hyperlink{system_8h_a7870bb2cfb0fd58d204e2f28c9642c56}{APP\_FLASH\_BASE\_ADDRESS} & 0x000000ff)\}
+\end{DoxyCode}

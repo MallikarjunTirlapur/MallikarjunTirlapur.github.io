@@ -1,0 +1,45 @@
+\hypertarget{main_8c}{}\section{E\+:/\+Blt\+P\+I\+C\+\_\+\+Bootloader.X/main.c File Reference}
+\label{main_8c}\index{E\+:/\+Blt\+P\+I\+C\+\_\+\+Bootloader.\+X/main.\+c@{E\+:/\+Blt\+P\+I\+C\+\_\+\+Bootloader.\+X/main.\+c}}
+
+
+In this file the functions are defined and processed the commands from the host.  
+
+
+{\ttfamily \#include $<$xc.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}system.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Flash\+Driver.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}U\+A\+R\+T\+Driver.\+h\char`\"{}}\newline
+Include dependency graph for main.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=332pt]{main_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{main_8c_a6288eba0f8e8ad3ab1544ad731eb7667}\label{main_8c_a6288eba0f8e8ad3ab1544ad731eb7667}} 
+void \hyperlink{main_8c_a6288eba0f8e8ad3ab1544ad731eb7667}{main} (void)
+\begin{DoxyCompactList}\small\item\em entry point of the system init functions are called from here. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{main_8c_a41c1c05b540f333971c28ecc6647f6bf}\label{main_8c_a41c1c05b540f333971c28ecc6647f6bf}} 
+void \hyperlink{main_8c_a41c1c05b540f333971c28ecc6647f6bf}{init\+Var\+Config\+Port} (void)
+\begin{DoxyCompactList}\small\item\em function configures and initializes IO ports. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{main_8c_aff608729dd08ccd2030f4e7409f857ae}\label{main_8c_aff608729dd08ccd2030f4e7409f857ae}} 
+void \hyperlink{main_8c_aff608729dd08ccd2030f4e7409f857ae}{run\+Applcn} (void)
+\begin{DoxyCompactList}\small\item\em PC is updated with the new pointer to execute loaded binary from the application flash program memory. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{main_8c_acc7a9b94b14972e9517cd0454254d16a}\label{main_8c_acc7a9b94b14972e9517cd0454254d16a}} 
+void \hyperlink{main_8c_acc7a9b94b14972e9517cd0454254d16a}{run\+State\+Machine} (void)
+\begin{DoxyCompactList}\small\item\em function executes different states of the system. S\+Y\+S\+\_\+\+S\+N\+D\+\_\+\+A\+D\+D\+R\+S\+\_\+\+R\+A\+N\+GE -\/ Send the P\+IC programmable start and end address of the program memory S\+Y\+S\+\_\+\+W\+A\+I\+T\+\_\+\+F\+O\+R\+\_\+\+S\+T\+A\+R\+T\+\_\+\+C\+M\+ND -\/ The Start command triggers system to start the process and initializes buffer counter S\+Y\+S\+\_\+\+R\+C\+V\+\_\+\+F\+I\+R\+M\+W\+A\+R\+E\+\_\+\+H\+E\+A\+D\+ER -\/ Get the total packet count from the host and applcn start address S\+Y\+S\+\_\+\+C\+O\+N\+F\+I\+G\+\_\+\+F\+L\+A\+SH -\/ Erase application program area and update table pointer S\+Y\+S\+\_\+\+F\+I\+R\+M\+W\+A\+R\+E\+\_\+\+U\+P\+D\+A\+TE -\/ Receive and put the binary chunks in the flash memory S\+Y\+S\+\_\+\+R\+U\+N\+\_\+\+A\+P\+P\+L\+CN -\/ Run the application \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+In this file the functions are defined and processed the commands from the host. 
+
+\begin{DoxyAuthor}{Author}
+Mallikarjun Tirlapur 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+14 May, 2016, 11\+:04 PM 
+\end{DoxyDate}

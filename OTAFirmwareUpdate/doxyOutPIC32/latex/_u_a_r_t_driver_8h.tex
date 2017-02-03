@@ -1,0 +1,63 @@
+\hypertarget{_u_a_r_t_driver_8h}{}\section{H\+:/\+Blt\+P\+I\+C32\+\_\+\+Bootloader.X/\+U\+A\+R\+T\+Driver.h File Reference}
+\label{_u_a_r_t_driver_8h}\index{H\+:/\+Blt\+P\+I\+C32\+\_\+\+Bootloader.\+X/\+U\+A\+R\+T\+Driver.\+h@{H\+:/\+Blt\+P\+I\+C32\+\_\+\+Bootloader.\+X/\+U\+A\+R\+T\+Driver.\+h}}
+
+
+File contains the declaration of U\+A\+RT functions and uart\+\_\+rxbuffer array.  
+
+
+{\ttfamily \#include \char`\"{}system.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}plib.\+h\char`\"{}}\newline
+Include dependency graph for U\+A\+R\+T\+Driver.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_u_a_r_t_driver_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_u_a_r_t_driver_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{_u_a_r_t_driver_8h_a7d5ce7b79462bbfb630ee53075540b65}{}\label{_u_a_r_t_driver_8h_a7d5ce7b79462bbfb630ee53075540b65} 
+\#define {\bfseries S\+Y\+S\+\_\+\+F\+R\+EQ}~(40000000ul)
+\item 
+\hypertarget{_u_a_r_t_driver_8h_a734bbab06e1a9fd2e5522db0221ff6e3}{}\label{_u_a_r_t_driver_8h_a734bbab06e1a9fd2e5522db0221ff6e3} 
+\#define {\bfseries B\+A\+U\+D\+R\+A\+TE}~(115200ul)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{_u_a_r_t_driver_8h_a381c21700dd763626b378de6cb725317}{}\label{_u_a_r_t_driver_8h_a381c21700dd763626b378de6cb725317} 
+void \hyperlink{_u_a_r_t_driver_8h_a381c21700dd763626b378de6cb725317}{driver\+Config\+\_\+\+\_\+\+U\+A\+RT} (void)
+\begin{DoxyCompactList}\small\item\em function configures U\+A\+RT peripheral. \end{DoxyCompactList}\item 
+\hypertarget{_u_a_r_t_driver_8h_aa66e9ab50d44d5c68a57cfb3b7833557}{}\label{_u_a_r_t_driver_8h_aa66e9ab50d44d5c68a57cfb3b7833557} 
+void \hyperlink{_u_a_r_t_driver_8h_aa66e9ab50d44d5c68a57cfb3b7833557}{send\+Data\+\_\+\+\_\+\+U\+A\+RT} (uint8\+\_\+t data)
+\begin{DoxyCompactList}\small\item\em function sends data to the host. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{_u_a_r_t_driver_8h_a130e6ee9d4b6aa42ac13165417f9c749}{}\label{_u_a_r_t_driver_8h_a130e6ee9d4b6aa42ac13165417f9c749} 
+uint8\+\_\+t {\bfseries uart\+\_\+rxbuffer} \mbox{[}B\+Y\+T\+E\+\_\+\+R\+O\+W\+\_\+\+S\+I\+ZE\mbox{]}
+\item 
+\hypertarget{_u_a_r_t_driver_8h_a816e5f0aa1205d134039dbfa37338882}{}\label{_u_a_r_t_driver_8h_a816e5f0aa1205d134039dbfa37338882} 
+uint8\+\_\+t {\bfseries uart\+\_\+rxbuffer\+\_\+counter}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+File contains the declaration of U\+A\+RT functions and uart\+\_\+rxbuffer array. 
+
+\begin{DoxyAuthor}{Author}
+Mallikarjun Tirlapur 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+14 May, 2016 
+\end{DoxyDate}

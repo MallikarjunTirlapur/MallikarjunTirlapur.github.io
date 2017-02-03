@@ -1,0 +1,87 @@
+\hypertarget{classcom_1_1hobby_1_1project_1_1_line_parser}{}\section{com.\+hobby.\+project.\+Line\+Parser Class Reference}
+\label{classcom_1_1hobby_1_1project_1_1_line_parser}\index{com.\+hobby.\+project.\+Line\+Parser@{com.\+hobby.\+project.\+Line\+Parser}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+Linked\+Hash\+Map$<$ Long, String $>$ \hyperlink{classcom_1_1hobby_1_1project_1_1_line_parser_a6772015da2caff24e4d3c94589b1a5ff}{process\+Record} (Linked\+Hash\+Map$<$ Integer, String $>$ ln\+Tbl)
+\item 
+\hyperlink{classcom_1_1hobby_1_1project_1_1_record}{Record} \hyperlink{classcom_1_1hobby_1_1project_1_1_line_parser_aefe344a1777568d60dd3dc90bb5c02d2}{parse\+Record} (String record)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classcom_1_1hobby_1_1project_1_1_line_parser_a8082146904ae10b2d6c6abba5a351633}\label{classcom_1_1hobby_1_1project_1_1_line_parser_a8082146904ae10b2d6c6abba5a351633}} 
+long {\bfseries Start\+Address}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class parses each line from the hex file to fetch address and data which are then inserted into the hash table. Parsing is carried as per the intel hexadecimal object file format specification.
+
+\begin{DoxyAuthor}{Author}
+Mallikarjun Tirlapur 
+\end{DoxyAuthor}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classcom_1_1hobby_1_1project_1_1_line_parser_aefe344a1777568d60dd3dc90bb5c02d2}\label{classcom_1_1hobby_1_1project_1_1_line_parser_aefe344a1777568d60dd3dc90bb5c02d2}} 
+\index{com\+::hobby\+::project\+::\+Line\+Parser@{com\+::hobby\+::project\+::\+Line\+Parser}!parse\+Record@{parse\+Record}}
+\index{parse\+Record@{parse\+Record}!com\+::hobby\+::project\+::\+Line\+Parser@{com\+::hobby\+::project\+::\+Line\+Parser}}
+\subsubsection{\texorpdfstring{parse\+Record()}{parseRecord()}}
+{\footnotesize\ttfamily \hyperlink{classcom_1_1hobby_1_1project_1_1_record}{Record} com.\+hobby.\+project.\+Line\+Parser.\+parse\+Record (\begin{DoxyParamCaption}\item[{String}]{record }\end{DoxyParamCaption})}
+
+Parses each record and updates the record fields of the class \hyperlink{classcom_1_1hobby_1_1project_1_1_record}{Record}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em record} & record is a line from the hex file which starts with \char`\"{}\+:\char`\"{}\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+instance of \hyperlink{classcom_1_1hobby_1_1project_1_1_record}{Record}. 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classcom_1_1hobby_1_1project_1_1_line_parser_aefe344a1777568d60dd3dc90bb5c02d2_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classcom_1_1hobby_1_1project_1_1_line_parser_a6772015da2caff24e4d3c94589b1a5ff}\label{classcom_1_1hobby_1_1project_1_1_line_parser_a6772015da2caff24e4d3c94589b1a5ff}} 
+\index{com\+::hobby\+::project\+::\+Line\+Parser@{com\+::hobby\+::project\+::\+Line\+Parser}!process\+Record@{process\+Record}}
+\index{process\+Record@{process\+Record}!com\+::hobby\+::project\+::\+Line\+Parser@{com\+::hobby\+::project\+::\+Line\+Parser}}
+\subsubsection{\texorpdfstring{process\+Record()}{processRecord()}}
+{\footnotesize\ttfamily Linked\+Hash\+Map$<$Long, String$>$ com.\+hobby.\+project.\+Line\+Parser.\+process\+Record (\begin{DoxyParamCaption}\item[{Linked\+Hash\+Map$<$ Integer, String $>$}]{ln\+Tbl }\end{DoxyParamCaption})}
+
+Each line is processed and based on the type of the record, memory load address is determined.
+
+
+\begin{DoxyParams}{Parameters}
+{\em ln\+Tbl} & hash table consisting of keys -\/ line number and values -\/ string record \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+linked hash table containing memory load address and bin data 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classcom_1_1hobby_1_1project_1_1_line_parser_a6772015da2caff24e4d3c94589b1a5ff_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classcom_1_1hobby_1_1project_1_1_line_parser_a6772015da2caff24e4d3c94589b1a5ff_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/mallik/javaproject/src/com/hobby/project/Line\+Parser.\+java\end{DoxyCompactItemize}

@@ -1,0 +1,157 @@
+\hypertarget{classcom_1_1hobby_1_1smart_1_1bluetoothcomm_1_1_blt_manager}{}\section{com.\+hobby.\+smart.\+bluetoothcomm.\+Blt\+Manager Class Reference}
+\label{classcom_1_1hobby_1_1smart_1_1bluetoothcomm_1_1_blt_manager}\index{com.\+hobby.\+smart.\+bluetoothcomm.\+Blt\+Manager@{com.\+hobby.\+smart.\+bluetoothcomm.\+Blt\+Manager}}
+
+
+Inheritance diagram for com.\+hobby.\+smart.\+bluetoothcomm.\+Blt\+Manager\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=245pt]{classcom_1_1hobby_1_1smart_1_1bluetoothcomm_1_1_blt_manager__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for com.\+hobby.\+smart.\+bluetoothcomm.\+Blt\+Manager\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=349pt]{classcom_1_1hobby_1_1smart_1_1bluetoothcomm_1_1_blt_manager__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classcom_1_1hobby_1_1smart_1_1bluetoothcomm_1_1_blt_manager_ab9428cea39cb30995d320fe4ef6efcde}{Blt\+Manager} ()
+\item 
+\hyperlink{classcom_1_1hobby_1_1smart_1_1bluetoothcomm_1_1_blt_manager_a960eaa2dad2facecfab12da5408a63e9}{Blt\+Manager} (Context cnt)
+\item 
+void \hyperlink{classcom_1_1hobby_1_1smart_1_1bluetoothcomm_1_1_blt_manager_ad44dd68329e449633f69f8d3904f35d7}{enable\+Bluetooth} ()
+\item 
+void \hyperlink{classcom_1_1hobby_1_1smart_1_1bluetoothcomm_1_1_blt_manager_ae6274af1cc3ee13291cc8ef6f365a92f}{open\+Bluetooth} (Bluetooth\+Device device)  throws I\+O\+Exception
+\item 
+void \hyperlink{classcom_1_1hobby_1_1smart_1_1bluetoothcomm_1_1_blt_manager_a0118f6e69c6ee2a9059eb71a178c4b7f}{close\+Bluetooth} ()
+\item 
+void \hyperlink{classcom_1_1hobby_1_1smart_1_1bluetoothcomm_1_1_blt_manager_ab2ec59deffb80584481167ce99ff6b40}{listen\+For\+Data} ()
+\item 
+void \hyperlink{classcom_1_1hobby_1_1smart_1_1bluetoothcomm_1_1_blt_manager_a9d223f09362d0281ed7960ca18d089eb}{send\+Data} (byte data)
+\item 
+\mbox{\Hypertarget{classcom_1_1hobby_1_1smart_1_1bluetoothcomm_1_1_blt_manager_a16e39e29a1ff4b8bfecc91adb0dba013}\label{classcom_1_1hobby_1_1smart_1_1bluetoothcomm_1_1_blt_manager_a16e39e29a1ff4b8bfecc91adb0dba013}} 
+Array\+Adapter$<$ Bluetooth\+Device $>$ {\bfseries getm\+Adapter} ()
+\item 
+\mbox{\Hypertarget{classcom_1_1hobby_1_1smart_1_1bluetoothcomm_1_1_blt_manager_ae52e86a73e1d77a0ccdb0c0b09de5781}\label{classcom_1_1hobby_1_1smart_1_1bluetoothcomm_1_1_blt_manager_ae52e86a73e1d77a0ccdb0c0b09de5781}} 
+Array\+Adapter$<$ String $>$ {\bfseries getm\+Adapter\+List} ()
+\item 
+\mbox{\Hypertarget{classcom_1_1hobby_1_1smart_1_1bluetoothcomm_1_1_blt_manager_ac33cf5fbe2fac2c16b3c80e729d5c8e0}\label{classcom_1_1hobby_1_1smart_1_1bluetoothcomm_1_1_blt_manager_ac33cf5fbe2fac2c16b3c80e729d5c8e0}} 
+Bluetooth\+Adapter {\bfseries getm\+Bluetooth\+Adapter} ()
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Created by Mallikarjun Tirlapur on 20-\/06-\/2016. \hyperlink{classcom_1_1hobby_1_1smart_1_1bluetoothcomm_1_1_blt_manager}{Blt\+Manager} class inherits the properties of class \hyperlink{classcom_1_1hobby_1_1smart_1_1bluetoothcomm_1_1_system_states}{System\+States}. The class establishes the bluetooth communication link. C\+Exchanges command with the P\+IC 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classcom_1_1hobby_1_1smart_1_1bluetoothcomm_1_1_blt_manager_ab9428cea39cb30995d320fe4ef6efcde}\label{classcom_1_1hobby_1_1smart_1_1bluetoothcomm_1_1_blt_manager_ab9428cea39cb30995d320fe4ef6efcde}} 
+\index{com\+::hobby\+::smart\+::bluetoothcomm\+::\+Blt\+Manager@{com\+::hobby\+::smart\+::bluetoothcomm\+::\+Blt\+Manager}!Blt\+Manager@{Blt\+Manager}}
+\index{Blt\+Manager@{Blt\+Manager}!com\+::hobby\+::smart\+::bluetoothcomm\+::\+Blt\+Manager@{com\+::hobby\+::smart\+::bluetoothcomm\+::\+Blt\+Manager}}
+\subsubsection{\texorpdfstring{Blt\+Manager()}{BltManager()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily com.\+hobby.\+smart.\+bluetoothcomm.\+Blt\+Manager.\+Blt\+Manager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+default empty constructor \mbox{\Hypertarget{classcom_1_1hobby_1_1smart_1_1bluetoothcomm_1_1_blt_manager_a960eaa2dad2facecfab12da5408a63e9}\label{classcom_1_1hobby_1_1smart_1_1bluetoothcomm_1_1_blt_manager_a960eaa2dad2facecfab12da5408a63e9}} 
+\index{com\+::hobby\+::smart\+::bluetoothcomm\+::\+Blt\+Manager@{com\+::hobby\+::smart\+::bluetoothcomm\+::\+Blt\+Manager}!Blt\+Manager@{Blt\+Manager}}
+\index{Blt\+Manager@{Blt\+Manager}!com\+::hobby\+::smart\+::bluetoothcomm\+::\+Blt\+Manager@{com\+::hobby\+::smart\+::bluetoothcomm\+::\+Blt\+Manager}}
+\subsubsection{\texorpdfstring{Blt\+Manager()}{BltManager()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily com.\+hobby.\+smart.\+bluetoothcomm.\+Blt\+Manager.\+Blt\+Manager (\begin{DoxyParamCaption}\item[{Context}]{cnt }\end{DoxyParamCaption})}
+
+Constructor initializes all the instances decalred in the class 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classcom_1_1hobby_1_1smart_1_1bluetoothcomm_1_1_blt_manager_a0118f6e69c6ee2a9059eb71a178c4b7f}\label{classcom_1_1hobby_1_1smart_1_1bluetoothcomm_1_1_blt_manager_a0118f6e69c6ee2a9059eb71a178c4b7f}} 
+\index{com\+::hobby\+::smart\+::bluetoothcomm\+::\+Blt\+Manager@{com\+::hobby\+::smart\+::bluetoothcomm\+::\+Blt\+Manager}!close\+Bluetooth@{close\+Bluetooth}}
+\index{close\+Bluetooth@{close\+Bluetooth}!com\+::hobby\+::smart\+::bluetoothcomm\+::\+Blt\+Manager@{com\+::hobby\+::smart\+::bluetoothcomm\+::\+Blt\+Manager}}
+\subsubsection{\texorpdfstring{close\+Bluetooth()}{closeBluetooth()}}
+{\footnotesize\ttfamily void com.\+hobby.\+smart.\+bluetoothcomm.\+Blt\+Manager.\+close\+Bluetooth (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Function closes the Bluettoth port and cuts the link Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classcom_1_1hobby_1_1smart_1_1bluetoothcomm_1_1_blt_manager_a0118f6e69c6ee2a9059eb71a178c4b7f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classcom_1_1hobby_1_1smart_1_1bluetoothcomm_1_1_blt_manager_ad44dd68329e449633f69f8d3904f35d7}\label{classcom_1_1hobby_1_1smart_1_1bluetoothcomm_1_1_blt_manager_ad44dd68329e449633f69f8d3904f35d7}} 
+\index{com\+::hobby\+::smart\+::bluetoothcomm\+::\+Blt\+Manager@{com\+::hobby\+::smart\+::bluetoothcomm\+::\+Blt\+Manager}!enable\+Bluetooth@{enable\+Bluetooth}}
+\index{enable\+Bluetooth@{enable\+Bluetooth}!com\+::hobby\+::smart\+::bluetoothcomm\+::\+Blt\+Manager@{com\+::hobby\+::smart\+::bluetoothcomm\+::\+Blt\+Manager}}
+\subsubsection{\texorpdfstring{enable\+Bluetooth()}{enableBluetooth()}}
+{\footnotesize\ttfamily void com.\+hobby.\+smart.\+bluetoothcomm.\+Blt\+Manager.\+enable\+Bluetooth (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Function enables the Bluettoth Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classcom_1_1hobby_1_1smart_1_1bluetoothcomm_1_1_blt_manager_ad44dd68329e449633f69f8d3904f35d7_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classcom_1_1hobby_1_1smart_1_1bluetoothcomm_1_1_blt_manager_ab2ec59deffb80584481167ce99ff6b40}\label{classcom_1_1hobby_1_1smart_1_1bluetoothcomm_1_1_blt_manager_ab2ec59deffb80584481167ce99ff6b40}} 
+\index{com\+::hobby\+::smart\+::bluetoothcomm\+::\+Blt\+Manager@{com\+::hobby\+::smart\+::bluetoothcomm\+::\+Blt\+Manager}!listen\+For\+Data@{listen\+For\+Data}}
+\index{listen\+For\+Data@{listen\+For\+Data}!com\+::hobby\+::smart\+::bluetoothcomm\+::\+Blt\+Manager@{com\+::hobby\+::smart\+::bluetoothcomm\+::\+Blt\+Manager}}
+\subsubsection{\texorpdfstring{listen\+For\+Data()}{listenForData()}}
+{\footnotesize\ttfamily void com.\+hobby.\+smart.\+bluetoothcomm.\+Blt\+Manager.\+listen\+For\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Function defines the thread which listens data from the P\+IC Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classcom_1_1hobby_1_1smart_1_1bluetoothcomm_1_1_blt_manager_ab2ec59deffb80584481167ce99ff6b40_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classcom_1_1hobby_1_1smart_1_1bluetoothcomm_1_1_blt_manager_ab2ec59deffb80584481167ce99ff6b40_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classcom_1_1hobby_1_1smart_1_1bluetoothcomm_1_1_blt_manager_ae6274af1cc3ee13291cc8ef6f365a92f}\label{classcom_1_1hobby_1_1smart_1_1bluetoothcomm_1_1_blt_manager_ae6274af1cc3ee13291cc8ef6f365a92f}} 
+\index{com\+::hobby\+::smart\+::bluetoothcomm\+::\+Blt\+Manager@{com\+::hobby\+::smart\+::bluetoothcomm\+::\+Blt\+Manager}!open\+Bluetooth@{open\+Bluetooth}}
+\index{open\+Bluetooth@{open\+Bluetooth}!com\+::hobby\+::smart\+::bluetoothcomm\+::\+Blt\+Manager@{com\+::hobby\+::smart\+::bluetoothcomm\+::\+Blt\+Manager}}
+\subsubsection{\texorpdfstring{open\+Bluetooth()}{openBluetooth()}}
+{\footnotesize\ttfamily void com.\+hobby.\+smart.\+bluetoothcomm.\+Blt\+Manager.\+open\+Bluetooth (\begin{DoxyParamCaption}\item[{Bluetooth\+Device}]{device }\end{DoxyParamCaption}) throws I\+O\+Exception}
+
+Function Opens the Bluettoth port and establishes communication link Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classcom_1_1hobby_1_1smart_1_1bluetoothcomm_1_1_blt_manager_ae6274af1cc3ee13291cc8ef6f365a92f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classcom_1_1hobby_1_1smart_1_1bluetoothcomm_1_1_blt_manager_ae6274af1cc3ee13291cc8ef6f365a92f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classcom_1_1hobby_1_1smart_1_1bluetoothcomm_1_1_blt_manager_a9d223f09362d0281ed7960ca18d089eb}\label{classcom_1_1hobby_1_1smart_1_1bluetoothcomm_1_1_blt_manager_a9d223f09362d0281ed7960ca18d089eb}} 
+\index{com\+::hobby\+::smart\+::bluetoothcomm\+::\+Blt\+Manager@{com\+::hobby\+::smart\+::bluetoothcomm\+::\+Blt\+Manager}!send\+Data@{send\+Data}}
+\index{send\+Data@{send\+Data}!com\+::hobby\+::smart\+::bluetoothcomm\+::\+Blt\+Manager@{com\+::hobby\+::smart\+::bluetoothcomm\+::\+Blt\+Manager}}
+\subsubsection{\texorpdfstring{send\+Data()}{sendData()}}
+{\footnotesize\ttfamily void com.\+hobby.\+smart.\+bluetoothcomm.\+Blt\+Manager.\+send\+Data (\begin{DoxyParamCaption}\item[{byte}]{data }\end{DoxyParamCaption})}
+
+Function is called to send the data to P\+IC 
+\begin{DoxyParams}{Parameters}
+{\em data} & data tobe sent out to P\+IC \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classcom_1_1hobby_1_1smart_1_1bluetoothcomm_1_1_blt_manager_a9d223f09362d0281ed7960ca18d089eb_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+E\+:/\+Bluetooth\+Comm/app/src/main/java/com/hobby/smart/bluetoothcomm/Blt\+Manager.\+java\end{DoxyCompactItemize}

@@ -46,13 +46,16 @@ layout: default
 <h3>PIC Boot Loader </h3>
 <p>Boot loader is a special firmware loaded into the microcontroller. The boot loader receives application firmware binaries externally via one of the microcontroller serial port (Ex: UART, SPI etc.) and loads them into the pre-determined section of the flash memory.</p>
 
+<figure>
+  <center><img src="/OTAFirmwareUpdate/flsh.png" /><center>
+  <figcaption><center><span class="post-meta small"> flash memory regions</span><center></figcaption>
+</figure>
   
-<p>The processor will always start executing a code from a particular (start-up) memory location on reset. Usually in the microcontroller, the application is flashed at the start-up memory location in the absence of bootloader. In the presence of boot loader as shown in the figure 1.1, the boot loader puts the application code in any part of the memory location which user determines (ex: 0x0A00). Whereas boot loader code is loaded at the start-up memory location of the microcontroller.</p> 
+<p>The processor will always start executing a code from a particular (start-up) memory location on reset. Usually in the microcontroller, the application is flashed at the start-up memory location in the absence of bootloader. In the presence of boot loader as shown in the figure "flash memory regions", the boot loader puts the application code in any part of the memory location which user determines (ex: 0x0A00). Whereas boot loader code is loaded at the start-up memory location of the microcontroller.</p> 
 
 <p>The job of the boot loader is to erase the application program memory and load the new incoming binaries via communication port into program memory. The firmware has the reset vector pointer (0x0A00). Right after loading the binaries, the boot loader sets the program counter to reset vector pointer of the firmware to execute the code.</p> 
 
-<p>Before building the application source code in the MPLAB IDE, one must specify the ROM range (after 0x0800h) to load the binaries in to the flash memory other than start-up memory location. ROM range can be specified in the IDE as shown in the figure</p> 
-
+<p>Before building the application source code in the MPLAB IDE, one must specify the ROM range (after 0x0800h) to load the binaries in to the flash memory other than start-up memory location. ROM range can be specified in the IDE project->properties->xc8linker->memory model->rom ranges</p> 
   
   <h3>Boot Loader Source Code</h3>
   
@@ -74,7 +77,13 @@ layout: default
   
  <h4> GUI</h4>
   <p>It consists of 3 buttons to select and connect one of the Bluetooth modules from the list, to select one of the hex files from the internal storage of the android device and to update the firmware. List Views displays available hex files and paired Bluetooth devices.</p>
-  
+ 
+<figure>
+  <center><img src="/OTAFirmwareUpdate/gui.png" /><center>
+  <figcaption><center><span class="post-meta small"> GUI</span><center></figcaption>
+</figure>
+
+
   <h4> Software</h4>
   
   <p>Software is implemented in JAVA, again the source code and documentation of it is freely available on the GitHub. </p>
