@@ -31,7 +31,7 @@ margin:auto;
     <div class="post p2 p-responsive wrap" role="main">
       <div class="measure">
 <div class="post-header mb2">
-  <h2>Over The Air Firmware Update</h2>
+  <h2>Over-The-Air Firmware Update</h2>
   <span class="post-meta">May, 2016 to October, 2016</span><br>
   
   <span class="post-meta small">
@@ -42,13 +42,12 @@ margin:auto;
 </div>
 <article class="post-content">
   <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<p>In this post, I will be talking about the solution that can be used in the IOT systems. </p>
+<p>In this post, I will be talking about the solution that can be used in the IoT systems. </p>
 
-<p>The solution is demonstrated by a small application which updates microcontroller firmware over-the-air through Bluetooth enabled android device. The system is just a proof of concept.</p>
+<p>The solution is being demonstrated by a small application which updates microcontroller firmware over-the-air through Bluetooth enabled android device. The system is just a proof of concept.</p>
 
 <h3> Use Cases </h3>
-<strong>1.</strong>&ensp;Updating firmware of distributed embedded devices by sitting at one central location. For instance, <br />
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp; If embedded device is located thousand kilo meters far away from the central location, embedded device manufacturer must be able to update device firmware by sending the firmware to user’s android/ios device through cloud. <br />
+<strong>1.</strong>&ensp;At one shot updating the firmware of the distributed embedded devices from a centralized server.<br />
 &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;     E.g: Bluetooth enabled - headphone, speakers, home automation system, television etc<br />
 
 <strong>2.</strong>&ensp;Program PIC without using Microchip <a href="http://www.microchipdirect.com/ProductDetails.aspx?Catalog=BuyMicrochip&Category=Cat4_SubCat9&mid=10">programmer/debugger</a>. <br/>
@@ -64,18 +63,18 @@ margin:auto;
 <p>The system consists of <a href="http://www.microchip.com/wwwproducts/en/PIC18F4431">PIC18f4431</a> and <a href="http://www.microchip.com/wwwproducts/en/PIC32MX795F512H">pic32mx795f512h</a> microcontrollers, android device and Bluetooth interface module. This post would be focusing on PIC18f microcontroller boot loader, Android application, and implementation of them.</p>
   
 <h3>PIC Boot Loader </h3>
-<p>Boot loader is a special firmware loaded into the microcontroller. The boot loader receives application firmware binaries externally via one of the microcontroller serial port (Ex: UART, SPI etc.) and loads them into the pre-determined section of the flash memory.</p>
+<p>Boot loader is a special firmware loaded upfront into the microcontroller. The boot loader receives application firmware binaries externally via one of the microcontroller serial port (Ex: UART, SPI etc.) and writes data into a pre-determined section of the flash memory.</p>
 
 <figure>
   <center><img src="/OTAFirmwareUpdate/flsh.png" /><center>
   <figcaption><center><span class="post-meta small"> flash memory regions</span><center></figcaption>
 </figure>
   
-<p>The processor will always start executing a code from a particular (start-up) memory location on reset. Usually in the microcontroller, the application is flashed at the start-up memory location in the absence of bootloader. In the presence of boot loader as shown in the figure "flash memory regions", the boot loader puts the application code in any part of the memory location which user determines (ex: 0x0A00). Whereas boot loader code is loaded at the start-up memory location of the microcontroller.</p> 
+<p>The processor will always start executing a code from a particular (start-up) memory location upon reset. Generally, microcontroller flashes the application code into start-up memory location when the bootloader is absent. In the presence of boot loader as shown in the figure "flash memory regions", the boot loader writes application code into any part of the memory location which user determines (ex: 0x0A00). In this demo, boot loader code will be flashed into microcontroller start-up memory location.</p> 
 
-<p>The job of the boot loader is to erase the application program memory and load the new incoming binaries via communication port into program memory. The firmware has the reset vector pointer (0x0A00). Right after loading the binaries, the boot loader sets the program counter to reset vector pointer of the firmware to execute the code.</p> 
+<p>The job of the boot loader is to erase the application program memory and write received binaries into pre-determined program memory. The firmware has the reset vector pointer (0x0A00). Right after writing the binaries, the boot loader sets the program counter to reset vector pointer of the firmware to execute the code.</p> 
 
-<p>Before building the application source code in the MPLAB IDE, one must specify the ROM range (after 0x0800h) to load the binaries in to the flash memory other than start-up memory location. ROM range can be specified in the IDE project->properties->xc8linker->memory model->rom ranges</p> 
+<p>Before building application source code, one must specify the ROM range (after 0x0800h) which must be other than a start-up memory location. ROM range can be specified in the IDE project->properties->xc8linker->memory model->rom ranges</p> 
 
 <body>
 <div id="mainDiv">
@@ -96,8 +95,8 @@ margin:auto;
   
   <h4>Algorithm</h4>
 1.	Configure IO port<br />
-2.	Configure UART at baud rate of <strong>115200</strong> to communicate with the Android device.<br />
-3.      Receive NVM address range request command from the host (Android device), in return PIC sends back NVM programmable program memory start and end address. <br />
+2.	Configure UART baud rate with <strong>115200</strong> to communicate with the Android device.<br />
+3.  Receive NVM address range request command from the host (Android device), in return PIC sends back NVM programmable program memory start and end address. <br />
 4.	Receive START command  <br />
 5.	Send ready for FIRMWARE_HEADER command to the host.<br />
 6.	Receive firmware header. Header consists of Application firmware size, and reset vector address. <br />
@@ -106,7 +105,7 @@ margin:auto;
 9.	Jump to the reset vector location of the app to execute it.<br />
 
     <h3>Android application (Host)</h3>
- <p> Android device is the host which initiates the firmware update process. The host application is written in Java and consists of user friendly GUI on font end through which user can interact with the app. </p>
+ <p> Android device is the host which initiates the firmware update process. The host application has been written in Java and consists of user friendly GUI on font end through which user can interact with the app. </p>
   
  <h4> GUI</h4>
   <p>It consists of 3 buttons to select and connect one of the Bluetooth modules from the list, to select one of the hex files from the internal storage of the android device and to update the firmware. List Views displays available hex files and paired Bluetooth devices.</p>
