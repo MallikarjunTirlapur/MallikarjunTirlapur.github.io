@@ -57,8 +57,8 @@ big endian order. </p>
 </figure>
 
 <h3> Header </h3>
-<p>The component contains general information about the CAP file and the package it such as package AID which identifies the package. 
-Along with the major and a minor version number and various flags.<p>
+<p>This component contains general information about the CAP file such as package AID which identifies the package 
+along with the major and a minor version number and various flags.<p>
 
 <figure>
   <center><img src="/JavaCardBinaryParser/assets/parser_out_all.PNG" /><center>
@@ -83,9 +83,9 @@ present in this CAP file.<p>
 </figure>
 
 <h3> Constant Pool Component </h3>
-<p>The Component contains an entry for each of the classes, methods, and fields referenced
+<p>This Component contains an entry for each of the classes, methods, and fields referenced
 by elements in the Method Component of this CAP file. Each entry is four byte long. 
-ByteCode accesses the types by using index into the constant pool table. 
+ByteCode accesses each entry by using index into the constant pool table. 
 Entry in the table pointed by an index is either an offset if the entry is defined inside the current package, or a token if the entry is defined outside of the current package.<p>
 
 <figure>
@@ -105,7 +105,7 @@ the package, then they are referenced through the Import component.<p>
 </figure>
 
 <h3>  Method Component </h3> 
-<p>The component contains the byte code for all the methods defined in the current package. 
+<p>The component contains the bytecode of all the methods defined in the current package. 
 Moreover it also contains information necessary for executing a method, like number of parameters, local variables and required stack size.<p>
 
 <figure>
@@ -122,7 +122,7 @@ Moreover it also contains information necessary for executing a method, like num
 </figure>
 
 <h3> Import and Export Components </h3>
-<p>The component contains the information of the packages, which are imported in the current package. The imported packages are identified by their AID. 
+<p>The Import component contains the information of the packages, which are imported in the current package. The imported packages are identified by their AID. 
 The Export component describes all classes, static functions or fields which are offered to other packages.<p>
 
 <figure>
@@ -157,8 +157,8 @@ metadata necessary for debugging a package on a suitably instrumented Java Card 
 </figure>
 
 <h3> Parser </h3>
-<p>The <a href="https://github.com/MallikarjunTirlapur/JavaCard-Binary-Parser">parser</a> interprets the java card binaries with a fixed format according <a href="https://www.oracle.com/java/technologies/javacard-downloads.html">Java Card 3.0.5</a> spec, 
-and converts the data in to human readable data and prints on the console. Which can then be analyzed to know more inside into the Java Card Binary.<p>
+<p>My <a href="https://github.com/MallikarjunTirlapur/JavaCard-Binary-Parser">parser</a> script interprets the java card binaries with a fixed format according <a href="https://www.oracle.com/java/technologies/javacard-downloads.html">Java Card 3.0.5</a> spec, 
+and converts the data into human readable data and prints on the console. Which can then be analyzed to know more inside into the Java Card Binary.<p>
 
 <h4>CapParser.py&nbsp; [option]&nbsp; .cap&nbsp; [option]&nbsp; 'component name'/'all'.</h4>
 
