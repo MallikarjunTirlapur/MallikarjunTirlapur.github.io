@@ -31,9 +31,9 @@ layout: default
 <p>Enthusiasm towards learning Java Card technology has motivated me to develop this application. 
 The application would be very useful for the beginners to study and develop smart card applications. 
 Also, it helps user to understand and develop java card applets. 
-I have published the code on my <a href="https://github.com/MallikarjunTirlapur/Java-Card-Applications">github</a> repo which I developed for the demonstration.</p>   
+I have published application code on my <a href="https://github.com/MallikarjunTirlapur/Java-Card-Applications">github</a> repo which I developed for the demonstration.</p>   
 
-<p>Two applications have been developed, one is a <a href="http://www.oracle.com/technetwork/java/javacard/intro-139322.html">wallet applet</a> which runs on the smartcart. The applet consists of features like Debit, Credit, Balance, PIN Verification, and Card Un-blocking. The other one is, a <strong>host application</strong> which runs on the PC and communicates with the applet using <strong>APDU</strong> (application protocol data units). The applications are developed in Java utilizing java card APIs on NetBeans environment. The communication with the simulator is established on TCP socket <strong>9025</strong>. So, I programmed the socket to establish communication between applet and host application. Also, I designed a Swing GUI to set the commands and data for interaction with the host application.</p>  
+<p>Two applications have been developed, one is a <a href="http://www.oracle.com/technetwork/java/javacard/intro-139322.html">wallet applet</a> which runs on the smartcart. The applet consists of features like Debit, Credit, Balance, PIN Verification, and Card Un-blocking. The other one is, a <strong>host application</strong> which runs on the PC and communicates with the applet using <strong>APDU</strong> (application protocol data units). The applications are developed in Java utilizing java card APIs on NetBeans environment. The communication with the simulator is established on TCP socket port <strong>9025</strong>. So, I have programmed to activate the socket to establish communication between applet and host application. Also, I have designed a Swing GUI to set the commands and data for interaction with the host application.</p>  
 
 
 
@@ -50,11 +50,11 @@ I have published the code on my <a href="https://github.com/MallikarjunTirlapur/
 <p>Now let's study the fundamentals of Java Card technology.</p>  
 
 <h3>Overview </h3>
-<p>When a Java Card applet is built an instance is created and registered with the (Java card runtime environment) 
-JCRE's registry table. Also, it opens a connection to the localhost on port 9025. 
+<p>When a Java Card applet is installed an instance is created and registered with the (Java card runtime environment) 
+JCRE's registry table.
 The host application sets up the connection to the port 9025 to communicate with the applet. 
-The JCRE selects an applet on the card based on the incoming select commands. Each applet is identified and selected by its application identifier (AID). 
-Commands such as the selection command are formatted and transmitted in the form of application protocol data units (APDUs). 
+The JCRE selects an applet on the card based on the incoming select commands. Each applet is identified and selected by using its application identifier (AID). 
+Commands such as selection command are formatted and transmitted in the form of application protocol data units (APDUs). 
 Applets reply to each APDU command with a status word (SW) that indicates the result of the operation. An applet can optionally reply to an APDU command with other data.</p> 
 
 <h3>Samrt card </h3>
@@ -65,14 +65,14 @@ It interacts with a Card Acceptance Device (CAD) through using a communication i
 
 <figure>
   <center><img src="/assets/scard.gif" /><center>
-  <figcaption><center><span class="post-meta small">Eight contact pints of the smart card</span><center></figcaption>
+  <figcaption><center><span class="post-meta small">Eight contact points of the smart card</span><center></figcaption>
 </figure>
 
 
 
 <h3>Java card </h3>
 <p>A Java Card is a smart card that is capable of running Java programs. The applications are devoloped in java using Java Card APIs.
-According to java card specification it supports only few primitive data types from  Java programming language: byte, short, and boolean. 
+According to java card specification it supports only few primitive data types from  Java programming language: byte, short, int and boolean. 
 A byte is an 8-bit signed two’s complement number with a possible range of values between -128 to 127. 
 A short is a 16-bit signed two’s complement number with a possible range of values between -32768 to 32767. 
 Internally, Java Card technology represents the boolean type as a byte. 
@@ -82,16 +82,11 @@ As a result, none of the thread keywords are supported. There is also no support
 
 
 <h3>Virtual Machine</h3>
-<p>The Java Card Virtual Machine (VM) provides bytecode execution and Java language support, 
+<p>The Java Card Virtual Machine (VM) provides bytecode execution environment and Java language support, 
 including exception handling. The Java Card Runtime Environment (JCRE) includes a virtual machine (VM) and core classes to support APDU routing, 
 ISO communication protocols, and transaction-based processing. 
-The Java Card VM is actually split into two parts, one for running off-card on a PC or workstation and the other for running on-card. 
-The on-card Java Card VM executes bytecode, manages classes and objects, enforces separation between applications (firewalls), 
-and enables secure data sharing. The off-card Java Card VM contains a Java Card Converter tool for providing many of the verifications, 
-preparations, optimizations, and resolutions that the Java VM performs at class-loading time. 
-The Java Card Converter tool is an “early-binding” implementation of the Java VM. 
-Every class referenced directly or indirectly by an applet must be bound into the applet’s binary image when the applet is installed on the card. 
-The Java Card Converter acts as an early-binding post-processor on the Java platform class files.</p>
+Java Card VM executes bytecode, manages classes and objects, enforces separation between applications (firewalls), 
+and enables secure data sharing.</p>
 
 <figure>
   <center><img src="/assets/archtctre.png" /><center>
@@ -99,7 +94,10 @@ The Java Card Converter acts as an early-binding post-processor on the Java plat
 </figure>
 
 <h3>Application Protocol Data Units</h3>
-<p>When two computers communicate with each other, they exchange data packets, which are constructed following a set of protocols. Similarly, smart cards speak to the outside world using their own data packets -- called APDU (Application Protocol Data Units). Smart cards are reactive communicators—that is, they never initiate communications, they only respond to APDUs from the CAD (Card acceptance device). The communication model is command-response based—that is, the card receives a command APDU, performs the processing requested by the command, and returns a response APDU.</p>
+<p>When two computers communicate with each other, they exchange data packets, which are constructed following a set of protocols. 
+Similarly, smart cards speak to the outside world using their own data packets -- called APDU (Application Protocol Data Units). 
+Smart cards are reactive communicators—that is, they never initiate communications, they only respond to APDUs from the CAD (Card acceptance device). 
+The communication model is command-response based—that is, the card receives a command APDU, performs the processing requested by the command, and returns a response APDU.</p>
 
 <p>The following tables illustrate command and response APDU formats, respectively. APDU structure shown below is as described in ISO-7816.
 <br />
@@ -145,24 +143,24 @@ Once the Java software source code is compiled into a class file, a post-process
 <h4>output</h4>
 <p>Applet outputs response APDU by setting the status words and data field (optional) in the APDU to indicate processing state of the card to termainal application.</p>
 
-<h3>Methods of the javacard applet</h3>
+<h3>Methods of javacard applet</h3>
 1. <strong>install (byte[] bArray, short bOffset, byte bLength)</strong><br />
-The JCRE calls this static method to create an instance of the Applet subclass.<br />
+The JCRE invokes this static method to create an instance of the Applet subclass.<br />
 <br />
-2. <strong>select ()</strong><br />
-Called by the JCRE to inform the applet that it has been selected.<br />
+2. <strong>select()</strong><br />
+Invoked by JCRE to inform applet that it is being selected/not.<br />
 <br />
 3. <strong>deselect ()</strong><br />
-Called by the JCRE to inform the currently selected applet that another (or the same) applet will be selected.<br />
-	<br />
+Invoked by the JCRE when a new select command is received to deselect currently selected applet and select another (or the same) applet.<br />
+<br />
 4. <strong>process (APDU apdu)</strong><br />
-Called by the JCRE to process an incoming APDU command.<br />
+Invoked by the JCRE to process an incoming APDU command.<br />
 <br />
 5. <strong>register ()</strong><br />
-This method is used by an applet to register this applet instance with JCRE and assign a default AID in the CAD file to the applet instance.<br />
+This method is used by an applet to register this applet instance with JCRE and assign an ID to it.<br />
 	<br />
 6. <strong>register (byte[] bArray, short bOffset, byte bLength)</strong><br />
-This method is used by an applet to register this applet instance with JCRE and to assign the specified AID in the array bArray to the applet instance.<br />
+This method is used by an applet to register this applet instance with JCRE and to assign specified AID in the array bArray to an applet instance.<br />
 <br />
 7. <strong>credit(APDU apdu)</strong><br />
 This method is used to add amount to available balance. The amount is specified in the data field of the APDU.<br />
@@ -171,25 +169,28 @@ This method is used to add amount to available balance. The amount is specified 
 In this method, the APDU object contains a data field that specifies the amount to be debited from the balance.<br />
 <br />
 9. <strong>getBalance(APDU apdu)</strong><br />
-The method getBalance returns the Wallet's balance in the data field of the response APDU. Because the data field in the response APDU is optional, the applet must explicitly inform JCRE about the additional data. <br />
+The method getBalance returns the Wallet's balance in the data field of the response APDU. Because the data field in the response APDU is optional, 
+the applet must explicitly inform about the additional data. <br />
 
 
 
 <h3>Host Application</h3>
 
-The same tool chains are used to create and compile java card host application. A swing GUI has been designed to interact with the application. The GUI consists of buttons and text fields to set the commands and data in the APDU. 
+The Java tool chains are used to create and compile java card host application. 
+A swing GUI has been designed to interact with the application. 
+The GUI consists of buttons and text fields to set the commands and data in the APDU. 
 
 <h3>Methods of the java card host application</h3>
 
 1. <strong>establishConnectionToSimulator()</strong><br />
-This method establishes communication link with simulator listening to port 9025 on localhost.<br />
+This method establishes communication link with simulator activating port 9025 on localhost.<br />
 <br />
 2. <strong>pwrUp()</strong><br />
 In this method powerUp coomand is sent to power up the card<br />
 <br />
 3. <strong>setTheAPDUCommands (byte[] cmnds)</strong><br />
 This method sets the header of the APDU to be sent with commands (CLA, INS, P1, and P2) in APDU.<br />
-	<br />
+<br />
 4. <strong>setTheDataLength (byte ln)</strong><br />
 This method sets the (number of bytes present in the data field) Lc field of the APDU<br />
 <br />
@@ -227,8 +228,6 @@ Graphical user interface has devided into two sections. On one section, the proc
   <figcaption><center><span class="post-meta small"> Graphical User Interface </span><center></figcaption>
 </figure>  
 
-<h3>What Next?</h3>
-<strong>Long term goal</strong>: Development of NFC android app to communicate with the Java Card applets. 
 </article>
 
   <div id="disqus_thread"></div>
