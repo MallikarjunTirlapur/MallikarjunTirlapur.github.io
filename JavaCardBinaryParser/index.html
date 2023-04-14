@@ -29,10 +29,10 @@ layout: default
 <article class="post-content">
   <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 <h3>Introduction </h3>
-<p>Applications developed in java are compiled to binary files called class files.
- They consists of bytecodes along with the meta-information. 
- Similarly, Java Card applications are first compiled to class files using the standard Java compiler during which code checking and optimization takes place. 
- Java Card convertor then converts the class files of the java card application along with the export file of the imported package to CAP(converted applet)file.</p> 
+<p>Normally .java files are compiled using java compiler which generates binary in a file called .class files.
+ Similarly, Java Card applications written in java are compiled to class files using Java compiler.
+ Java Card convertor used then to convert class files from java card applets to CAP(converted applet) file.
+ In this process along with the .class files .exp (export) files of the imported packages are also provided to the convertor.</p> 
 
 <strong>Note - </strong>&ensp;Please read Oracle <a href="https://www.oracle.com/java/technologies/javacard-downloads.html">Java Card 3.0.5</a> Specification for more details.<br /><br /> 
  
@@ -44,11 +44,11 @@ layout: default
 
 <h3> Export File  </h3>
 <p>The export file contains information about the public APIs of the entire package.
-It can be used to convert a package into a CAP file. This file is stored in a JAR file.</p>
+It is used by java card convertor to convert a java package into a CAP file.</p>
 
 <h3> CAP File  </h3>
-<p>CAP file contains all of the classes and interfaces defined in one Java package. 
-A CAP consists of a set of components stored in a JAR file. Each component is a stream of bytes stored in
+<p>CAP file contains information about all the items in the package like class, method, instance fields etc. Package items are represented by tokens.
+A CAP consists of a set of components each has significant information about the package items. Each component is a stream of bytes stored in
 big endian order. </p>
 
  <figure>
@@ -57,8 +57,8 @@ big endian order. </p>
 </figure>
 
 <h3> Header </h3>
-<p>This component contains general information about the CAP file such as package AID which identifies the package 
-along with the major and a minor version number and various flags.<p>
+<p>This component contains general information about the CAP file such as AID of the package which identifies the package 
+along with the major and a minor version numbers.<p>
 
 <figure>
   <center><img src="/JavaCardBinaryParser/assets/parser_out_all.PNG" /><center>
@@ -66,7 +66,7 @@ along with the major and a minor version number and various flags.<p>
 </figure>
 
 <h3> Applet Component </h3>
-<p>The Applet Component contains an entry for each of the applets(AID) defined in this package. If no applets are defined in the current package, this component must not be
+<p>An applet component contains an entry for each of the applets(AID) defined in this package. If no applets are defined in the current package, this component must not be
 present in this CAP file.<p>
 
 <figure>
@@ -75,7 +75,7 @@ present in this CAP file.<p>
 </figure>
 
 <h3> Directory Component </h3>
-<p>The Directory Component lists the size of each of the components defined in this CAP file.<p>
+<p>The directory component lists size of each of the components defined in this CAP file.<p>
 
 <figure>
   <center><img src="/JavaCardBinaryParser/assets/directry.PNG" /><center>
@@ -83,10 +83,10 @@ present in this CAP file.<p>
 </figure>
 
 <h3> Constant Pool Component </h3>
-<p>This Component contains an entry for each of the classes, methods, and fields referenced
+<p>This component contains an entry for each of the classes, methods, and fields referenced
 by elements in the Method Component of this CAP file. Each entry is four byte long. 
 ByteCode accesses each entry by using index into the constant pool table. 
-Entry in the table pointed by an index is either an offset if the entry is defined inside the current package, or a token if the entry is defined outside of the current package.<p>
+Entry in the table pointed by an index contains item tokens. Tokens are resolved by VM on the card to access item in the memory.<p>
 
 <figure>
   <center><img src="/JavaCardBinaryParser/assets/constantpool.PNG" /><center>
@@ -94,10 +94,10 @@ Entry in the table pointed by an index is either an offset if the entry is defin
 </figure>
 
 <h3> Class Component </h3>
-<p>The Class component describes all classes and interfaces defined in this package. It contains enough
+<p>The class component describes all classes and interfaces defined in this package. It contains enough
 information to create instances, to perform method or field access and to check cast of the instance. 
-For invoking  methods it references to method component. If the superclasses are defined in outside of 
-the package, then they are referenced through the Import component.<p>
+For invoking  methods it references method component. If the superclasses are defined in outside of 
+the package, then they are referenced through Import component.<p>
 
 <figure>
   <center><img src="/JavaCardBinaryParser/assets/class.PNG" /><center>
@@ -105,8 +105,9 @@ the package, then they are referenced through the Import component.<p>
 </figure>
 
 <h3>  Method Component </h3> 
-<p>The component contains the bytecode of all the methods defined in the current package. 
-Moreover it also contains information necessary for executing a method, like number of parameters, local variables and required stack size.<p>
+<p>The component contains bytecode info of all the methods defined in the current package.
+Component also gives the information about exception handler which represents a catch or finally block defined in 
+a method of this package.<p>
 
 <figure>
   <center><img src="/JavaCardBinaryParser/assets/method.PNG" /><center>
@@ -114,7 +115,7 @@ Moreover it also contains information necessary for executing a method, like num
 </figure>
 
 <h3> Static Field Component </h3> 
-<p>The Static Field Component contains all of the required information required to create and initialize an image of all of the static fields defined in this package.<p>
+<p>The static field Component contains all the information required to create and initialize an image of all static fields defined in this package.<p>
 
 <figure>
   <center><img src="/JavaCardBinaryParser/assets/staticfield.PNG" /><center>
@@ -122,7 +123,7 @@ Moreover it also contains information necessary for executing a method, like num
 </figure>
 
 <h3> Import and Export Components </h3>
-<p>The Import component contains the information of the packages, which are imported in the current package. The imported packages are identified by their AID. 
+<p>The import component contains information of the packages which are imported in the current package. The imported packages are identified by their AID. 
 The Export component describes all classes, static functions or fields which are offered to other packages.<p>
 
 <figure>
@@ -131,8 +132,8 @@ The Export component describes all classes, static functions or fields which are
 </figure>
 
 <h3> Reference Location Component </h3>
-<p>The Reference Location Component represents lists of offsets into the info item of the Method
-Component to items that contain indices into the constant pool table.<p>
+<p>The reference location Component represents lists of offsets into the info item of the method
+component. Info at the offsets are indices into the constant pool table.<p>
 
 <figure>
   <center><img src="/JavaCardBinaryParser/assets/refloc.PNG" /><center>
@@ -140,7 +141,7 @@ Component to items that contain indices into the constant pool table.<p>
 </figure>
 
 <h3> Descriptor Component </h3>
-<p>The Descriptor Component provides sufficient information to parse and verify all elements of the CAPfile.<p>
+<p>The descriptor component provides sufficient information to parse and verify all elements of the CAP file.<p>
 
 <figure>
   <center><img src="/JavaCardBinaryParser/assets/descriptor.PNG" /><center>
@@ -163,6 +164,8 @@ and converts the data into human readable data and prints on the console. Which 
 <h4>CapParser.py&nbsp; [option]&nbsp; .cap&nbsp; [option]&nbsp; 'component name'/'all'.</h4>
 
 <p>All the options are case sensitive.</p>
+--help <br /><br />
+
 --capPath <br />
 -p&nbsp;  valid path to cap file.<br /><br />
 
@@ -171,7 +174,7 @@ and converts the data into human readable data and prints on the console. Which 
 
  <figure>
   <center><img src="/JavaCardBinaryParser/assets/parser_out_all.PNG" /><center>
-  <figcaption><center><span class="post-meta small">Parser out on console </span><center></figcaption>
+  <figcaption><center><span class="post-meta small">Help </span><center></figcaption>
 </figure>
 
 

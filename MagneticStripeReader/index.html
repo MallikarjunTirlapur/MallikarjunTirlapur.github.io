@@ -36,7 +36,11 @@ against a <a href="http://www.magneticheads.com/"> magnetic reading head</a>. Ma
 
 
 <h3>Principle</h3>
-<p>A magnetic stripe is composed of a string of magnetic domains, each oriented in a way such that opposite poles are adjacent. In the areas where two magnets with like poles are touching, there is a concentration of magnetic flux which induces a current spike as they pass a magnetic read head. Each bit of information has the same physical length on the strip. The presence or absence of an additional peak in the middle of the bit determines whether it is a one or a zero. On a magnetic stripe, a one is comprised of a single magnet that is two units long and a zero is comprised of two magnets that are each one unit long. This encoding scheme is known as F2F encoding (or Aiken BiPhase).</p> 
+<p>A magnetic stripe is composed of a string of magnetic domains, each oriented in a way such that opposite poles are adjacent. 
+In the areas where two magnets with like poles are touching, there is a concentration of magnetic flux which induces a current spike as they pass a magnetic read head. 
+Each bit of information has the same physical length on the strip. The presence or absence of an additional peak in the middle of the bit determines whether it is a one or a zero. 
+On a magnetic stripe, a one is comprised of a single magnet that is two units long and a zero is comprised of two magnets that are each one unit long. 
+This encoding scheme is known as F2F encoding (or Aiken BiPhase).</p> 
   
 <figure>
   <center><img src="/assets/image007.jpg" /><center>
@@ -46,7 +50,8 @@ against a <a href="http://www.magneticheads.com/"> magnetic reading head</a>. Ma
 <h3>Data Format</h3>
 <h4>Track 1 – IATA</h4>
 <p>The data standard for Track 1 was developed by the International Air Transportation Association (IATA) and contains alphanumeric information. 
-For example, on a credit card, this track typically contains the card holder’s name as embossed on the front of the card. The specification allows up to 79 characters. Each character is 7 bits long, comprising a 6 bit character code and a parity bit.</p>
+For example, on a credit card, this track typically contains the card holder’s name as embossed on the front of the card. The specification allows up to 79 characters. 
+Each character is 7 bits long, comprising a 6 bit character code and a parity bit.</p>
 
 <figure>
   <center><img src="/assets/magfrmt.png" /><center>
