@@ -31,7 +31,9 @@ layout: default
 <p>It is a simple command line tool and can be used to convert hex files into binary files.  </p>
 
 <h3> Hex File  </h3>
-<p>The Intel hex generally called as a .hex file. The hex file is an encoded binary file, coded in ASCII text form. This file format is widely used for programming all kinds of processors. Programs written in assembly, C, C++ etc are converted into corresponding .hex files by the compilers, which are then imported by programmers to decode and burn the binary code into microcontroller’s ROM.</p>
+<p>Intel hex file is an encoded binary file, coded in ASCII text format. 
+This file format is widely used for programming all kinds of processors. Programs written in assembly, C, C++ etc are converted into corresponding .hex files by the compilers, 
+which are then imported by a program to decode and burn the binary code into microcontroller’s ROM.</p>
 
 
 <p>Intel HEX consists of lines of ASCII alphanumeric characters. Each line starts with a character ‘:’. The lines are termed as a record. Each record contains blocks of hexadecimal characters that encode  record type, length, memory load address, and checksum.</p> 
@@ -68,7 +70,9 @@ interpret the remaining information within the record. The encoding for all the 
 <p>A binary file  with a name extension of ".bin" is a file which contains the machine language code, stored in binary format. Processors understand only the code in the binary files not the hex files. So hex file is first converted into binary and then flashed into the microcontroller ROM. File contains sequence of bytes, which means the binary digits (bits) that are grouped in eights. which means the binary digits (bits) that are grouped in eights.</p>
 
 <h3>How to use the Tool? </h3>  
-<p>The <a href="https://github.com/MallikarjunTirlapur/IntelHexToBin-Convertor">source code</a> of the tool is written in Java. Two classes are defined, one reads the hex file and writes the converted binary data into the binary file. And other one processes and parses the hex file to get the binary data. The algorithm of the system is written as per the <a href="http://microsym.com/editor/assets/intelhex.pdf">specification</a>.</p>
+<p>The <a href="https://github.com/MallikarjunTirlapur/IntelHexToBin-Convertor">source code</a> of the tool is written in Java. 
+Two classes are defined, one reads the hex file and writes the converted binary data into the binary file. 
+And other one processes and parses the hex file to get the binary data.</p>
 
 <p>The project is exported as a .jar file which is then executed through command line.</p>
 

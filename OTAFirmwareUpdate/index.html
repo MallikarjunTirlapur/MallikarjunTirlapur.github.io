@@ -44,13 +44,13 @@ margin:auto;
   <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 <p>In this post, I will be talking about the solution that can be used in the IoT systems. </p>
 
-<p>The solution is being demonstrated by a small application which updates microcontroller firmware over-the-air through Bluetooth enabled android device. The system is just a proof of concept.</p>
+<p>The solution is being demonstrated by a small application which updates microcontroller firmware over-the-air through Bluetooth enabled android device.</p>
 
 <h3> Use Cases </h3>
 <strong>1.</strong>&ensp;At one shot updating the firmware of the distributed embedded devices from a centralized server.<br />
 &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;     E.g: Bluetooth enabled - headphone, speakers, home automation system, television etc<br />
 
-<strong>2.</strong>&ensp;Program PIC without using Microchip <a href="http://www.microchipdirect.com/ProductDetails.aspx?Catalog=BuyMicrochip&Category=Cat4_SubCat9&mid=10">programmer/debugger</a>. <br/>
+<strong>2.</strong>&ensp;Program PIC without using Microchip programmer/debugger.
 <br/>
 <p>These use cases motivated me for building this small system.</p>
 
@@ -60,10 +60,13 @@ margin:auto;
 <style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style>
 <div class="embed-container"><iframe src="https://www.youtube.com/embed/uS3xlvWdbrw" frameborder="0" allowfullscreen=""></iframe></div>
  
-<p>The system consists of <a href="http://www.microchip.com/wwwproducts/en/PIC18F4431">PIC18f4431</a> and <a href="http://www.microchip.com/wwwproducts/en/PIC32MX795F512H">pic32mx795f512h</a> microcontrollers, android device and Bluetooth interface module. This post would be focusing on PIC18f microcontroller boot loader, Android application, and implementation of them.</p>
+<p>The system consists of <a href="http://www.microchip.com/wwwproducts/en/PIC18F4431">PIC18f4431</a> and <a href="http://www.microchip.com/wwwproducts/en/PIC32MX795F512H">pic32mx795f512h</a> microcontrollers, android device and Bluetooth interface module. 
+This post would be focusing on PIC18f microcontroller boot loader, Android application, and implementation of them.</p>
   
 <h3>PIC Boot Loader </h3>
-<p>Boot loader is a special firmware loaded upfront into the microcontroller. The boot loader receives application firmware binaries externally via one of the microcontroller serial port (Ex: UART, SPI etc.) and writes data into a pre-determined section of the flash memory.</p>
+<p>Boot loader is a special firmware loaded upfront into the microcontroller. 
+The boot loader receives application firmware binaries externally via one of the microcontroller serial port (Ex: UART, SPI etc.) 
+and writes data into a pre-determined section of the flash memory.</p>
 
 <figure>
   <center><img src="/OTAFirmwareUpdate/flsh.png" /><center>
@@ -87,13 +90,13 @@ margin:auto;
 <figcaption><left><span class="post-meta small"> PIC18F setup</span><left></figcaption>
     </div>
 </div>
-</body><br /><br /><br /><br /><br /><br /><br />
+</body><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
   
-  <h3>Boot Loader Source Code</h3>
+ <h3>Boot Loader Source Code</h3>
   
-  <p>The boot loader is basically the low level driver of PIC and is implemented in C.  The <a href="https://github.com/MallikarjunTirlapur/PIC_Bootloader">source code</a> and <a href="/OTAFirmwareUpdate/doxyOutPIC18/html/index.html">documentation</a>  of it is freely available on the GitHub.</p>
+ <p>The boot loader is basically the low level driver of PIC and is implemented in C.  The <a href="https://github.com/MallikarjunTirlapur/PIC_Bootloader">source code</a> of it is made freely available on the GitHub.</p>
   
-  <h4>Algorithm</h4>
+ <h4>Algorithm</h4>
 1.	Configure IO port<br />
 2.	Configure UART baud rate with <strong>115200</strong> to communicate with the Android device.<br />
 3.  Receive NVM address range request command from the host (Android device), in return PIC sends back NVM programmable program memory start and end address. <br />
@@ -104,11 +107,11 @@ margin:auto;
 8.	Receive application binary chunks in packets each of NVM page size of the PIC microcontroller. Load the binaries into the program memory.<br />
 9.	Jump to the reset vector location of the app to execute it.<br />
 
-    <h3>Android application (Host)</h3>
+ <h3>Android application (Host)</h3>
  <p> Android device is the host which initiates the firmware update process. The host application has been written in Java and consists of user friendly GUI on font end through which user can interact with the app. </p>
   
- <h4> GUI</h4>
-  <p>It consists of 3 buttons to select and connect one of the Bluetooth modules from the list, to select one of the hex files from the internal storage of the android device and to update the firmware. List Views displays available hex files and paired Bluetooth devices.</p>
+ <h4>GUI</h4>
+ <p>It consists of 3 buttons to select and connect one of the Bluetooth modules from the list, to select one of the hex files from the internal storage of the android device and to update the firmware. List Views displays available hex files and paired Bluetooth devices.</p>
  
 <figure>
   <center><img src="/OTAFirmwareUpdate/gui.png" /><center>
@@ -116,9 +119,9 @@ margin:auto;
 </figure>
 
 
-  <h4> Software</h4>
+<h4> Software</h4>
   
-  <p>Software is implemented in JAVA, again the <a href="https://github.com/MallikarjunTirlapur/Android_RN-31_Bluetooth">source code</a> and <a href="/OTAFirmwareUpdate/doxyOutPIC32/html/index.html">documentation</a> of it is freely available on the GitHub. </p>
+<p>Software is implemented in JAVA, again the <a href="https://github.com/MallikarjunTirlapur/Android_RN-31_Bluetooth">source code</a> of it is freely available on the GitHub. </p>
 
 <p>Application firmware hex file must be converted to binary file before loading it into the PIC flash memory.</p> 
 
@@ -126,8 +129,8 @@ margin:auto;
 
 <p>The generated application firmware hex file is stored on the internal storage of the android device. Any number of hex files can be stored on the device. The GUI facilitates user to search the available hex files from the storage and select one of them to send it through Bluetooth communication link to PIC. </p> 
   
-  <h4>Algorithm</h4>
-  1. List paired Bluetooth modules and select one of them to establish communication link. <br />
+<h4>Algorithm</h4>
+1. List paired Bluetooth modules and select one of them to establish communication link. <br />
 2. Read selected hex file.<br />
 3. Decode hex file to get the binary data.<br />
 4. Divide the huge number of binary data into packets.<br />
@@ -139,7 +142,7 @@ margin:auto;
 
 
   
-    <div id="disqus_thread"></div>
+  <div id="disqus_thread"></div>
   <script type="text/javascript">
     var disqus_shortname  = 'MallikarjunTirlapur';
     var disqus_identifier = '/OTA Firmware Update';

@@ -1,0 +1,203 @@
+---
+layout: default
+---
+<body class="site">
+  <div class="site-wrap">
+    <header class="site-header px2 px-responsive">
+  
+
+    
+
+      
+    </div>
+  </div>
+</header>
+
+<br/> <script type="text/javascript" src="https://counter4.01counter.com/private/countertab.js?c=fd589b7fcbbb6761218a25ec12f6b186"></script> <noscript><a href="http://www.freecounterstat.com" title="free counter"><img src="https://counter4.01counter.com/private/freecounterstat.php?c=fd589b7fcbbb6761218a25ec12f6b186" border="0" title="free counter" alt="free counter"></a> </noscript> 
+    <div class="post p2 p-responsive wrap" role="main">
+      <div class="measure">
+<div class="post-header mb2">
+  <h2>Java Card Binary Parser</h2>
+  <span class="post-meta">April 22, 2020</span><br>
+  
+  <span class="post-meta small">
+  
+    8 minutes read
+  
+  </span>
+</div>
+<article class="post-content">
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<h3>Introduction </h3>
+<p>Normally .java files are compiled using java compiler which generates binary in a file called .class files.
+ Similarly, Java Card applications written in java are compiled to class files using Java compiler.
+ Java Card convertor used then to convert class files from java card applets to CAP(converted applet) file.
+ In this process along with the .class files .exp (export) files of the imported packages are also provided to the convertor.</p> 
+
+<strong>Note - </strong>&ensp;Please read Oracle <a href="https://www.oracle.com/java/technologies/javacard-downloads.html">Java Card 3.0.5</a> Specification for more details.<br /><br /> 
+ 
+ 
+ <figure>
+  <center><img src="/JavaCardBinaryParser/assets/Cap_Convertor.png" /><center>
+  <figcaption><center><span class="post-meta small">CAP Conversion</span><center></figcaption>
+</figure>
+
+<h3> Export File  </h3>
+<p>The export file contains information about the public APIs of the entire package.
+It is used by java card convertor to convert a java package into a CAP file.</p>
+
+<h3> CAP File  </h3>
+<p>CAP file contains information about all the items in the package like class, method, instance fields etc. Package items are represented by tokens.
+A CAP consists of a set of components each has significant information about the package items. Each component is a stream of bytes stored in
+big endian order. </p>
+
+ <figure>
+  <center><img src="/JavaCardBinaryParser/assets/cap_format.png" /><center>
+  <figcaption><center><span class="post-meta small">Cap Component Format </span><center></figcaption>
+</figure>
+
+<h3> Header </h3>
+<p>This component contains general information about the CAP file such as AID of the package which identifies the package 
+along with the major and a minor version numbers.<p>
+
+<figure>
+  <center><img src="/JavaCardBinaryParser/assets/parser_out_all.PNG" /><center>
+  <figcaption><center><span class="post-meta small">Header Component </span><center></figcaption>
+</figure>
+
+<h3> Applet Component </h3>
+<p>An applet component contains an entry for each of the applets(AID) defined in this package. If no applets are defined in the current package, this component must not be
+present in this CAP file.<p>
+
+<figure>
+  <center><img src="/JavaCardBinaryParser/assets/applet.PNG" /><center>
+  <figcaption><center><span class="post-meta small">Applet Component </span><center></figcaption>
+</figure>
+
+<h3> Directory Component </h3>
+<p>The directory component lists size of each of the components defined in this CAP file.<p>
+
+<figure>
+  <center><img src="/JavaCardBinaryParser/assets/directry.PNG" /><center>
+  <figcaption><center><span class="post-meta small">Directory Component </span><center></figcaption>
+</figure>
+
+<h3> Constant Pool Component </h3>
+<p>This component contains an entry for each of the classes, methods, and fields referenced
+by elements in the Method Component of this CAP file. Each entry is four byte long. 
+ByteCode accesses each entry by using index into the constant pool table. 
+Entry in the table pointed by an index contains item tokens. Tokens are resolved by VM on the card to access item in the memory.<p>
+
+<figure>
+  <center><img src="/JavaCardBinaryParser/assets/constantpool.PNG" /><center>
+  <figcaption><center><span class="post-meta small">Constant Pool Component </span><center></figcaption>
+</figure>
+
+<h3> Class Component </h3>
+<p>The class component describes all classes and interfaces defined in this package. It contains enough
+information to create instances, to perform method or field access and to check cast of the instance. 
+For invoking  methods it references method component. If the superclasses are defined in outside of 
+the package, then they are referenced through Import component.<p>
+
+<figure>
+  <center><img src="/JavaCardBinaryParser/assets/class.PNG" /><center>
+  <figcaption><center><span class="post-meta small">Class Component </span><center></figcaption>
+</figure>
+
+<h3>  Method Component </h3> 
+<p>The component contains bytecode info of all the methods defined in the current package.
+Component also gives the information about exception handler which represents a catch or finally block defined in 
+a method of this package.<p>
+
+<figure>
+  <center><img src="/JavaCardBinaryParser/assets/method.PNG" /><center>
+  <figcaption><center><span class="post-meta small">Method Component </span><center></figcaption>
+</figure>
+
+<h3> Static Field Component </h3> 
+<p>The static field Component contains all the information required to create and initialize an image of all static fields defined in this package.<p>
+
+<figure>
+  <center><img src="/JavaCardBinaryParser/assets/staticfield.PNG" /><center>
+  <figcaption><center><span class="post-meta small">Static Field Component </span><center></figcaption>
+</figure>
+
+<h3> Import and Export Components </h3>
+<p>The import component contains information of the packages which are imported in the current package. The imported packages are identified by their AID. 
+The Export component describes all classes, static functions or fields which are offered to other packages.<p>
+
+<figure>
+  <center><img src="/JavaCardBinaryParser/assets/import.PNG" /><center>
+  <figcaption><center><span class="post-meta small">Import Component </span><center></figcaption>
+</figure>
+
+<h3> Reference Location Component </h3>
+<p>The reference location Component represents lists of offsets into the info item of the method
+component. Info at the offsets are indices into the constant pool table.<p>
+
+<figure>
+  <center><img src="/JavaCardBinaryParser/assets/refloc.PNG" /><center>
+  <figcaption><center><span class="post-meta small">Reference Location Component </span><center></figcaption>
+</figure>
+
+<h3> Descriptor Component </h3>
+<p>The descriptor component provides sufficient information to parse and verify all elements of the CAP file.<p>
+
+<figure>
+  <center><img src="/JavaCardBinaryParser/assets/descriptor.PNG" /><center>
+  <figcaption><center><span class="post-meta small">Descriptor Component </span><center></figcaption>
+</figure>
+
+<h3> Debug Component </h3>
+<p>This section specifies the format for the Debug Component. The Debug Component contains all the
+metadata necessary for debugging a package on a suitably instrumented Java Card virtual machine. It is not required for executing Java Card programs in a non-debug environment.<p>
+
+<figure>
+  <center><img src="/JavaCardBinaryParser/assets/debug.PNG" /><center>
+  <figcaption><center><span class="post-meta small">Debug Component </span><center></figcaption>
+</figure>
+
+<h3> Parser </h3>
+<p>My <a href="https://github.com/MallikarjunTirlapur/JavaCard-Binary-Parser">parser</a> script interprets the java card binaries with a fixed format according <a href="https://www.oracle.com/java/technologies/javacard-downloads.html">Java Card 3.0.5</a> spec, 
+and converts the data into human readable data and prints on the console. Which can then be analyzed to know more inside into the Java Card Binary.<p>
+
+<h4>CapParser.py&nbsp; [option]&nbsp; .cap&nbsp; [option]&nbsp; 'component name'/'all'.</h4>
+
+<p>All the options are case sensitive.</p>
+--help <br /><br />
+
+--capPath <br />
+-p&nbsp;  valid path to cap file.<br /><br />
+
+--component<br />
+-c&nbsp; caomponent name e.g 'header' or 'all'to get all component info in one shot. <br /><br />
+
+ <figure>
+  <center><img src="/JavaCardBinaryParser/assets/parser_out_all.PNG" /><center>
+  <figcaption><center><span class="post-meta small">Help </span><center></figcaption>
+</figure>
+
+
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_shortname  = 'MallikarjunTirlapur';
+    var disqus_identifier = '/JavaCardBinaryParser';
+    var disqus_title      = '';
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+      </div>
+    </div>
+  </div>
+
+
+</body>
+</html>
