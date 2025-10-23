@@ -1,24 +1,75 @@
 <!DOCTYPE html>
-<html>
-
-  {% include head.html %}
-
-  <body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if page.title %}{{ page.title }} - {{ site.title }}{% else %}{{ site.title }} - {{ site.tagline }}{% endif %}</title>
+    <meta name="description" content="{{ site.description }}">
     
-    {% include header.html %}
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="{{ '/assets/favicon.ico' | relative_url }}">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="#home">{{ site.name }}</a>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#experience" class="nav-link">Experience</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <div class="theme-toggle" id="theme-toggle">
+                <i class="fas fa-moon"></i>
+            </div>
+        </div>
+    </nav>
 
-    <div class="page-content">
-      <div class="wrapper">
-
-
+    <!-- Main Content -->
+    <main>
         {{ content }}
-      </div>
-    </div>
+    </main>
 
-    {% include footer.html %}
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <p>&copy; {{ 'now' | date: "%Y" }} {{ site.name }}. Made with ❤️ using Jekyll.</p>
+            <div class="social-links">
+                <a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://linkedin.com/in/{{ site.linkedin_username }}" target="_blank" rel="noopener">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="mailto:{{ site.email }}">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
 
-  </body>
-
+    <!-- JavaScript -->
+    <script src="{{ '/assets/js/script.js' | relative_url }}"></script>
+</body>
 </html>
 
 

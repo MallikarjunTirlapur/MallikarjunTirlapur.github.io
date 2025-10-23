@@ -30,7 +30,7 @@
                 <a href="#about" class="nav-link">About</a>
                 <a href="#skills" class="nav-link">Skills</a>
                 <a href="#experience" class="nav-link">Experience</a>
-                <a href="./projects.html" class="nav-link">Projects</a>
+                <a href="#projects" class="nav-link">Projects</a>
                 <a href="#contact" class="nav-link">Contact</a>
             </div>
             <div class="nav-toggle" id="nav-toggle">
@@ -115,20 +115,17 @@
                             <div class="card-icon">
                                 <i class="fas fa-user-graduate"></i>
                             </div>
-                            <h3>My Journey</h3>
+                            <h3>My Story</h3>
                             <p>
-								Hey there! Just wanted to share a bit about my professional journey. 
-								Currently, I’m thriving as a Senior Staff Embedded Software Developer at  <a href="https://www.infineon.com/" target="_blank">
-								Infineon Technologies Pvt Ltd</a> in Bengaluru, India.
-								I earned my Master's degree in Electrical Engineering from 
-								<a href="https://www.h-da.de/" target="_blank">Hochschule Darmstadt</a>, Germany, back in February 2016, and previously completed my Bachelor's degree in Electronics and 
-								Communications Engineering from The National Institute Of Engineering, Mysore, India in 2010.
+                                I am currently working as a Senior Staff Embedded Software Developer at <a href="https://www.infineon.com/" target="_blank">Infineon Technologies AG</a> in Bengaluru, India. 
+                                I earned my Master's degree in Electrical Engineering from 
+                                <a href="https://www.h-da.de/" target="_blank">Hochschule Darmstadt</a>, Germany in February 2016, and my Bachelor's degree in Electronics and Communications Engineering from The National Institute Of Engineering, Mysore in 2010.
                             </p>
                             <p>
-                                During my academic journey, I had an incredible opportunity to complete my master thesis and internship at 
-                                <a href="http://www.kuka-robotics.com/germany/de/" target="_blank">KUKA Roboter GmbH</a> in Augsburg, where I delved into robotics and computer vision projects. 
-								Before embarking on my master’s program, I worked for over three years as an Application Engineer at 
-                                <a href="http://www.microchip.com/" target="_blank">Microchip Technology Pvt Ltd</a> in Bangalore, focusing on post-silicon validation and embedded application development.
+                                During my academic journey, I completed my master thesis and internship at 
+                                <a href="http://www.kuka-robotics.com/germany/de/" target="_blank">KUKA Roboter GmbH</a> in Augsburg, working on robotics and computer vision projects. 
+                                Prior to my master's program, I worked for over three years as an Application Engineer at 
+                                <a href="http://www.microchip.com/" target="_blank">Microchip Technology Pvt Ltd</a> in Bangalore, focusing on post-silicon validation and embedded development.
                             </p>
                         </div>
                         <div class="about-card">
@@ -416,13 +413,63 @@
         <section class="projects" id="projects">
             <div class="container">
                 <div class="section-header">
-                    <h2 class="section-title">Academic and Hobby Projects</h2>
+                    <h2 class="section-title">Hobby Projects</h2>
                     <p class="section-subtitle">Showcasing technical expertise</p>
                 </div>
                 <div class="projects-grid">
                     <div class="project-card">
                         <div class="project-image">
-                            <img src="./OTAFirmwareUpdate/gui.png" alt="OTA Firmware Update">
+                            <img src="./assets/image016.png" alt="JavaCard Binary Parser">
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <a href="/JavaCardBinaryParser/" class="btn-project">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                    <a href="https://github.com/MallikarjunTirlapur" target="_blank" class="btn-project">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3>JavaCard Binary Parser</h3>
+                            <p>A comprehensive tool for parsing and analyzing JavaCard binary files (.cap files). This application provides detailed insights into JavaCard applet structure and facilitates reverse engineering of smart card applications.</p>
+                            <div class="project-tech">
+                                <span>Java</span>
+                                <span>JavaCard</span>
+                                <span>Binary Analysis</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="./assets/magfrmt.png" alt="Magnetic Stripe Reader">
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <a href="/MagneticStripeReader/" class="btn-project">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                    <a href="https://github.com/MallikarjunTirlapur" target="_blank" class="btn-project">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3>Magnetic Stripe Reader</h3>
+                            <p>A complete hardware and software solution for reading magnetic stripe cards. This project features custom PCB design and embedded firmware, demonstrating end-to-end development capabilities.</p>
+                            <div class="project-tech">
+                                <span>Embedded C</span>
+                                <span>PCB Design</span>
+                                <span>Hardware</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="./assets/GUI.png" alt="OTA Firmware Update">
                             <div class="project-overlay">
                                 <div class="project-links">
                                     <a href="/OTAFirmwareUpdate/" class="btn-project">
@@ -435,7 +482,6 @@
                             </div>
                         </div>
                         <div class="project-content">
-                            <div class="project-category">Embedded System Hobby Project</div>
                             <h3>OTA Firmware Update System</h3>
                             <p>An over-the-air firmware update system for embedded devices featuring an Android application interface and secure update mechanisms. Enables remote device management and seamless firmware deployment.</p>
                             <div class="project-tech">
@@ -445,115 +491,31 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="project-card">
-                        <div class="project-image">
-                            <img src="./assets/kuka.png" alt="Robot Programming Framework">
-                            <div class="project-overlay">
-                                <div class="project-links">
-                                    <a href="./MasterThesis/" class="btn-project" title="View Details">
-                                        <i class="fas fa-eye"></i>
-                                    </a>
-                                    <a href="https://github.com/MallikarjunTirlapur/RosOnPeanut" target="_blank" class="btn-project" title="View Code">
-                                        <i class="fab fa-github"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="project-content">
-                            <div class="project-category">Academic Project</div>
-                            <h3>Robot Programming Framework</h3>
-                            <p>Master thesis project at KUKA Roboter GmbH. Framework for non-expert robot programming using self-localizing smart devices and computer vision.</p>
-                            <div class="project-tech">
-                                <span>Android</span>
-                                <span>C++</span>
-                                <span>ROS</span>
-                                <span>Computer Vision</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-image">
-                            <img src="./assets/picauto.png" alt="PIC Auto Droid">
-                            <div class="project-overlay">
-                                <div class="project-links">
-                                    <a href="./PICAutoDroid/" class="btn-project" title="View Details">
-                                        <i class="fas fa-eye"></i>
-                                    </a>
-                                    <a href="https://github.com/MallikarjunTirlapur" target="_blank" class="btn-project" title="View Code">
-                                        <i class="fab fa-github"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="project-content">
-                            <div class="project-category">Embedded System Hobby Project</div>
-                            <h3>PIC Auto Droid</h3>
-                            <p>Mobile robot system using PIC microcontroller with voice command and remote control capabilities through Android interface.</p>
-                            <div class="project-tech">
-                                <span>PIC</span>
-                                <span>Embedded C</span>
-                                <span>Robotics</span>
-                                <span>Android</span>
-                            </div>
-                        </div>
-                    </div>
                     
                     <div class="project-card">
                         <div class="project-image">
-                            <img src="./assets/smartcard.jpg" alt="Java Card Geldautomat">
+                            <img src="./assets/cmd.gif" alt="Intel Hex to Binary Converter">
                             <div class="project-overlay">
                                 <div class="project-links">
-                                    <a href="./JavaCard/" class="btn-project" title="View Details">
+                                    <a href="/IntelHexToBin/" class="btn-project">
                                         <i class="fas fa-eye"></i>
                                     </a>
-                                    <a href="https://github.com/MallikarjunTirlapur/JavaCardApplcns" target="_blank" class="btn-project" title="View Code">
+                                    <a href="https://github.com/MallikarjunTirlapur" target="_blank" class="btn-project">
                                         <i class="fab fa-github"></i>
                                     </a>
                                 </div>
                             </div>
                         </div>
                         <div class="project-content">
-                            <div class="project-category">Software Application Hobby Project</div>
-                            <h3>JavaCard ATM Simulation</h3>
-                            <p>ATM simulation using Java Card technology with smart card applets. Features wallet functionality with debit, credit, balance inquiry, and PIN verification.</p>
-                            <div class="project-tech">
-                                <span>Java Card</span>
-                                <span>APDU</span>
-                                <span>Swing GUI</span>
-                                <span>Smart Cards</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-image">
-                            <img src="./assets/hextobin.jpg" alt="Intel Hex to Binary Converter">
-                            <div class="project-overlay">
-                                <div class="project-links">
-                                    <a href="./IntelHexToBin/" class="btn-project" title="View Details">
-                                        <i class="fas fa-eye"></i>
-                                    </a>
-                                    <a href="https://github.com/MallikarjunTirlapur/IntelHexToBin-Convertor" target="_blank" class="btn-project" title="View Code">
-                                        <i class="fab fa-github"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="project-content">
-                            <div class="project-category">Software Tool</div>
                             <h3>Intel Hex to Binary Converter</h3>
-                            <p>Robust command-line utility for converting Intel HEX files to binary format. Essential tool for embedded development workflow and microcontroller programming.</p>
+                            <p>A robust command-line utility for converting Intel HEX files to binary format. This essential tool streamlines the embedded development workflow and supports various microcontroller programming requirements.</p>
                             <div class="project-tech">
-                                <span>C++</span>
+                                <span>Java</span>
                                 <span>Command Line</span>
                                 <span>File Processing</span>
-                                <span>Intel HEX</span>
                             </div>
                         </div>
                     </div>
-                    
                 </div>
                 <div class="projects-footer">
                     <a href="./projects.html" class="btn btn-outline">View All Projects</a>
