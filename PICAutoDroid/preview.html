@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PICAutoDroid - Android-Controlled Mobile Robot</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #3b82f6;
+            --secondary-color: #8b5cf6;
+            --accent-color: #06b6d4;
+            --text-color: #1f2937;
+            --text-muted: #6b7280;
+            --bg-color: #ffffff;
+            --card-bg: #ffffff;
+            --border-color: #e5e7eb;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Hero Section */
+        .project-hero {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 50%, #1e3c72 100%);
+            color: white;
+            padding: 120px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .project-hero-content {
+            flex: 1;
+        }
+
+        .project-hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .project-hero .subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .project-hero .description {
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.8;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--primary-color);
+        }
+
+        .btn-secondary {
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .project-hero-visual {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero-image-container {
+            position: relative;
+            max-width: 500px;
+            width: 100%;
+        }
+
+        .hero-image {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            transform: perspective(1000px) rotateY(-15deg) rotateX(5deg);
+            transition: transform 0.3s ease;
+        }
+
+        .hero-image:hover {
+            transform: perspective(1000px) rotateY(-10deg) rotateX(2deg) scale(1.05);
+        }
+
+        .floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+        }
+
+        .floating-card {
+            position: absolute;
+            background: white;
+            border-radius: 8px;
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            animation: float 3s ease-in-out infinite;
+            opacity: 0;
+            animation-fill-mode: forwards;
+        }
+
+        .floating-card:nth-child(1) {
+            top: 15%;
+            right: -20%;
+            animation-delay: 0.5s;
+        }
+
+        .floating-card:nth-child(2) {
+            bottom: 40%;
+            left: -25%;
+            animation-delay: 0.8s;
+        }
+
+        .floating-card:nth-child(3) {
+            top: 65%;
+            right: -15%;
+            animation-delay: 1.1s;
+        }
+
+        .floating-card i {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            50% {
+                transform: translateY(-10px);
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+        }
+
+        /* Content Sections */
+        .content-section {
+            padding: 5rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Hardware Components Grid */
+        .hardware-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .hardware-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            opacity: 0;
+            transform: translateY(50px) scale(0.9);
+        }
+
+        .hardware-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+
+        .hardware-header {
+            display: flex;
+            align-items: center;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+        }
+
+        .hardware-header i {
+            font-size: 1.5rem;
+            margin-right: 1rem;
+        }
+
+        .hardware-header h4 {
+            margin: 0;
+            font-size: 1.2rem;
+        }
+
+        .hardware-content {
+            padding: 1.5rem;
+        }
+
+        .hardware-content p {
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .hardware-specs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .spec-tag {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* Demo Section */
+        .demo-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+            margin: 2rem 0;
+            align-items: start;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            background: var(--card-bg);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 12px;
+        }
+
+        .demo-description {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+        }
+
+        .demo-description h4 {
+            color: var(--text-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        .demo-features {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .demo-features li {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 0;
+            color: var(--text-muted);
+            border-bottom: 1px solid var(--border-color);
+            opacity: 0;
+            transform: translateX(-30px);
+        }
+
+        .demo-features li:last-child {
+            border-bottom: none;
+        }
+
+        .demo-features li i {
+            color: var(--primary-color);
+            margin-right: 1rem;
+            width: 16px;
+        }
+
+        /* Stats */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 2rem;
+            background: var(--card-bg);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease;
+            opacity: 0;
+            transform: scale(0.5) rotateY(180deg);
+        }
+
+        .stat-card:hover {
+            transform: scale(1.05);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        /* Animate in classes */
+        .hardware-card.animate-in,
+        .stat-card.animate-in,
+        .demo-features li.animate-in {
+            opacity: 1 !important;
+            transform: translate(0) scale(1) rotateY(0) !important;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 3rem;
+            }
+            
+            .project-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .floating-card {
+                display: none;
+            }
+            
+            .hero-image {
+                transform: none;
+            }
+            
+            .demo-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .hardware-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="project-hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="project-hero-content">
+                    <h1>PICAutoDroid</h1>
+                    <p class="subtitle">Android-Controlled Mobile Robot</p>
+                    <p class="description">
+                        An innovative mobile robotics project featuring wireless Android control, 
+                        real-time video streaming, and autonomous navigation capabilities using 
+                        PIC18F452 microcontroller technology.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#demo" class="btn btn-secondary">
+                            <i class="fas fa-play"></i>
+                            Watch Demo
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="project-hero-visual">
+                    <div class="hero-image-container">
+                        <img src="../assets/image016.png" alt="PICAutoDroid Robot" class="hero-image">
+                        <div class="floating-elements">
+                            <div class="floating-card">
+                                <i class="fas fa-mobile-alt"></i>
+                                <span>Android Control</span>
+                            </div>
+                            <div class="floating-card">
+                                <i class="fas fa-wifi"></i>
+                                <span>Remote Commands</span>
+                            </div>
+                            <div class="floating-card">
+                                <i class="fas fa-video"></i>
+                                <span>Video Streaming</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hardware Components Section -->
+    <section class="content-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Hardware Architecture</h2>
+                <p class="section-subtitle">
+                    Advanced robotics platform built with professional-grade components
+                </p>
+            </div>
+            
+            <div class="hardware-grid">
+                <div class="hardware-card">
+                    <div class="hardware-header">
+                        <i class="fas fa-microchip"></i>
+                        <h4>PIC18F452 Microcontroller</h4>
+                    </div>
+                    <div class="hardware-content">
+                        <p>Main processing unit handling sensor data, motor control, and communication protocols.</p>
+                        <div class="hardware-specs">
+                            <span class="spec-tag">40MHz</span>
+                            <span class="spec-tag">32KB Flash</span>
+                            <span class="spec-tag">1.5KB RAM</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="hardware-card">
+                    <div class="hardware-header">
+                        <i class="fas fa-cogs"></i>
+                        <h4>L298N Motor Driver</h4>
+                    </div>
+                    <div class="hardware-content">
+                        <p>Dual H-bridge motor controller for precise speed and direction control of DC motors.</p>
+                        <div class="hardware-specs">
+                            <span class="spec-tag">2A Per Channel</span>
+                            <span class="spec-tag">PWM Control</span>
+                            <span class="spec-tag">Bidirectional</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="hardware-card">
+                    <div class="hardware-header">
+                        <i class="fas fa-bluetooth-b"></i>
+                        <h4>HC-05 Bluetooth Module</h4>
+                    </div>
+                    <div class="hardware-content">
+                        <p>Wireless communication interface enabling Android device connectivity and control.</p>
+                        <div class="hardware-specs">
+                            <span class="spec-tag">Class 2</span>
+                            <span class="spec-tag">10m Range</span>
+                            <span class="spec-tag">UART</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="hardware-card">
+                    <div class="hardware-header">
+                        <i class="fas fa-camera"></i>
+                        <h4>Wireless Camera</h4>
+                    </div>
+                    <div class="hardware-content">
+                        <p>Real-time video streaming capability for remote monitoring and navigation assistance.</p>
+                        <div class="hardware-specs">
+                            <span class="spec-tag">480p</span>
+                            <span class="spec-tag">2.4GHz</span>
+                            <span class="spec-tag">Real-time</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Section -->
+    <section class="content-section" id="demo" style="background-color: #f8fafc;">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Live Demonstration</h2>
+                <p class="section-subtitle">
+                    Watch PICAutoDroid in action with wireless Android control
+                </p>
+            </div>
+            
+            <div class="demo-container">
+                <div class="video-wrapper">
+                    <div class="video-container">
+                        <iframe 
+                            src="https://www.youtube.com/embed/Q9CIeremf6I" 
+                            title="PICAutoDroid Demo" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+                
+                <div class="demo-description">
+                    <h4>Control Features</h4>
+                    <ul class="demo-features">
+                        <li><i class="fas fa-check"></i>Directional Movement Control</li>
+                        <li><i class="fas fa-check"></i>Variable Speed Adjustment</li>
+                        <li><i class="fas fa-check"></i>Real-time Video Feed</li>
+                        <li><i class="fas fa-check"></i>Bluetooth Connectivity</li>
+                        <li><i class="fas fa-check"></i>Android App Interface</li>
+                        <li><i class="fas fa-check"></i>Emergency Stop Function</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Stats -->
+    <section class="content-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Project Overview</h2>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">2013</div>
+                    <div class="stat-label">Development Year</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">10m</div>
+                    <div class="stat-label">Control Range</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">4</div>
+                    <div class="stat-label">Motors Controlled</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">480p</div>
+                    <div class="stat-label">Video Quality</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Enhanced PICAutoDroid animations
+            const hardwareCards = document.querySelectorAll('.hardware-card');
+            const statCards = document.querySelectorAll('.stat-card');
+            const demoFeatures = document.querySelectorAll('.demo-features li');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-in');
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -100px 0px'
+            });
+
+            // Animate hardware cards with enhanced effects
+            hardwareCards.forEach((card, index) => {
+                card.style.transition = `all 0.8s cubic-bezier(0.4, 0, 0.2, 1) ${index * 0.15}s`;
+                observer.observe(card);
+            });
+
+            // Animate stat cards
+            statCards.forEach((card, index) => {
+                card.style.transition = `all 1s ease ${index * 0.2}s`;
+                observer.observe(card);
+            });
+
+            // Animate demo features
+            demoFeatures.forEach((feature, index) => {
+                feature.style.transition = `all 0.6s ease ${index * 0.2}s`;
+                observer.observe(feature);
+            });
+
+            // Parallax effect for hero image
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                const heroImage = document.querySelector('.hero-image');
+                if (heroImage) {
+                    heroImage.style.transform = `perspective(1000px) rotateY(-15deg) rotateX(5deg) translateY(${scrolled * 0.1}px)`;
+                }
+            });
+
+            // Enhanced hover effects for hardware cards
+            const hardwareCardElements = document.querySelectorAll('.hardware-card');
+            hardwareCardElements.forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    card.style.transform = 'translateY(-10px) scale(1.02)';
+                    card.style.boxShadow = '0 20px 40px rgba(0,0,0,0.15)';
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'translateY(0) scale(1)';
+                    card.style.boxShadow = '';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
