@@ -1,47 +1,336 @@
----
-layout: default
----
-<body class="site">
-  <div class="site-wrap">
-    <header class="site-header px2 px-responsive">
-  
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Card - Smart Card Application Development</title>
     
+    <!-- Visitor Counter -->
+    <script type="text/javascript" src="https://counter4.01counter.com/private/countertab.js?c=fd589b7fcbbb6761218a25ec12f6b186"></script>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* CSS Variables and Base Styles */
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #34495e;
+            --accent-color: #3498db;
+            --success-color: #27ae60;
+            --warning-color: #f39c12;
+            --danger-color: #e74c3c;
+            --light-bg: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-primary: #2c3e50;
+            --text-secondary: #7f8c8d;
+            --text-muted: #95a5a6;
+            --border-color: #e1e8ed;
+            --shadow-light: 0 2px 10px rgba(0,0,0,0.1);
+            --shadow-medium: 0 5px 20px rgba(0,0,0,0.15);
+            --shadow-heavy: 0 10px 30px rgba(0,0,0,0.2);
+            --border-radius: 12px;
+            --transition: all 0.3s ease;
+        }
 
-      
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 500;
+            text-decoration: none;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent-color);
+            border: 2px solid var(--accent-color);
+        }
+
+        .btn-secondary:hover {
+            background: var(--accent-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .content-section {
+            padding: 6rem 0;
+            position: relative;
+        }
+
+        .content-section:nth-child(even) {
+            background: var(--light-bg);
+        }
+    </style>
+</head>
+
+<body>
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="hero-content">
+        <div class="hero-text">
+            <h1 class="hero-title">Java Card Geldautomat</h1>
+            <p class="hero-subtitle">Smart Card Application Development</p>
+            <p class="hero-description">
+                Comprehensive smart card application implementing secure wallet functionality using 
+                Java Card technology. Features APDU communication, PIN verification, and transaction 
+                processing with advanced security protocols.
+            </p>
+            <div class="hero-buttons">
+                <a href="https://github.com/MallikarjunTirlapur/Java-Card-Applications" class="btn btn-primary">
+                    <i class="fab fa-github"></i>
+                    View Source Code
+                </a>
+                <a href="#demo" class="btn btn-secondary">
+                    <i class="fas fa-play"></i>
+                    Watch Demo
+                </a>
+            </div>
+        </div>
+        <div class="hero-visual">
+                <div class="hero-image-container">
+                    <div class="smart-card-visual">
+                        <div class="card-body">
+                            <div class="chip">
+                                <div class="chip-contacts">
+                                    <div class="contact"></div>
+                                    <div class="contact"></div>
+                                    <div class="contact"></div>
+                                    <div class="contact"></div>
+                                    <div class="contact"></div>
+                                    <div class="contact"></div>
+                                    <div class="contact"></div>
+                                    <div class="contact"></div>
+                                </div>
+                                <div class="chip-label">Java Card</div>
+                            </div>
+                            <div class="card-number">**** **** **** 1234</div>
+                            <div class="card-holder">CARDHOLDER NAME</div>
+                        </div>
+                    </div>
+                    <div class="floating-elements">
+                        <div class="floating-card">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Secure Transactions</span>
+                        </div>
+                        <div class="floating-card">
+                            <i class="fas fa-microchip"></i>
+                            <span>Java Card VM</span>
+                        </div>
+                        <div class="floating-card">
+                            <i class="fas fa-exchange-alt"></i>
+                            <span>APDU Protocol</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-</header>
+    <div class="scroll-indicator">
+        <div class="scroll-arrow"></div>
+    </div>
+</section>
 
-<br/> <script type="text/javascript" src="https://counter4.01counter.com/private/countertab.js?c=fd589b7fcbbb6761218a25ec12f6b186"></script> <noscript><a href="http://www.freecounterstat.com" title="free counter"><img src="https://counter4.01counter.com/private/freecounterstat.php?c=fd589b7fcbbb6761218a25ec12f6b186" border="0" title="free counter" alt="free counter"></a> </noscript> 
-    <div class="post p2 p-responsive wrap" role="main">
-      <div class="measure">
-<div class="post-header mb2">
-  <h2>Geldautomat using Java Card</h2>
-  <span class="post-meta">November 1, 2015 to Novemeber 8, 2015</span><br>
-  
-  <span class="post-meta small">
-  
-    10 minutes read
-  
-  </span>
-</div>
-<article class="post-content">
-  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<p>Enthusiasm towards learning Java Card technology has motivated me to develop this application. 
-The application would be very useful for the beginners to study and develop smart card applications. 
-Also, it helps user to understand and develop java card applets. 
-I have published application code on my <a href="https://github.com/MallikarjunTirlapur/Java-Card-Applications">github</a> repo which I developed for the demonstration.</p>   
+<!-- Overview Stats -->
+<section class="content-section">
+    <div class="container">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">2015</div>
+                <div class="stat-label">Development Year</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">9025</div>
+                <div class="stat-label">TCP Socket Port</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">2</div>
+                <div class="stat-label">Applications</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Secure</div>
+            </div>
+        </div>
+    </div>
+</section>
 
-<p>Two applications have been developed, one is a <a href="http://www.oracle.com/technetwork/java/javacard/intro-139322.html">wallet applet</a> which runs on the smartcart. The applet consists of features like Debit, Credit, Balance, PIN Verification, and Card Un-blocking. The other one is, a <strong>host application</strong> which runs on the PC and communicates with the applet using <strong>APDU</strong> (application protocol data units). The applications are developed in Java utilizing java card APIs on NetBeans environment. The communication with the simulator is established on TCP socket port <strong>9025</strong>. So, I have programmed to activate the socket to establish communication between applet and host application. Also, I have designed a Swing GUI to set the commands and data for interaction with the host application.</p>  
+<!-- Application Features -->
+<section class="content-section" style="background-color: #f8fafc;">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Application Components</h2>
+            <p class="section-subtitle">
+                Dual application architecture with secure smart card and host communication
+            </p>
+        </div>
+        
+        <div class="app-components">
+            <div class="component-card">
+                <div class="component-header">
+                    <i class="fas fa-credit-card"></i>
+                    <h4>Wallet Applet</h4>
+                    <span class="component-type">Smart Card Application</span>
+                </div>
+                <div class="component-content">
+                    <p>Secure wallet applet running on the smart card with comprehensive financial transaction capabilities.</p>
+                    <div class="feature-list">
+                        <div class="feature-item">
+                            <i class="fas fa-minus"></i>
+                            <span>Debit Operations</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-plus"></i>
+                            <span>Credit Operations</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-balance-scale"></i>
+                            <span>Balance Inquiry</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-lock"></i>
+                            <span>PIN Verification</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-unlock"></i>
+                            <span>Card Unblocking</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="component-card">
+                <div class="component-header">
+                    <i class="fas fa-desktop"></i>
+                    <h4>Host Application</h4>
+                    <span class="component-type">PC Terminal Application</span>
+                </div>
+                <div class="component-content">
+                    <p>Desktop application providing user interface and communication bridge to the smart card applet.</p>
+                    <div class="feature-list">
+                        <div class="feature-item">
+                            <i class="fas fa-window-maximize"></i>
+                            <span>Swing GUI Interface</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-network-wired"></i>
+                            <span>TCP Socket Communication</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-exchange-alt"></i>
+                            <span>APDU Command Processing</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-cogs"></i>
+                            <span>NetBeans Environment</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-coffee"></i>
+                            <span>Java Card APIs</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-
-
-<h2 id="demo">Demo</h2>
-
-
-<style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style>
-<div class="embed-container"><iframe src="https://www.youtube.com/embed/MUHDPA2SNRI" frameborder="0" allowfullscreen=""></iframe></div>
+<!-- Demo Section -->
+<section class="content-section" id="demo">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Live Demonstration</h2>
+            <p class="section-subtitle">
+                Watch the complete Java Card application in action with secure transactions
+            </p>
+        </div>
+        
+        <div class="demo-container">
+            <div class="video-wrapper">
+                <div class="video-container">
+                    <iframe 
+                        src="https://www.youtube.com/embed/MUHDPA2SNRI" 
+                        title="Java Card Demo" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+            
+            <div class="demo-description">
+                <h4>Demo Features</h4>
+                <ul class="demo-features">
+                    <li><i class="fas fa-check"></i>Smart Card Initialization</li>
+                    <li><i class="fas fa-check"></i>APDU Command Exchange</li>
+                    <li><i class="fas fa-check"></i>PIN Authentication</li>
+                    <li><i class="fas fa-check"></i>Wallet Operations</li>
+                    <li><i class="fas fa-check"></i>Transaction Processing</li>
+                    <li><i class="fas fa-check"></i>Security Protocols</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
 
 
 
@@ -223,33 +512,856 @@ This method closes the socket connection. <br />
 Graphical user interface has devided into two sections. On one section, the process of automatic teller machine can be simulated. In another section, the internal process can be visualized.
 
  
-<figure>
-  <center><img src="/assets/GUI.png" /><center>
-  <figcaption><center><span class="post-meta small"> Graphical User Interface </span><center></figcaption>
-</figure>  
-
-</article>
-
-  <div id="disqus_thread"></div>
-  <script type="text/javascript">
-    var disqus_shortname  = 'MallikarjunTirlapur';
-    var disqus_identifier = '/JavaCard';
-    var disqus_title      = '';
-    (function() {
-      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-  </script>
-  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-
-
-
-
-      </div>
+<!-- Java Card Technology -->
+<section class="content-section" style="background-color: #f8fafc;">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Java Card Technology</h2>
+            <p class="section-subtitle">
+                Understanding the foundations of smart card application development
+            </p>
+        </div>
+        
+        <div class="tech-overview">
+            <div class="tech-section">
+                <div class="tech-icon">
+                    <i class="fas fa-microchip"></i>
+                </div>
+                <div class="tech-content">
+                    <h4>Smart Card Architecture</h4>
+                    <p>Smart cards are credit card-sized devices containing embedded microprocessors and memory. They store and process information through electronic circuits in silicon substrates, offering read, write, and calculating capabilities like miniature computers.</p>
+                    <div class="tech-image">
+                        <img src="../assets/scard.gif" alt="Smart Card Contacts" class="arch-image">
+                        <div class="image-caption">Eight Contact Points of Smart Card Interface</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tech-section">
+                <div class="tech-icon">
+                    <i class="fab fa-java"></i>
+                </div>
+                <div class="tech-content">
+                    <h4>Java Card Platform</h4>
+                    <p>Java Cards run Java programs using specialized APIs. The platform supports primitive data types (byte, short, int, boolean) with specific ranges and limitations. No thread support due to CPU constraints, focusing on security and efficiency.</p>
+                    <div class="data-types">
+                        <div class="data-type">
+                            <span class="type-name">byte</span>
+                            <span class="type-range">-128 to 127</span>
+                        </div>
+                        <div class="data-type">
+                            <span class="type-name">short</span>
+                            <span class="type-range">-32768 to 32767</span>
+                        </div>
+                        <div class="data-type">
+                            <span class="type-name">boolean</span>
+                            <span class="type-range">Byte representation</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
+</section>
 
+<!-- JCRE Architecture -->
+<section class="content-section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Java Card Runtime Environment</h2>
+            <p class="section-subtitle">
+                Virtual Machine and runtime architecture for secure applet execution
+            </p>
+        </div>
+        
+        <div class="jcre-architecture">
+            <div class="arch-diagram">
+                <img src="../assets/archtctre.png" alt="Java Card Architecture" class="architecture-image">
+                <div class="arch-caption">Complete Java Card Technology Architecture</div>
+            </div>
+            
+            <div class="jcre-details">
+                <h4>JCRE Components</h4>
+                <div class="jcre-components">
+                    <div class="jcre-component">
+                        <div class="comp-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <div class="comp-content">
+                            <h5>Virtual Machine</h5>
+                            <p>Bytecode execution environment with Java language support and exception handling</p>
+                        </div>
+                    </div>
+                    <div class="jcre-component">
+                        <div class="comp-icon">
+                            <i class="fas fa-route"></i>
+                        </div>
+                        <div class="comp-content">
+                            <h5>APDU Routing</h5>
+                            <p>Command routing system directing APDUs to appropriate applet instances</p>
+                        </div>
+                    </div>
+                    <div class="jcre-component">
+                        <div class="comp-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="comp-content">
+                            <h5>Security Firewall</h5>
+                            <p>Application separation and secure data sharing mechanisms</p>
+                        </div>
+                    </div>
+                    <div class="jcre-component">
+                        <div class="comp-icon">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <div class="comp-content">
+                            <h5>Transaction Processing</h5>
+                            <p>Atomic operation support with rollback capabilities</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Development Environment -->
+<section class="content-section" style="background-color: #f8fafc;">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Development Environment</h2>
+            <p class="section-subtitle">
+                Professional tools and workflow for Java Card application development
+            </p>
+        </div>
+        
+        <div class="dev-environment">
+            <div class="dev-tools">
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h4>NetBeans IDE 8.0.2</h4>
+                    <p>Integrated development environment with Java Card support and project templates</p>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-toolbox"></i>
+                    </div>
+                    <h4>Java Card Development Kit</h4>
+                    <p>Version 3.0.2 Connected Edition with converter tools and runtime environment</p>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <h4>Java Card Converter</h4>
+                    <p>Post-processing tool creating deployable CAP files from compiled class files</p>
+                </div>
+            </div>
+            
+            <div class="dev-workflow">
+                <img src="../assets/jctool.png" alt="Java Card Development Workflow" class="workflow-image">
+                <div class="workflow-caption">Java Card Applet Creation Process</div>
+            </div>
+            
+            <div class="gui-showcase">
+                <img src="../assets/GUI.png" alt="Graphical User Interface" class="gui-image">
+                <div class="gui-caption">Swing-based Graphical User Interface</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+/* Hero Section Styles */
+.hero-section {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    color: white;
+}
+
+.hero-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-text {
+    flex: 1;
+    max-width: 500px;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    opacity: 0.9;
+    font-weight: 300;
+}
+
+.hero-description {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+    opacity: 0.9;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.hero-visual {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+/* Java Card Specific Styles */
+.smart-card-visual {
+    width: 320px;
+    height: 200px;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    border-radius: 16px;
+    position: relative;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    margin: 0 auto;
+    color: white;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease;
+}
+
+.chip {
+    position: absolute;
+    top: 1.5rem;
+    left: 1.5rem;
+    width: 60px;
+    height: 45px;
+    background: #ffd700;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.chip-contacts {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+    margin-bottom: 4px;
+}
+
+.contact {
+    width: 6px;
+    height: 4px;
+    background: #b8860b;
+    border-radius: 1px;
+}
+
+.chip-label {
+    font-size: 0.6rem;
+    color: #b8860b;
+    font-weight: bold;
+}
+
+.card-number {
+    font-size: 1.2rem;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 2px;
+    margin-top: 4rem;
+}
+
+.card-holder {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+/* App Components */
+.app-components {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 3rem;
+    margin: 3rem 0;
+}
+
+.component-card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.component-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+.component-header {
+    padding: 2rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    text-align: center;
+}
+
+.component-header i {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    opacity: 0.9;
+}
+
+.component-header h4 {
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+}
+
+.component-type {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.component-content {
+    padding: 2rem;
+}
+
+.feature-list {
+    margin-top: 1.5rem;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.feature-item:last-child {
+    border-bottom: none;
+}
+
+.feature-item i {
+    color: var(--primary-color);
+    margin-right: 1rem;
+    width: 16px;
+}
+
+/* Technology Sections */
+.tech-overview {
+    display: grid;
+    gap: 3rem;
+    margin: 3rem 0;
+}
+
+.tech-section {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+    background: var(--card-bg);
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    padding: 2rem;
+}
+
+.tech-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.tech-content {
+    flex: 1;
+}
+
+.tech-image {
+    margin: 1.5rem 0;
+    text-align: center;
+}
+
+.arch-image {
+    max-width: 100%;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.data-types {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.data-type {
+    display: flex;
+    flex-direction: column;
+    background: var(--border-color);
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+    min-width: 120px;
+}
+
+.type-name {
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.type-range {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+/* JCRE Architecture */
+.jcre-architecture {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin: 3rem 0;
+    align-items: start;
+}
+
+.arch-diagram {
+    text-align: center;
+}
+
+.architecture-image {
+    width: 100%;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.jcre-components {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.jcre-component {
+    display: flex;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: var(--card-bg);
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.comp-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+/* Development Environment */
+.dev-tools {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.tool-card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    padding: 2rem;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.tool-card:hover {
+    transform: scale(1.02);
+}
+
+.tool-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    font-size: 1.2rem;
+}
+
+.dev-workflow, .gui-showcase {
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.workflow-image, .gui-image {
+    max-width: 100%;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+/* Demo Container */
+.demo-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 3rem;
+    margin: 2rem 0;
+    align-items: start;
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+    background: var(--card-bg);
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+}
+
+.demo-description {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 2rem;
+}
+
+.demo-features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.demo-features li {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 0;
+    color: var(--text-muted);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.demo-features li:last-child {
+    border-bottom: none;
+}
+
+.demo-features li i {
+    color: var(--primary-color);
+    margin-right: 1rem;
+    width: 16px;
+}
+
+/* Stats Grid */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+}
+
+.stat-card {
+    text-align: center;
+    padding: 2rem;
+    background: var(--card-bg);
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: scale(1.05);
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+/* Floating Elements */
+.floating-elements {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+}
+
+.floating-card {
+    position: absolute;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    animation: float 3s ease-in-out infinite;
+    opacity: 0;
+    animation-fill-mode: forwards;
+}
+
+.floating-card:nth-child(1) {
+    top: 10%;
+    right: -25%;
+    animation-delay: 0.5s;
+}
+
+.floating-card:nth-child(2) {
+    bottom: 35%;
+    left: -30%;
+    animation-delay: 0.8s;
+}
+
+.floating-card:nth-child(3) {
+    top: 60%;
+    right: -20%;
+    animation-delay: 1.1s;
+}
+
+.floating-card i {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .floating-card {
+        display: none;
+    }
+    
+    .smart-card-visual {
+        width: 280px;
+        height: 175px;
+    }
+    
+    .app-components {
+        grid-template-columns: 1fr;
+    }
+    
+    .jcre-architecture {
+        grid-template-columns: 1fr;
+    }
+    
+    .demo-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .tech-section {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .hero-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+    }
+    
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .hero-buttons {
+        justify-content: center;
+    }
+}
+
+/* Scroll Indicator */
+.scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    opacity: 0.8;
+    z-index: 3;
+}
+
+.scroll-arrow {
+    width: 2px;
+    height: 30px;
+    background: white;
+    margin: 0 auto 10px;
+    animation: scrollBounce 2s infinite;
+}
+
+.scroll-arrow::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 8px solid white;
+}
+
+@keyframes scrollBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(10px); }
+}
+
+/* Floating Cards Animation */
+.floating-card {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    padding: 2rem;
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.floating-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.floating-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Enhanced Java Card animations
+    const componentCards = document.querySelectorAll('.component-card');
+    const techSections = document.querySelectorAll('.tech-section');
+    const jcreComponents = document.querySelectorAll('.jcre-component');
+    const toolCards = document.querySelectorAll('.tool-card');
+    const statCards = document.querySelectorAll('.stat-card');
+    const demoFeatures = document.querySelectorAll('.demo-features li');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate-in');
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -100px 0px'
+    });
+
+    // Animate all elements
+    [...componentCards, ...techSections, ...jcreComponents, ...toolCards, ...statCards, ...demoFeatures].forEach((element, index) => {
+        element.style.opacity = '0';
+        element.style.transform = 'translateY(50px)';
+        element.style.transition = `all 0.8s ease ${index * 0.1}s`;
+        observer.observe(element);
+    });
+
+    // Add animate-in styles
+    const style = document.createElement('style');
+    style.textContent = `
+        .component-card.animate-in,
+        .tech-section.animate-in,
+        .jcre-component.animate-in,
+        .tool-card.animate-in,
+        .stat-card.animate-in,
+        .demo-features li.animate-in {
+            opacity: 1 !important;
+            transform: translate(0) !important;
+        }
+    `;
+    document.head.appendChild(style);
+
+    // Smart card animation
+    const smartCard = document.querySelector('.smart-card-visual');
+    if (smartCard) {
+        smartCard.addEventListener('mouseenter', () => {
+            smartCard.style.transform = 'rotateY(-10deg) rotateX(5deg) scale(1.05)';
+        });
+        
+        smartCard.addEventListener('mouseleave', () => {
+            smartCard.style.transform = 'rotateY(0) rotateX(0) scale(1)';
+        });
+    }
+});
+</script>
+
+<!-- Disqus Comments Section -->
+<section class="content-section">
+    <div class="container">
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            var disqus_shortname  = 'MallikarjunTirlapur';
+            var disqus_identifier = '/JavaCard';
+            var disqus_title      = 'JavaCard Technology - Secure Smart Card Development';
+            var disqus_url        = 'https://MallikarjunTirlapur.github.io/JavaCard/';
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+</section>
 
 </body>
 </html>

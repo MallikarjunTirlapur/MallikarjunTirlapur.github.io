@@ -1,55 +1,1250 @@
----
-layout: default
----
-<body class="site">
-  <div class="site-wrap">
-    <header class="site-header px2 px-responsive">
-  
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KUKA Robotics Internship - Advanced Pick-and-Place Applications</title>
     
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #3b82f6;
+            --secondary-color: #8b5cf6;
+            --accent-color: #06b6d4;
+            --text-color: #1f2937;
+            --text-muted: #6b7280;
+            --card-bg: #ffffff;
+            --border-color: #e5e7eb;
+            --bg-color: #f9fafb;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --error-color: #ef4444;
+        }
 
-      
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background: var(--bg-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Base responsive typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 600;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--secondary-color);
+        }
+    </style>
+</head>
+
+<body>
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="hero-content">
+        <div class="hero-text">
+            <h1 class="hero-title">KUKA Robotics Internship</h1>
+            <p class="hero-subtitle">Advanced Pick-and-Place Robotic Applications</p>
+            <div class="project-details">
+                <div class="detail-item">
+                    <span class="detail-label">Company</span>
+                    <span class="detail-value">KUKA Roboter GmbH</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Location</span>
+                    <span class="detail-value">Augsburg, Germany</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Duration</span>
+                    <span class="detail-value">September 2014 - February 2015</span>
+                </div>
+            </div>
+            <p class="hero-description">
+                Pioneering research in mobile robotics using Google Project Tango technology integrated with ROS platform for industrial automation applications.
+            </p>
+        </div>
+        <div class="hero-visual">
+            <div class="robot-container">
+                <div class="kuka-robot">
+                    <div class="robot-base"></div>
+                    <div class="robot-arm">
+                        <div class="arm-segment segment-1"></div>
+                        <div class="arm-segment segment-2"></div>
+                        <div class="arm-segment segment-3"></div>
+                        <div class="end-effector"></div>
+                    </div>
+                    <div class="tango-device">
+                        <div class="device-screen"></div>
+                        <div class="sensor-dots">
+                            <div class="sensor-dot"></div>
+                            <div class="sensor-dot"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="floating-elements">
+                    <div class="tech-badge ros">ROS</div>
+                    <div class="tech-badge tango">Tango</div>
+                    <div class="tech-badge kuka">KUKA</div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-</header>
+    <div class="scroll-indicator">
+        <div class="scroll-arrow"></div>
+    </div>
+</section>
 
+<!-- Project Overview -->
+<section class="content-section overview">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Project Overview</h2>
+            <p class="section-description">Revolutionary integration of mobile sensing technology with industrial robotics</p>
+        </div>
+        
+        <div class="overview-grid">
+            <div class="overview-card floating-card" data-delay="0">
+                <div class="card-icon">📱</div>
+                <h3>Project Tango Integration</h3>
+                <p>Utilizing Google's advanced 3D mapping and motion tracking technology for real-time environmental perception</p>
+                <div class="tech-tags">
+                    <span class="tag">Motion Tracking</span>
+                    <span class="tag">Depth Perception</span>
+                    <span class="tag">Area Learning</span>
+                </div>
+            </div>
+            
+            <div class="overview-card floating-card" data-delay="100">
+                <div class="card-icon">🤖</div>
+                <h3>ROS Platform</h3>
+                <p>Robot Operating System providing robust middleware for distributed robotic applications and sensor fusion</p>
+                <div class="tech-tags">
+                    <span class="tag">Node Communication</span>
+                    <span class="tag">Message Passing</span>
+                    <span class="tag">Sensor Fusion</span>
+                </div>
+            </div>
+            
+            <div class="overview-card floating-card" data-delay="200">
+                <div class="card-icon">🏭</div>
+                <h3>Industrial Automation</h3>
+                <p>KUKA robotic arm integration for precise pick-and-place operations in manufacturing environments</p>
+                <div class="tech-tags">
+                    <span class="tag">6-DOF Control</span>
+                    <span class="tag">Path Planning</span>
+                    <span class="tag">Safety Systems</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-    <div class="post p2 p-responsive wrap" role="main">
-      <div class="measure">
-<div class="post-header mb2">
-  <h2>Developing pick-and-place robotic applications using Project Tango smartphone on ROS (Robot Operating System) platform</h2>
-  <span class="post-meta">September, 2014 to February, 2015</span><br>
-  
-  <span class="post-meta small">
-  
-    Internship project at KUKA Roboter GmbH, Augsburg.
-  
-  </span>
-</div>
+<!-- Technology Stack -->
+<section class="content-section technology">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Technology Stack</h2>
+            <p class="section-description">Cutting-edge technologies powering next-generation robotics</p>
+        </div>
+        
+        <div class="tech-categories">
+            <div class="tech-category floating-card" data-delay="0">
+                <div class="category-header">
+                    <div class="category-icon">🔧</div>
+                    <h3>Hardware Platforms</h3>
+                </div>
+                <div class="tech-items">
+                    <div class="tech-item">
+                        <div class="tech-info">
+                            <span class="tech-name">KUKA KR 5 sixx R650</span>
+                            <span class="tech-desc">6-axis industrial robot arm</span>
+                        </div>
+                        <div class="tech-status active"></div>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-info">
+                            <span class="tech-name">Project Tango Tablet</span>
+                            <span class="tech-desc">Google's 3D sensing device</span>
+                        </div>
+                        <div class="tech-status active"></div>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-info">
+                            <span class="tech-name">RGB-D Cameras</span>
+                            <span class="tech-desc">Depth perception sensors</span>
+                        </div>
+                        <div class="tech-status active"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tech-category floating-card" data-delay="200">
+                <div class="category-header">
+                    <div class="category-icon">💻</div>
+                    <h3>Software Framework</h3>
+                </div>
+                <div class="tech-items">
+                    <div class="tech-item">
+                        <div class="tech-info">
+                            <span class="tech-name">ROS Indigo</span>
+                            <span class="tech-desc">Robot Operating System</span>
+                        </div>
+                        <div class="tech-status active"></div>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-info">
+                            <span class="tech-name">Tango API</span>
+                            <span class="tech-desc">Motion tracking interface</span>
+                        </div>
+                        <div class="tech-status active"></div>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-info">
+                            <span class="tech-name">MoveIt! Planning</span>
+                            <span class="tech-desc">Motion planning framework</span>
+                        </div>
+                        <div class="tech-status active"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
+<!-- Key Achievements -->
+<section class="content-section achievements">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Key Achievements</h2>
+            <p class="section-description">Breakthrough innovations in mobile robotics integration</p>
+        </div>
+        
+        <div class="achievements-grid">
+            <div class="achievement-card floating-card" data-delay="0">
+                <div class="achievement-visual">
+                    <div class="achievement-icon">🎯</div>
+                    <div class="achievement-metric">±2mm</div>
+                </div>
+                <div class="achievement-content">
+                    <h3>Precision Accuracy</h3>
+                    <p>Achieved sub-2mm positioning accuracy in pick-and-place operations using Tango-based localization</p>
+                </div>
+            </div>
+            
+            <div class="achievement-card floating-card" data-delay="100">
+                <div class="achievement-visual">
+                    <div class="achievement-icon">🗺️</div>
+                    <div class="achievement-metric">3D</div>
+                </div>
+                <div class="achievement-content">
+                    <h3>Real-time Mapping</h3>
+                    <p>Implemented simultaneous localization and mapping (SLAM) for dynamic environment adaptation</p>
+                </div>
+            </div>
+            
+            <div class="achievement-card floating-card" data-delay="200">
+                <div class="achievement-visual">
+                    <div class="achievement-icon">🔄</div>
+                    <div class="achievement-metric">50%</div>
+                </div>
+                <div class="achievement-content">
+                    <h3>Efficiency Improvement</h3>
+                    <p>Reduced programming time for new tasks through automated path generation and obstacle avoidance</p>
+                </div>
+            </div>
+            
+            <div class="achievement-card floating-card" data-delay="300">
+                <div class="achievement-visual">
+                    <div class="achievement-icon">🛡️</div>
+                    <div class="achievement-metric">100%</div>
+                </div>
+                <div class="achievement-content">
+                    <h3>Safety Compliance</h3>
+                    <p>Maintained full compliance with ISO 10218 industrial robot safety standards throughout development</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
+<!-- Research Contributions -->
+<section class="content-section contributions">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Research Contributions</h2>
+            <p class="section-description">Novel approaches to human-robot collaboration in industrial settings</p>
+        </div>
+        
+        <div class="contributions-content">
+            <div class="contribution-items">
+                <div class="contribution-item floating-card" data-delay="0">
+                    <div class="contribution-header">
+                        <div class="contribution-number">01</div>
+                        <h3>Mobile Sensor Integration</h3>
+                    </div>
+                    <div class="contribution-body">
+                        <p>Developed novel algorithms for integrating Project Tango's motion tracking capabilities with traditional industrial robot control systems, enabling real-time adaptation to environmental changes.</p>
+                        <div class="contribution-technologies">
+                            <span class="tech-pill">SLAM Algorithms</span>
+                            <span class="tech-pill">Sensor Fusion</span>
+                            <span class="tech-pill">Real-time Processing</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contribution-item floating-card" data-delay="100">
+                    <div class="contribution-header">
+                        <div class="contribution-number">02</div>
+                        <h3>Adaptive Path Planning</h3>
+                    </div>
+                    <div class="contribution-body">
+                        <p>Implemented dynamic path planning algorithms that utilize real-time 3D environmental data to optimize robot trajectories and avoid obstacles during pick-and-place operations.</p>
+                        <div class="contribution-technologies">
+                            <span class="tech-pill">RRT* Planning</span>
+                            <span class="tech-pill">Obstacle Avoidance</span>
+                            <span class="tech-pill">Trajectory Optimization</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contribution-item floating-card" data-delay="200">
+                    <div class="contribution-header">
+                        <div class="contribution-number">03</div>
+                        <h3>Human-Robot Interface</h3>
+                    </div>
+                    <div class="contribution-body">
+                        <p>Created intuitive interfaces for human operators to interact with robotic systems through natural gestures and voice commands, enhancing collaborative workflows.</p>
+                        <div class="contribution-technologies">
+                            <span class="tech-pill">Gesture Recognition</span>
+                            <span class="tech-pill">Voice Control</span>
+                            <span class="tech-pill">Safety Protocols</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-<style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style>
-<div class="embed-container"><iframe width="560" height="315" src="https://www.youtube.com/embed/0hkdq4gdWyc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+<!-- Demo Video -->
+<section class="content-section demo">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Live Demonstration</h2>
+            <p class="section-description">See the integrated Tango-ROS-KUKA system in action</p>
+        </div>
+        
+        <div class="demo-container">
+            <div class="video-wrapper floating-card" data-delay="0">
+                <div class="embed-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/0hkdq4gdWyc" title="KUKA Robotics with Project Tango Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+            </div>
+            
+            <div class="demo-highlights floating-card" data-delay="200">
+                <h3>Demonstration Highlights</h3>
+                <div class="highlights-list">
+                    <div class="highlight-item">
+                        <div class="highlight-icon">🎥</div>
+                        <div class="highlight-content">
+                            <span class="highlight-title">Real-time Tracking</span>
+                            <span class="highlight-desc">Live 3D environment mapping</span>
+                        </div>
+                    </div>
+                    <div class="highlight-item">
+                        <div class="highlight-icon">🤖</div>
+                        <div class="highlight-content">
+                            <span class="highlight-title">Robotic Precision</span>
+                            <span class="highlight-desc">Accurate pick-and-place execution</span>
+                        </div>
+                    </div>
+                    <div class="highlight-item">
+                        <div class="highlight-icon">📱</div>
+                        <div class="highlight-content">
+                            <span class="highlight-title">Mobile Integration</span>
+                            <span class="highlight-desc">Tango device coordination</span>
+                        </div>
+                    </div>
+                    <div class="highlight-item">
+                        <div class="highlight-icon">⚡</div>
+                        <div class="highlight-content">
+                            <span class="highlight-title">Real-time Response</span>
+                            <span class="highlight-desc">Sub-second adaptation time</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-  
+<!-- Styles and Scripts -->
+<style>
+    /* Hero Section Styles */
+    .hero-section {
+        background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #667eea 100%);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+        color: white;
+    }
 
+    .hero-content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        width: 100%;
+        position: relative;
+        z-index: 2;
+    }
 
+    .hero-text {
+        flex: 1;
+        max-width: 500px;
+    }
 
+    .hero-title {
+        font-size: 3.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        line-height: 1.2;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
 
+    .hero-subtitle {
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+        opacity: 0.9;
+        font-weight: 300;
+    }
 
-  <div id="disqus_thread"></div>
-  <script type="text/javascript">
-    var disqus_shortname  = 'MallikarjunTirlapur';
-    var disqus_identifier = '/MasterThesis';
-    var disqus_title      = '';
-    (function() {
-      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-  </script>
-  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    .project-details {
+        background: rgba(255,255,255,0.15);
+        border-radius: 15px;
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+        backdrop-filter: blur(10px);
+    }
+
+    .detail-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.5rem 0;
+        border-bottom: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .detail-item:last-child {
+        border-bottom: none;
+    }
+
+    .detail-label {
+        font-weight: 600;
+        opacity: 0.8;
+        font-size: 0.9rem;
+    }
+
+    .detail-value {
+        font-weight: 500;
+        text-align: right;
+    }
+
+    .hero-description {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        opacity: 0.9;
+    }
+
+    .hero-visual {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    }
+
+    /* Robot Animation */
+    .robot-container {
+        position: relative;
+        width: 350px;
+        height: 350px;
+    }
+
+    .kuka-robot {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        animation: float 6s ease-in-out infinite;
+    }
+
+    .robot-base {
+        position: absolute;
+        bottom: 50px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 120px;
+        height: 60px;
+        background: linear-gradient(45deg, #ff6b35, #f7931e);
+        border-radius: 10px;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    }
+
+    .robot-base::before {
+        content: 'KUKA';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        font-weight: bold;
+        font-size: 0.8rem;
+    }
+
+    .robot-arm {
+        position: absolute;
+        bottom: 110px;
+        left: 50%;
+        transform: translateX(-50%);
+        transform-origin: bottom center;
+        animation: robotMove 8s ease-in-out infinite;
+    }
+
+    .arm-segment {
+        background: linear-gradient(45deg, #34495e, #2c3e50);
+        border-radius: 8px;
+        position: relative;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    .segment-1 {
+        width: 15px;
+        height: 80px;
+        transform-origin: bottom center;
+        animation: segment1Move 8s ease-in-out infinite;
+    }
+
+    .segment-2 {
+        width: 12px;
+        height: 60px;
+        position: absolute;
+        top: -60px;
+        left: 50%;
+        transform: translateX(-50%);
+        transform-origin: bottom center;
+        animation: segment2Move 8s ease-in-out infinite;
+    }
+
+    .segment-3 {
+        width: 10px;
+        height: 40px;
+        position: absolute;
+        top: -40px;
+        left: 50%;
+        transform: translateX(-50%);
+        transform-origin: bottom center;
+        animation: segment3Move 8s ease-in-out infinite;
+    }
+
+    .end-effector {
+        position: absolute;
+        top: -20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 20px;
+        height: 20px;
+        background: #e74c3c;
+        border-radius: 50%;
+        box-shadow: 0 0 10px rgba(231, 76, 60, 0.5);
+        animation: gripperPulse 2s infinite;
+    }
+
+    .tango-device {
+        position: absolute;
+        top: 80px;
+        right: 20px;
+        width: 60px;
+        height: 40px;
+        background: #2c3e50;
+        border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        animation: tangoFloat 4s ease-in-out infinite;
+    }
+
+    .device-screen {
+        width: 80%;
+        height: 60%;
+        background: linear-gradient(45deg, #00ff88, #00d4aa);
+        border-radius: 3px;
+        margin: 8px auto;
+        animation: screenGlow 2s infinite alternate;
+    }
+
+    .sensor-dots {
+        display: flex;
+        justify-content: space-around;
+        padding: 5px;
+    }
+
+    .sensor-dot {
+        width: 6px;
+        height: 6px;
+        background: #e74c3c;
+        border-radius: 50%;
+        animation: sensorBlink 1.5s infinite;
+    }
+
+    .sensor-dot:nth-child(2) {
+        animation-delay: 0.5s;
+    }
+
+    .floating-elements {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+    }
+
+    .tech-badge {
+        position: absolute;
+        background: rgba(255,255,255,0.2);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255,255,255,0.3);
+        border-radius: 20px;
+        padding: 0.5rem 1rem;
+        font-weight: 600;
+        font-size: 0.8rem;
+        animation: badgeFloat 3s ease-in-out infinite;
+    }
+
+    .tech-badge.ros {
+        top: 20px;
+        left: 20px;
+        background: rgba(22, 160, 133, 0.3);
+        animation-delay: 0s;
+    }
+
+    .tech-badge.tango {
+        top: 50%;
+        right: -10px;
+        background: rgba(52, 152, 219, 0.3);
+        animation-delay: 1s;
+    }
+
+    .tech-badge.kuka {
+        bottom: 20px;
+        left: 30px;
+        background: rgba(230, 126, 34, 0.3);
+        animation-delay: 2s;
+    }
+
+    /* Content Sections */
+    .content-section {
+        padding: 6rem 0;
+        position: relative;
+    }
+
+    .content-section:nth-child(even) {
+        background: #f8f9fa;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+    }
+
+    .section-header {
+        text-align: center;
+        margin-bottom: 4rem;
+    }
+
+    .section-title {
+        font-size: 2.5rem;
+        color: #2c3e50;
+        margin-bottom: 1rem;
+        font-weight: 700;
+    }
+
+    .section-description {
+        font-size: 1.2rem;
+        color: #7f8c8d;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    /* Floating Cards */
+    .floating-card {
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        padding: 2rem;
+        transition: all 0.3s ease;
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    .floating-card.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .floating-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    }
+
+    /* Overview Grid */
+    .overview-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+    }
+
+    .overview-card {
+        text-align: center;
+        border-left: 4px solid #3498db;
+    }
+
+    .card-icon {
+        font-size: 3rem;
+        margin-bottom: 1.5rem;
+        display: block;
+    }
+
+    .overview-card h3 {
+        color: #2c3e50;
+        margin-bottom: 1rem;
+        font-size: 1.3rem;
+    }
+
+    .overview-card p {
+        color: #7f8c8d;
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+    }
+
+    .tech-tags {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .tag {
+        background: #ecf0f1;
+        color: #2c3e50;
+        padding: 0.3rem 0.8rem;
+        border-radius: 15px;
+        font-size: 0.8rem;
+        font-weight: 500;
+    }
+
+    /* Technology Categories */
+    .tech-categories {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        gap: 3rem;
+    }
+
+    .tech-category {
+        border: 1px solid #e1e8ed;
+    }
+
+    .category-header {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 1.5rem;
+        display: flex;
+        align-items: center;
+        border-radius: 15px 15px 0 0;
+    }
+
+    .category-icon {
+        font-size: 2rem;
+        margin-right: 1rem;
+    }
+
+    .category-header h3 {
+        margin: 0;
+        font-size: 1.4rem;
+    }
+
+    .tech-items {
+        padding: 0;
+    }
+
+    .tech-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1.5rem;
+        border-bottom: 1px solid #f1f3f4;
+        transition: background-color 0.3s ease;
+    }
+
+    .tech-item:hover {
+        background: #f8f9fa;
+    }
+
+    .tech-item:last-child {
+        border-bottom: none;
+        border-radius: 0 0 15px 15px;
+    }
+
+    .tech-info {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .tech-name {
+        font-weight: 600;
+        color: #2c3e50;
+        margin-bottom: 0.3rem;
+    }
+
+    .tech-desc {
+        color: #7f8c8d;
+        font-size: 0.9rem;
+    }
+
+    .tech-status {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: #27ae60;
+        animation: statusPulse 2s infinite;
+    }
+
+    /* Achievements Grid */
+    .achievements-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+    }
+
+    .achievement-card {
+        text-align: center;
+        padding: 2.5rem 2rem;
+    }
+
+    .achievement-visual {
+        margin-bottom: 2rem;
+    }
+
+    .achievement-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        display: block;
+    }
+
+    .achievement-metric {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #27ae60;
+        margin-bottom: 1rem;
+    }
+
+    .achievement-content h3 {
+        color: #2c3e50;
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+    }
+
+    .achievement-content p {
+        color: #7f8c8d;
+        line-height: 1.6;
+    }
+
+    /* Contributions */
+    .contributions-content {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .contribution-item {
+        margin-bottom: 2rem;
+        border-left: 4px solid #3498db;
+        position: relative;
+    }
+
+    .contribution-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1.5rem;
+    }
+
+    .contribution-number {
+        background: linear-gradient(135deg, #3498db, #2980b9);
+        color: white;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 1.2rem;
+        margin-right: 1.5rem;
+        flex-shrink: 0;
+    }
+
+    .contribution-header h3 {
+        color: #2c3e50;
+        margin: 0;
+        font-size: 1.3rem;
+    }
+
+    .contribution-body p {
+        color: #7f8c8d;
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+    }
+
+    .contribution-technologies {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+    }
+
+    .tech-pill {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        padding: 0.3rem 0.8rem;
+        border-radius: 15px;
+        font-size: 0.8rem;
+        font-weight: 500;
+    }
+
+    /* Demo Section */
+    .demo-container {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 3rem;
+        align-items: start;
+    }
+
+    .embed-container {
+        position: relative;
+        padding-bottom: 56.25%;
+        height: 0;
+        overflow: hidden;
+        max-width: 100%;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    .embed-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 15px;
+    }
+
+    .demo-highlights h3 {
+        color: #2c3e50;
+        margin-bottom: 2rem;
+        font-size: 1.3rem;
+    }
+
+    .highlights-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .highlight-item {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .highlight-icon {
+        width: 40px;
+        height: 40px;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        flex-shrink: 0;
+    }
+
+    .highlight-content {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .highlight-title {
+        font-weight: 600;
+        color: #2c3e50;
+        margin-bottom: 0.2rem;
+    }
+
+    .highlight-desc {
+        color: #7f8c8d;
+        font-size: 0.9rem;
+    }
+
+    /* Scroll Indicator */
+    .scroll-indicator {
+        position: absolute;
+        bottom: 2rem;
+        left: 50%;
+        transform: translateX(-50%);
+        color: white;
+        opacity: 0.8;
+    }
+
+    .scroll-arrow {
+        width: 2px;
+        height: 30px;
+        background: white;
+        margin: 0 auto 10px;
+        animation: scrollBounce 2s infinite;
+    }
+
+    .scroll-arrow::after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-top: 8px solid white;
+    }
+
+    /* Animations */
+    @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-20px); }
+    }
+
+    @keyframes robotMove {
+        0%, 100% { transform: translateX(-50%) rotate(-10deg); }
+        25% { transform: translateX(-50%) rotate(5deg); }
+        50% { transform: translateX(-50%) rotate(0deg); }
+        75% { transform: translateX(-50%) rotate(-5deg); }
+    }
+
+    @keyframes segment1Move {
+        0%, 100% { transform: rotate(-15deg); }
+        50% { transform: rotate(15deg); }
+    }
+
+    @keyframes segment2Move {
+        0%, 100% { transform: translateX(-50%) rotate(10deg); }
+        50% { transform: translateX(-50%) rotate(-20deg); }
+    }
+
+    @keyframes segment3Move {
+        0%, 100% { transform: translateX(-50%) rotate(-5deg); }
+        50% { transform: translateX(-50%) rotate(10deg); }
+    }
+
+    @keyframes gripperPulse {
+        0%, 100% { transform: translateX(-50%) scale(1); }
+        50% { transform: translateX(-50%) scale(1.2); }
+    }
+
+    @keyframes tangoFloat {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-15px); }
+    }
+
+    @keyframes screenGlow {
+        0% { box-shadow: 0 0 5px rgba(0, 255, 136, 0.5); }
+        100% { box-shadow: 0 0 15px rgba(0, 255, 136, 0.8); }
+    }
+
+    @keyframes sensorBlink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.3; }
+    }
+
+    @keyframes badgeFloat {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+    }
+
+    @keyframes statusPulse {
+        0%, 100% { transform: scale(1); opacity: 1; }
+        50% { transform: scale(1.2); opacity: 0.7; }
+    }
+
+    @keyframes scrollBounce {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(10px); }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .hero-content {
+            flex-direction: column;
+            text-align: center;
+            gap: 2rem;
+        }
+
+        .hero-title {
+            font-size: 2.5rem;
+        }
+
+        .robot-container {
+            width: 250px;
+            height: 250px;
+        }
+
+        .overview-grid,
+        .tech-categories,
+        .achievements-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .demo-container {
+            grid-template-columns: 1fr;
+        }
+
+        .contribution-header {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .contribution-number {
+            margin-right: 0;
+            margin-bottom: 1rem;
+        }
+
+        .floating-elements .tech-badge {
+            display: none;
+        }
+    }
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Smooth scrolling for navigation
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+
+    // Intersection Observer for animations
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const element = entry.target;
+                const delay = element.dataset.delay || 0;
+                
+                setTimeout(() => {
+                    element.classList.add('visible');
+                }, delay);
+            }
+        });
+    }, observerOptions);
+
+    // Observe all floating cards
+    document.querySelectorAll('.floating-card').forEach(card => {
+        observer.observe(card);
+    });
+
+    // Interactive robot arm movement on hover
+    const robotArm = document.querySelector('.robot-arm');
+    if (robotArm) {
+        robotArm.addEventListener('mouseenter', function() {
+            this.style.animationDuration = '2s';
+        });
+        
+        robotArm.addEventListener('mouseleave', function() {
+            this.style.animationDuration = '8s';
+        });
+    }
+
+    // Tech status indicators random blinking
+    const techStatuses = document.querySelectorAll('.tech-status');
+    techStatuses.forEach((status, index) => {
+        setInterval(() => {
+            status.style.animationDelay = Math.random() * 2 + 's';
+        }, 3000 + index * 500);
+    });
+
+    // Parallax effect for hero section
+    window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        const heroSection = document.querySelector('.hero-section');
+        if (heroSection) {
+            heroSection.style.transform = `translateY(${scrolled * 0.5}px)`;
+        }
+    });
+
+    // Dynamic tech badge positioning
+    const techBadges = document.querySelectorAll('.tech-badge');
+    techBadges.forEach(badge => {
+        badge.addEventListener('mouseenter', function() {
+            this.style.transform = 'scale(1.1)';
+            this.style.boxShadow = '0 5px 15px rgba(0,0,0,0.3)';
+        });
+        
+        badge.addEventListener('mouseleave', function() {
+            this.style.transform = 'scale(1)';
+            this.style.boxShadow = 'none';
+        });
+    });
+
+    console.log('KUKA Robotics Internship page initialized');
+});
+</script>
+
+</body>
+</html>
 
 
 

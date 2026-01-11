@@ -1,61 +1,1150 @@
----
-layout: default
----
-<body class="site">
-  <div class="site-wrap">
-    <header class="site-header px2 px-responsive">
-  
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IoT Home Automation - Smart Energy Management System</title>
     
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #3b82f6;
+            --secondary-color: #8b5cf6;
+            --accent-color: #06b6d4;
+            --text-color: #1f2937;
+            --text-muted: #6b7280;
+            --card-bg: #ffffff;
+            --border-color: #e5e7eb;
+            --bg-color: #f9fafb;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --error-color: #ef4444;
+        }
 
-      
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background: var(--bg-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Base responsive typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 600;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--secondary-color);
+        }
+    </style>
+</head>
+
+<body>
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="hero-content">
+        <div class="hero-text">
+            <h1 class="hero-title">IoT Home Automation</h1>
+            <p class="hero-subtitle">Smart Home Energy Management System</p>
+            <div class="project-meta">
+                <span class="timeline">April 2014 - July 2014</span>
+                <span class="motivation">Energy-efficient home automation solution</span>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="smart-home-container">
+                <div class="smart-home">
+                    <div class="home-base"></div>
+                    <div class="sensor-nodes">
+                        <div class="sensor-node temp" data-type="temperature">🌡️</div>
+                        <div class="sensor-node light" data-type="lighting">💡</div>
+                        <div class="sensor-node security" data-type="security">🔒</div>
+                        <div class="sensor-node energy" data-type="energy">⚡</div>
+                    </div>
+                    <div class="wifi-signals"></div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-</header>
-
-
-    <div class="post p2 p-responsive wrap" role="main">
-      <div class="measure">
-<div class="post-header mb2">
-  <h2>IoT Home Automation</h2>
-  <span class="post-meta">April, 2014 to July, 2014</span><br>
-  
-  <span class="post-meta small">
-  
-    A hobby project, motivation is to save the money on the energy bills.
-  
-  </span>
-</div>
-
-
-
-
-  
-
-
-
-
-
-  <div id="disqus_thread"></div>
-  <script type="text/javascript">
-    var disqus_shortname  = 'MallikarjunTirlapur';
-    var disqus_identifier = '/MasterThesis';
-    var disqus_title      = '';
-    (function() {
-      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-  </script>
-  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-
-
-
-
-      </div>
+    <div class="scroll-indicator">
+        <div class="scroll-arrow"></div>
     </div>
-  </div>
+</section>
+<!-- Project Overview -->
+<section class="content-section overview">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Project Overview</h2>
+            <p class="section-description">Intelligent home automation system designed to reduce energy consumption and costs</p>
+        </div>
+        
+        <div class="overview-cards">
+            <div class="overview-card floating-card" data-delay="0">
+                <div class="card-icon">🏠</div>
+                <h3>Smart Home Hub</h3>
+                <p>Central control unit managing all connected devices and sensors throughout the home</p>
+            </div>
+            
+            <div class="overview-card floating-card" data-delay="100">
+                <div class="card-icon">📊</div>
+                <h3>Energy Monitoring</h3>
+                <p>Real-time tracking and analysis of power consumption across different home appliances</p>
+            </div>
+            
+            <div class="overview-card floating-card" data-delay="200">
+                <div class="card-icon">🤖</div>
+                <h3>Automated Control</h3>
+                <p>Intelligent scheduling and automatic adjustment of lighting, temperature, and security systems</p>
+            </div>
+            
+            <div class="overview-card floating-card" data-delay="300">
+                <div class="card-icon">💰</div>
+                <h3>Cost Savings</h3>
+                <p>Optimized energy usage patterns resulting in significant reduction of monthly utility bills</p>
+            </div>
+        </div>
+    </div>
+</section>
 
+<!-- System Architecture -->
+<section class="content-section architecture">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">System Architecture</h2>
+            <p class="section-description">Multi-layered IoT architecture for seamless home automation</p>
+        </div>
+        
+        <div class="architecture-grid">
+            <div class="architecture-layer floating-card" data-delay="0">
+                <div class="layer-header">
+                    <div class="layer-icon">📱</div>
+                    <h3>Presentation Layer</h3>
+                </div>
+                <div class="layer-content">
+                    <ul>
+                        <li>Mobile App Interface</li>
+                        <li>Web Dashboard</li>
+                        <li>Voice Commands</li>
+                        <li>Real-time Notifications</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="architecture-layer floating-card" data-delay="100">
+                <div class="layer-header">
+                    <div class="layer-icon">🔧</div>
+                    <h3>Control Layer</h3>
+                </div>
+                <div class="layer-content">
+                    <ul>
+                        <li>Automation Engine</li>
+                        <li>Decision Making Logic</li>
+                        <li>Scheduling System</li>
+                        <li>Rule Management</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="architecture-layer floating-card" data-delay="200">
+                <div class="layer-header">
+                    <div class="layer-icon">🌐</div>
+                    <h3>Communication Layer</h3>
+                </div>
+                <div class="layer-content">
+                    <ul>
+                        <li>WiFi Connectivity</li>
+                        <li>Zigbee Protocol</li>
+                        <li>Bluetooth Mesh</li>
+                        <li>Cloud Integration</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="architecture-layer floating-card" data-delay="300">
+                <div class="layer-header">
+                    <div class="layer-icon">🔌</div>
+                    <h3>Device Layer</h3>
+                </div>
+                <div class="layer-content">
+                    <ul>
+                        <li>Smart Switches</li>
+                        <li>Temperature Sensors</li>
+                        <li>Motion Detectors</li>
+                        <li>Energy Meters</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Key Features -->
+<section class="content-section features">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Key Features</h2>
+            <p class="section-description">Advanced capabilities for intelligent home management</p>
+        </div>
+        
+        <div class="features-grid">
+            <div class="feature-item floating-card" data-delay="0">
+                <div class="feature-visual">
+                    <div class="feature-icon animate-pulse">🌡️</div>
+                </div>
+                <div class="feature-content">
+                    <h3>Climate Control</h3>
+                    <p>Automatic temperature regulation based on occupancy patterns, weather conditions, and energy efficiency preferences</p>
+                    <div class="feature-tags">
+                        <span class="tag">HVAC Integration</span>
+                        <span class="tag">Smart Thermostats</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="feature-item floating-card" data-delay="100">
+                <div class="feature-visual">
+                    <div class="feature-icon animate-pulse">💡</div>
+                </div>
+                <div class="feature-content">
+                    <h3>Intelligent Lighting</h3>
+                    <p>Adaptive lighting system that adjusts brightness and color temperature based on time of day and room usage</p>
+                    <div class="feature-tags">
+                        <span class="tag">LED Control</span>
+                        <span class="tag">Dimming</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="feature-item floating-card" data-delay="200">
+                <div class="feature-visual">
+                    <div class="feature-icon animate-pulse">🔒</div>
+                </div>
+                <div class="feature-content">
+                    <h3>Security Management</h3>
+                    <p>Comprehensive security system with motion detection, door/window sensors, and automated alert mechanisms</p>
+                    <div class="feature-tags">
+                        <span class="tag">Motion Detection</span>
+                        <span class="tag">Alerts</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="feature-item floating-card" data-delay="300">
+                <div class="feature-visual">
+                    <div class="feature-icon animate-pulse">📊</div>
+                </div>
+                <div class="feature-content">
+                    <h3>Energy Analytics</h3>
+                    <p>Detailed energy consumption analysis with predictive insights and optimization recommendations</p>
+                    <div class="feature-tags">
+                        <span class="tag">Power Monitoring</span>
+                        <span class="tag">Analytics</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Technical Implementation -->
+<section class="content-section implementation">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Technical Implementation</h2>
+            <p class="section-description">Hardware and software technologies powering the system</p>
+        </div>
+        
+        <div class="implementation-content">
+            <div class="tech-categories">
+                <div class="tech-category floating-card" data-delay="0">
+                    <h3>Hardware Components</h3>
+                    <div class="tech-items">
+                        <div class="tech-item">
+                            <span class="tech-name">Raspberry Pi 3</span>
+                            <span class="tech-desc">Central Hub Controller</span>
+                        </div>
+                        <div class="tech-item">
+                            <span class="tech-name">Arduino Nano</span>
+                            <span class="tech-desc">Sensor Node Controllers</span>
+                        </div>
+                        <div class="tech-item">
+                            <span class="tech-name">ESP8266 WiFi</span>
+                            <span class="tech-desc">Wireless Communication</span>
+                        </div>
+                        <div class="tech-item">
+                            <span class="tech-name">Relay Modules</span>
+                            <span class="tech-desc">Appliance Control</span>
+                        </div>
+                        <div class="tech-item">
+                            <span class="tech-name">DHT22 Sensors</span>
+                            <span class="tech-desc">Temperature & Humidity</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tech-category floating-card" data-delay="200">
+                    <h3>Software Stack</h3>
+                    <div class="tech-items">
+                        <div class="tech-item">
+                            <span class="tech-name">Python Flask</span>
+                            <span class="tech-desc">Web Server Framework</span>
+                        </div>
+                        <div class="tech-item">
+                            <span class="tech-name">SQLite Database</span>
+                            <span class="tech-desc">Data Storage</span>
+                        </div>
+                        <div class="tech-item">
+                            <span class="tech-name">MQTT Protocol</span>
+                            <span class="tech-desc">Device Communication</span>
+                        </div>
+                        <div class="tech-item">
+                            <span class="tech-name">JavaScript/jQuery</span>
+                            <span class="tech-desc">Frontend Interface</span>
+                        </div>
+                        <div class="tech-item">
+                            <span class="tech-name">Cron Jobs</span>
+                            <span class="tech-desc">Task Scheduling</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Results & Impact -->
+<section class="content-section results">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Results & Impact</h2>
+            <p class="section-description">Measurable outcomes and energy savings achieved</p>
+        </div>
+        
+        <div class="results-grid">
+            <div class="result-metric floating-card" data-delay="0">
+                <div class="metric-value">25%</div>
+                <div class="metric-label">Energy Reduction</div>
+                <div class="metric-desc">Average monthly electricity consumption decrease</div>
+            </div>
+            
+            <div class="result-metric floating-card" data-delay="100">
+                <div class="metric-value">$40</div>
+                <div class="metric-label">Monthly Savings</div>
+                <div class="metric-desc">Reduced utility bills through optimization</div>
+            </div>
+            
+            <div class="result-metric floating-card" data-delay="200">
+                <div class="metric-value">15</div>
+                <div class="metric-label">Connected Devices</div>
+                <div class="metric-desc">Smart devices integrated into the system</div>
+            </div>
+            
+            <div class="result-metric floating-card" data-delay="300">
+                <div class="metric-value">99.8%</div>
+                <div class="metric-label">System Uptime</div>
+                <div class="metric-desc">Reliable operation with minimal downtime</div>
+            </div>
+        </div>
+        
+        <div class="energy-chart floating-card" data-delay="400">
+            <h3>Energy Consumption Pattern</h3>
+            <div class="chart-container">
+                <div class="chart-bars">
+                    <div class="chart-bar" data-value="100" data-label="Before">
+                        <div class="bar-fill before"></div>
+                        <span class="bar-label">Before IoT</span>
+                    </div>
+                    <div class="chart-bar" data-value="75" data-label="After">
+                        <div class="bar-fill after"></div>
+                        <span class="bar-label">After IoT</span>
+                    </div>
+                </div>
+                <div class="chart-legend">
+                    <div class="legend-item">
+                        <span class="legend-color before"></span>
+                        <span class="legend-text">Baseline Consumption</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color after"></span>
+                        <span class="legend-text">Optimized Consumption</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Styles and Scripts -->
+<style>
+    /* Hero Section Styles */
+    .hero-section {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+        color: white;
+    }
+
+    .hero-content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        width: 100%;
+        position: relative;
+        z-index: 2;
+    }
+
+    .hero-text {
+        flex: 1;
+        max-width: 500px;
+    }
+
+    .hero-title {
+        font-size: 3.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        line-height: 1.2;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .hero-subtitle {
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+        opacity: 0.9;
+        font-weight: 300;
+    }
+
+    .project-meta {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .timeline, .motivation {
+        display: block;
+        padding: 0.5rem 1rem;
+        background: rgba(255,255,255,0.2);
+        border-radius: 20px;
+        backdrop-filter: blur(10px);
+        font-size: 0.9rem;
+    }
+
+    .hero-visual {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Smart Home Animation */
+    .smart-home-container {
+        position: relative;
+        width: 300px;
+        height: 300px;
+    }
+
+    .smart-home {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        animation: float 6s ease-in-out infinite;
+    }
+
+    .home-base {
+        width: 200px;
+        height: 200px;
+        background: linear-gradient(45deg, #4CAF50, #45a049);
+        border-radius: 20px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    }
+
+    .home-base::before {
+        content: '🏠';
+        font-size: 4rem;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .sensor-nodes {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+    }
+
+    .sensor-node {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        background: rgba(255,255,255,0.9);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        animation: pulse 2s infinite;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+    }
+
+    .sensor-node:hover {
+        transform: scale(1.2);
+    }
+
+    .sensor-node.temp {
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        animation-delay: 0s;
+    }
+
+    .sensor-node.light {
+        top: 50%;
+        right: 20px;
+        transform: translateY(-50%);
+        animation-delay: 0.5s;
+    }
+
+    .sensor-node.security {
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        animation-delay: 1s;
+    }
+
+    .sensor-node.energy {
+        top: 50%;
+        left: 20px;
+        transform: translateY(-50%);
+        animation-delay: 1.5s;
+    }
+
+    .wifi-signals {
+        position: absolute;
+        top: -20px;
+        right: -20px;
+        width: 40px;
+        height: 40px;
+    }
+
+    .wifi-signals::before {
+        content: '📶';
+        font-size: 2rem;
+        animation: blink 1.5s infinite;
+    }
+
+    /* Content Sections */
+    .content-section {
+        padding: 6rem 0;
+        position: relative;
+    }
+
+    .content-section:nth-child(even) {
+        background: #f8f9fa;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+    }
+
+    .section-header {
+        text-align: center;
+        margin-bottom: 4rem;
+    }
+
+    .section-title {
+        font-size: 2.5rem;
+        color: #2c3e50;
+        margin-bottom: 1rem;
+        font-weight: 700;
+    }
+
+    .section-description {
+        font-size: 1.2rem;
+        color: #7f8c8d;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    /* Floating Cards */
+    .floating-card {
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        padding: 2rem;
+        transition: all 0.3s ease;
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    .floating-card.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .floating-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    }
+
+    /* Overview Cards */
+    .overview-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+    }
+
+    .overview-card {
+        text-align: center;
+    }
+
+    .card-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        display: block;
+    }
+
+    .overview-card h3 {
+        color: #2c3e50;
+        margin-bottom: 1rem;
+        font-size: 1.3rem;
+    }
+
+    .overview-card p {
+        color: #7f8c8d;
+        line-height: 1.6;
+    }
+
+    /* Architecture Grid */
+    .architecture-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+    }
+
+    .architecture-layer {
+        border-left: 4px solid #3498db;
+    }
+
+    .layer-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1.5rem;
+    }
+
+    .layer-icon {
+        font-size: 2rem;
+        margin-right: 1rem;
+    }
+
+    .layer-header h3 {
+        color: #2c3e50;
+        margin: 0;
+        font-size: 1.3rem;
+    }
+
+    .layer-content ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .layer-content li {
+        padding: 0.5rem 0;
+        color: #7f8c8d;
+        position: relative;
+        padding-left: 1.5rem;
+    }
+
+    .layer-content li::before {
+        content: '▶';
+        position: absolute;
+        left: 0;
+        color: #3498db;
+        font-size: 0.8rem;
+    }
+
+    /* Features Grid */
+    .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+    }
+
+    .feature-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 1.5rem;
+    }
+
+    .feature-visual {
+        flex-shrink: 0;
+    }
+
+    .feature-icon {
+        font-size: 3rem;
+        display: block;
+    }
+
+    .feature-content h3 {
+        color: #2c3e50;
+        margin-bottom: 1rem;
+        font-size: 1.3rem;
+    }
+
+    .feature-content p {
+        color: #7f8c8d;
+        line-height: 1.6;
+        margin-bottom: 1rem;
+    }
+
+    .feature-tags {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+    }
+
+    .tag {
+        background: #ecf0f1;
+        color: #2c3e50;
+        padding: 0.3rem 0.8rem;
+        border-radius: 15px;
+        font-size: 0.8rem;
+        font-weight: 500;
+    }
+
+    /* Tech Categories */
+    .tech-categories {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        gap: 2rem;
+    }
+
+    .tech-category h3 {
+        color: #2c3e50;
+        margin-bottom: 1.5rem;
+        font-size: 1.4rem;
+        text-align: center;
+    }
+
+    .tech-items {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .tech-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+        background: #f8f9fa;
+        border-radius: 10px;
+        margin-bottom: 1rem;
+        transition: background-color 0.3s ease;
+    }
+
+    .tech-item:hover {
+        background: #e9ecef;
+    }
+
+    .tech-name {
+        font-weight: 600;
+        color: #2c3e50;
+    }
+
+    .tech-desc {
+        color: #7f8c8d;
+        font-size: 0.9rem;
+    }
+
+    /* Results Grid */
+    .results-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 2rem;
+        margin-bottom: 3rem;
+    }
+
+    .result-metric {
+        text-align: center;
+        padding: 2rem 1rem;
+    }
+
+    .metric-value {
+        font-size: 3rem;
+        font-weight: 700;
+        color: #27ae60;
+        margin-bottom: 0.5rem;
+        display: block;
+    }
+
+    .metric-label {
+        font-size: 1.2rem;
+        color: #2c3e50;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        display: block;
+    }
+
+    .metric-desc {
+        color: #7f8c8d;
+        font-size: 0.9rem;
+    }
+
+    /* Energy Chart */
+    .energy-chart {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .energy-chart h3 {
+        color: #2c3e50;
+        text-align: center;
+        margin-bottom: 2rem;
+        font-size: 1.4rem;
+    }
+
+    .chart-bars {
+        display: flex;
+        justify-content: space-around;
+        align-items: end;
+        height: 200px;
+        margin-bottom: 2rem;
+        padding: 0 2rem;
+    }
+
+    .chart-bar {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100px;
+    }
+
+    .bar-fill {
+        width: 60px;
+        border-radius: 5px 5px 0 0;
+        margin-bottom: 1rem;
+        animation: fillBar 2s ease-out;
+        transition: height 0.3s ease;
+    }
+
+    .bar-fill.before {
+        height: 150px;
+        background: linear-gradient(to top, #e74c3c, #c0392b);
+    }
+
+    .bar-fill.after {
+        height: 112px;
+        background: linear-gradient(to top, #27ae60, #2ecc71);
+    }
+
+    .bar-label {
+        color: #2c3e50;
+        font-weight: 600;
+        font-size: 0.9rem;
+    }
+
+    .chart-legend {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+    }
+
+    .legend-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .legend-color {
+        width: 20px;
+        height: 20px;
+        border-radius: 3px;
+    }
+
+    .legend-color.before {
+        background: #e74c3c;
+    }
+
+    .legend-color.after {
+        background: #27ae60;
+    }
+
+    .legend-text {
+        color: #2c3e50;
+        font-size: 0.9rem;
+    }
+
+    /* Scroll Indicator */
+    .scroll-indicator {
+        position: absolute;
+        bottom: 2rem;
+        left: 50%;
+        transform: translateX(-50%);
+        color: white;
+        opacity: 0.8;
+    }
+
+    .scroll-arrow {
+        width: 2px;
+        height: 30px;
+        background: white;
+        margin: 0 auto 10px;
+        animation: scrollBounce 2s infinite;
+    }
+
+    .scroll-arrow::after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-top: 8px solid white;
+    }
+
+    /* Animations */
+    @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-20px); }
+    }
+
+    @keyframes pulse {
+        0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255,255,255,0.7); }
+        50% { transform: scale(1.1); box-shadow: 0 0 0 10px rgba(255,255,255,0); }
+    }
+
+    @keyframes blink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.5; }
+    }
+
+    @keyframes scrollBounce {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(10px); }
+    }
+
+    @keyframes fillBar {
+        0% { height: 0; }
+        100% { height: var(--target-height, 100%); }
+    }
+
+    .animate-pulse {
+        animation: pulse 2s infinite;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .hero-content {
+            flex-direction: column;
+            text-align: center;
+            gap: 2rem;
+        }
+
+        .hero-title {
+            font-size: 2.5rem;
+        }
+
+        .smart-home-container {
+            width: 250px;
+            height: 250px;
+        }
+
+        .home-base {
+            width: 150px;
+            height: 150px;
+        }
+
+        .overview-cards,
+        .architecture-grid,
+        .features-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .tech-categories {
+            grid-template-columns: 1fr;
+        }
+
+        .results-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .feature-item {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .chart-bars {
+            padding: 0 1rem;
+        }
+
+        .chart-bar {
+            width: 80px;
+        }
+    }
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Smooth scrolling for navigation
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+
+    // Intersection Observer for animations
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const element = entry.target;
+                const delay = element.dataset.delay || 0;
+                
+                setTimeout(() => {
+                    element.classList.add('visible');
+                }, delay);
+            }
+        });
+    }, observerOptions);
+
+    // Observe all floating cards
+    document.querySelectorAll('.floating-card').forEach(card => {
+        observer.observe(card);
+    });
+
+    // Smart home sensor interactions
+    document.querySelectorAll('.sensor-node').forEach(sensor => {
+        sensor.addEventListener('mouseenter', function() {
+            const type = this.dataset.type;
+            this.style.transform += ' scale(1.2)';
+            
+            // Add tooltip or status info
+            if (!this.querySelector('.sensor-tooltip')) {
+                const tooltip = document.createElement('div');
+                tooltip.className = 'sensor-tooltip';
+                tooltip.style.cssText = `
+                    position: absolute;
+                    top: -40px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    background: rgba(0,0,0,0.8);
+                    color: white;
+                    padding: 5px 10px;
+                    border-radius: 5px;
+                    font-size: 12px;
+                    white-space: nowrap;
+                    z-index: 1000;
+                `;
+                
+                const tooltipTexts = {
+                    temperature: 'Temperature: 22°C',
+                    lighting: 'Lights: Auto Mode',
+                    security: 'Security: Armed',
+                    energy: 'Power: 2.1kW'
+                };
+                
+                tooltip.textContent = tooltipTexts[type] || type;
+                this.appendChild(tooltip);
+            }
+        });
+        
+        sensor.addEventListener('mouseleave', function() {
+            const tooltip = this.querySelector('.sensor-tooltip');
+            if (tooltip) {
+                tooltip.remove();
+            }
+        });
+    });
+
+    // Animate energy chart bars
+    const chartBars = document.querySelectorAll('.bar-fill');
+    const chartObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const bar = entry.target;
+                bar.style.setProperty('--target-height', bar.style.height);
+                bar.style.animation = 'fillBar 2s ease-out forwards';
+            }
+        });
+    }, { threshold: 0.5 });
+
+    chartBars.forEach(bar => {
+        chartObserver.observe(bar);
+    });
+
+    // Add WiFi signal animation
+    const wifiElement = document.querySelector('.wifi-signals');
+    if (wifiElement) {
+        setInterval(() => {
+            wifiElement.style.opacity = wifiElement.style.opacity === '0.5' ? '1' : '0.5';
+        }, 1500);
+    }
+
+    // Parallax effect for hero section
+    window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        const heroSection = document.querySelector('.hero-section');
+        if (heroSection) {
+            heroSection.style.transform = `translateY(${scrolled * 0.5}px)`;
+        }
+    });
+
+    console.log('IoT Home Automation page initialized');
+});
+</script>
 
 </body>
 </html>

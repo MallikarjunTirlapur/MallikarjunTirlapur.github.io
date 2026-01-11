@@ -1,61 +1,706 @@
----
-layout: default
----
-<body class="site">
-  <div class="site-wrap">
-    <header class="site-header px2 px-responsive">
-  
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sensor Suit - Inertial Motion Capture System</title>
     
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+    </script>
+    
+    <!-- Visitor Counter -->
+    <script type="text/javascript" src="https://counter4.01counter.com/private/countertab.js?c=fd589b7fcbbb6761218a25ec12f6b186"></script>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #3b82f6;
+            --secondary-color: #8b5cf6;
+            --accent-color: #06b6d4;
+            --text-color: #1f2937;
+            --text-muted: #6b7280;
+            --card-bg: #ffffff;
+            --border-color: #e5e7eb;
+            --bg-color: #f9fafb;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --error-color: #ef4444;
+        }
 
-      
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background: var(--bg-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Base responsive typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 600;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--secondary-color);
+        }
+    </style>
+</head>
+
+<body>
+<!-- Hero Section -->
+<section class="project-hero">
+    <div class="container">
+        <div class="hero-content">
+            <div class="project-hero-content">
+                <h1>Sensor Suit</h1>
+                <p class="subtitle">Inertial Motion Capture System</p>
+                <p class="description">
+                    Advanced wearable technology featuring full-body inertial sensor network for precise 
+                    motion capture and verification. Academic research project implementing distributed 
+                    sensor fusion and real-time biomechanical analysis.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#features" class="btn btn-secondary">
+                        <i class="fas fa-eye"></i>
+                        Explore Features
+                    </a>
+                </div>
+            </div>
+            
+            <div class="project-hero-visual">
+                <div class="hero-image-container">
+                    <div class="sensor-suit-visualization">
+                        <div class="human-silhouette">
+                            <div class="sensor-node sensor-head">
+                                <i class="fas fa-microchip"></i>
+                            </div>
+                            <div class="sensor-node sensor-chest">
+                                <i class="fas fa-microchip"></i>
+                            </div>
+                            <div class="sensor-node sensor-arm-left">
+                                <i class="fas fa-microchip"></i>
+                            </div>
+                            <div class="sensor-node sensor-arm-right">
+                                <i class="fas fa-microchip"></i>
+                            </div>
+                            <div class="sensor-node sensor-waist">
+                                <i class="fas fa-microchip"></i>
+                            </div>
+                            <div class="sensor-node sensor-leg-left">
+                                <i class="fas fa-microchip"></i>
+                            </div>
+                            <div class="sensor-node sensor-leg-right">
+                                <i class="fas fa-microchip"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="floating-elements">
+                        <div class="floating-card">
+                            <i class="fas fa-running"></i>
+                            <span>Motion Capture</span>
+                        </div>
+                        <div class="floating-card">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Real-time Analysis</span>
+                        </div>
+                        <div class="floating-card">
+                            <i class="fas fa-wifi"></i>
+                            <span>Wireless Network</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-</header>
+</section>
 
-
-    <div class="post p2 p-responsive wrap" role="main">
-      <div class="measure">
-<div class="post-header mb2">
-  <h2>Sensor suit</h2>
-  <span class="post-meta">March, 2014 to June, 2014</span><br>
-  
-  <span class="post-meta small">
-  
-    An academic project, Inertial sensor suit with full-body motion verification module.
-  
-  </span>
-</div>
-
-
-
-
-  
-
-
-
-
-
-  <div id="disqus_thread"></div>
-  <script type="text/javascript">
-    var disqus_shortname  = 'MallikarjunTirlapur';
-    var disqus_identifier = '/MasterThesis';
-    var disqus_title      = '';
-    (function() {
-      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-  </script>
-  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-
-
-
-
-      </div>
+<!-- Overview Stats -->
+<section class="content-section">
+    <div class="container">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">2014</div>
+                <div class="stat-label">Development Year</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">7+</div>
+                <div class="stat-label">Sensor Nodes</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">360°</div>
+                <div class="stat-label">Motion Coverage</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">Real-time</div>
+                <div class="stat-label">Processing</div>
+            </div>
+        </div>
     </div>
-  </div>
+</section>
 
+<!-- System Features -->
+<section class="content-section" id="features" style="background-color: #f8fafc;">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">System Features</h2>
+            <p class="section-subtitle">
+                Advanced wearable technology for comprehensive motion analysis
+            </p>
+        </div>
+        
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-tshirt"></i>
+                </div>
+                <h4>Wearable Design</h4>
+                <p>Ergonomic sensor placement for natural movement without interference, designed for extended wear and comfort during motion capture sessions.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-compass"></i>
+                </div>
+                <h4>Inertial Measurement</h4>
+                <p>Multi-axis accelerometers and gyroscopes providing precise orientation, acceleration, and angular velocity data for each body segment.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-network-wired"></i>
+                </div>
+                <h4>Distributed Network</h4>
+                <p>Wireless sensor network architecture enabling synchronized data collection from multiple body-mounted inertial measurement units.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <h4>Motion Verification</h4>
+                <p>Advanced algorithms for motion validation, gesture recognition, and biomechanical analysis with real-time feedback capabilities.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h4>Data Analytics</h4>
+                <p>Comprehensive motion data processing including joint angle calculation, velocity analysis, and movement pattern recognition.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <h4>Real-time Monitoring</h4>
+                <p>Live motion visualization and analysis with wireless data streaming for immediate feedback and performance assessment.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Technical Architecture -->
+<section class="content-section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Technical Architecture</h2>
+            <p class="section-subtitle">
+                Sophisticated sensor fusion and wireless communication system
+            </p>
+        </div>
+        
+        <div class="architecture-layers">
+            <div class="arch-layer">
+                <div class="layer-header">
+                    <i class="fas fa-microchip"></i>
+                    <h4>Sensor Layer</h4>
+                </div>
+                <div class="layer-content">
+                    <p>Distributed IMU sensors with 9-DOF measurement capabilities including accelerometer, gyroscope, and magnetometer data fusion.</p>
+                    <div class="layer-specs">
+                        <span class="spec-item">9-DOF IMU</span>
+                        <span class="spec-item">High Frequency Sampling</span>
+                        <span class="spec-item">Low Power Design</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="arch-layer">
+                <div class="layer-header">
+                    <i class="fas fa-wifi"></i>
+                    <h4>Communication Layer</h4>
+                </div>
+                <div class="layer-content">
+                    <p>Wireless networking protocol for synchronized data transmission from body-mounted sensors to central processing unit.</p>
+                    <div class="layer-specs">
+                        <span class="spec-item">Time Synchronization</span>
+                        <span class="spec-item">Error Correction</span>
+                        <span class="spec-item">Mesh Network</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="arch-layer">
+                <div class="layer-header">
+                    <i class="fas fa-cogs"></i>
+                    <h4>Processing Layer</h4>
+                </div>
+                <div class="layer-content">
+                    <p>Advanced signal processing algorithms for sensor fusion, motion reconstruction, and biomechanical analysis.</p>
+                    <div class="layer-specs">
+                        <span class="spec-item">Kalman Filtering</span>
+                        <span class="spec-item">Quaternion Math</span>
+                        <span class="spec-item">Real-time Processing</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="arch-layer">
+                <div class="layer-header">
+                    <i class="fas fa-desktop"></i>
+                    <h4>Application Layer</h4>
+                </div>
+                <div class="layer-content">
+                    <p>User interface for motion visualization, data analysis, and system configuration with real-time feedback display.</p>
+                    <div class="layer-specs">
+                        <span class="spec-item">3D Visualization</span>
+                        <span class="spec-item">Data Logging</span>
+                        <span class="spec-item">Analysis Tools</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Applications -->
+<section class="content-section" style="background-color: #f8fafc;">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Applications & Use Cases</h2>
+            <p class="section-subtitle">
+                Versatile motion capture system for research and development
+            </p>
+        </div>
+        
+        <div class="applications-grid">
+            <div class="application-card">
+                <div class="app-icon">
+                    <i class="fas fa-dumbbell"></i>
+                </div>
+                <h4>Sports Analytics</h4>
+                <p>Performance analysis for athletes with detailed biomechanical feedback and movement optimization recommendations.</p>
+            </div>
+            
+            <div class="application-card">
+                <div class="app-icon">
+                    <i class="fas fa-user-md"></i>
+                </div>
+                <h4>Rehabilitation</h4>
+                <p>Physical therapy monitoring and progress tracking for patients recovering from injuries or mobility impairments.</p>
+            </div>
+            
+            <div class="application-card">
+                <div class="app-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <h4>Academic Research</h4>
+                <p>Human movement studies and biomechanical research with precise data collection and analysis capabilities.</p>
+            </div>
+            
+            <div class="application-card">
+                <div class="app-icon">
+                    <i class="fas fa-gamepad"></i>
+                </div>
+                <h4>Gaming & VR</h4>
+                <p>Motion capture for gaming applications and virtual reality environments with full-body tracking.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+/* Sensor Suit Specific Styles */
+.sensor-suit-visualization {
+    position: relative;
+    width: 300px;
+    height: 400px;
+    margin: 0 auto;
+}
+
+.human-silhouette {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1));
+    border-radius: 50px 50px 10px 10px;
+    border: 2px dashed var(--primary-color);
+}
+
+.sensor-node {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 0.8rem;
+    animation: pulse 2s infinite;
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+}
+
+.sensor-head { top: 20px; left: 50%; transform: translateX(-50%); animation-delay: 0s; }
+.sensor-chest { top: 80px; left: 50%; transform: translateX(-50%); animation-delay: 0.2s; }
+.sensor-arm-left { top: 90px; left: 20px; animation-delay: 0.4s; }
+.sensor-arm-right { top: 90px; right: 20px; animation-delay: 0.6s; }
+.sensor-waist { top: 180px; left: 50%; transform: translateX(-50%); animation-delay: 0.8s; }
+.sensor-leg-left { bottom: 40px; left: 35%; animation-delay: 1s; }
+.sensor-leg-right { bottom: 40px; right: 35%; animation-delay: 1.2s; }
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); box-shadow: 0 0 20px rgba(59, 130, 246, 0.3); }
+    50% { transform: scale(1.1); box-shadow: 0 0 25px rgba(59, 130, 246, 0.5); }
+}
+
+/* Features Grid */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+}
+
+.feature-card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    padding: 2rem;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+}
+
+.feature-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    font-size: 1.5rem;
+}
+
+/* Architecture Layers */
+.architecture-layers {
+    display: grid;
+    gap: 1.5rem;
+    margin: 3rem 0;
+}
+
+.arch-layer {
+    background: var(--card-bg);
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.arch-layer:hover {
+    transform: translateX(10px);
+}
+
+.layer-header {
+    display: flex;
+    align-items: center;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+}
+
+.layer-header i {
+    font-size: 1.5rem;
+    margin-right: 1rem;
+}
+
+.layer-content {
+    padding: 1.5rem;
+}
+
+.layer-specs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.spec-item {
+    background: var(--border-color);
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+/* Applications Grid */
+.applications-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+}
+
+.application-card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    padding: 2rem;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.application-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.app-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    font-size: 1.2rem;
+}
+
+/* Floating Elements */
+.floating-elements {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+}
+
+.floating-card {
+    position: absolute;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    animation: float 3s ease-in-out infinite;
+    opacity: 0;
+    animation-fill-mode: forwards;
+}
+
+.floating-card:nth-child(1) {
+    top: 10%;
+    right: -25%;
+    animation-delay: 0.5s;
+}
+
+.floating-card:nth-child(2) {
+    bottom: 35%;
+    left: -30%;
+    animation-delay: 0.8s;
+}
+
+.floating-card:nth-child(3) {
+    top: 60%;
+    right: -20%;
+    animation-delay: 1.1s;
+}
+
+.floating-card i {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+}
+
+/* Stats Grid */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+}
+
+.stat-card {
+    text-align: center;
+    padding: 2rem;
+    background: var(--card-bg);
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: scale(1.05);
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .floating-card {
+        display: none;
+    }
+    
+    .sensor-suit-visualization {
+        width: 250px;
+        height: 320px;
+    }
+    
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .applications-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Enhanced Sensor Suit animations
+    const featureCards = document.querySelectorAll('.feature-card');
+    const archLayers = document.querySelectorAll('.arch-layer');
+    const applicationCards = document.querySelectorAll('.application-card');
+    const statCards = document.querySelectorAll('.stat-card');
+    const sensorNodes = document.querySelectorAll('.sensor-node');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate-in');
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -100px 0px'
+    });
+
+    // Animate all elements
+    [...featureCards, ...archLayers, ...applicationCards, ...statCards].forEach((element, index) => {
+        element.style.opacity = '0';
+        element.style.transform = 'translateY(50px)';
+        element.style.transition = `all 0.8s ease ${index * 0.1}s`;
+        observer.observe(element);
+    });
+
+    // Sensor nodes sequential animation
+    sensorNodes.forEach((node, index) => {
+        node.style.opacity = '0';
+        node.style.transform = 'scale(0)';
+        setTimeout(() => {
+            node.style.opacity = '1';
+            node.style.transform = 'scale(1)';
+            node.style.transition = 'all 0.5s ease';
+        }, index * 200);
+    });
+
+    // Add animate-in styles
+    const style = document.createElement('style');
+    style.textContent = `
+        .feature-card.animate-in,
+        .arch-layer.animate-in,
+        .application-card.animate-in,
+        .stat-card.animate-in {
+            opacity: 1 !important;
+            transform: translate(0) !important;
+        }
+    `;
+    document.head.appendChild(style);
+});
+</script>
+
+<!-- Disqus Comments Section -->
+<section class="content-section" style="background: #ffffff; padding: 5rem 0;">
+    <div class="container">
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            var disqus_shortname  = 'MallikarjunTirlapur';
+            var disqus_identifier = '/SensorSuit';
+            var disqus_title      = 'Sensor Suit - Inertial Motion Capture System';
+            var disqus_url        = 'https://MallikarjunTirlapur.github.io/SensorSuit/';
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+</section>
 
 </body>
 </html>

@@ -1,203 +1,979 @@
----
-layout: default
----
-<body class="site">
-  <div class="site-wrap">
-    <header class="site-header px2 px-responsive">
-  
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaCard Binary Parser - CAP File Analysis Tool</title>
     
+    <!-- Visitor Counter -->
+    <script type="text/javascript" src="https://counter4.01counter.com/private/countertab.js?c=fd589b7fcbbb6761218a25ec12f6b186"></script>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* CSS Variables and Base Styles */
+        :root {
+            --primary-color: #667eea;
+            --secondary-color: #764ba2;
+            --accent-color: #f093fb;
+            --success-color: #4facfe;
+            --text-primary: #2c3e50;
+            --text-secondary: #7f8c8d;
+            --text-muted: #95a5a6;
+            --light-bg: #f8f9fa;
+            --card-bg: #ffffff;
+            --border-color: #e1e8ed;
+            --shadow-light: 0 2px 10px rgba(0,0,0,0.1);
+            --shadow-medium: 0 5px 20px rgba(0,0,0,0.15);
+            --shadow-heavy: 0 10px 30px rgba(0,0,0,0.2);
+            --border-radius: 12px;
+            --transition: all 0.3s ease;
+        }
 
-      
-    </div>
-  </div>
-</header>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<br/> <script type="text/javascript" src="https://counter4.01counter.com/private/countertab.js?c=fd589b7fcbbb6761218a25ec12f6b186"></script> <noscript><a href="http://www.freecounterstat.com" title="free counter"><img src="https://counter4.01counter.com/private/freecounterstat.php?c=fd589b7fcbbb6761218a25ec12f6b186" border="0" title="free counter" alt="free counter"></a> </noscript> 
-    <div class="post p2 p-responsive wrap" role="main">
-      <div class="measure">
-<div class="post-header mb2">
-  <h2>Java Card Binary Parser</h2>
-  <span class="post-meta">April 22, 2020</span><br>
-  
-  <span class="post-meta small">
-  
-    8 minutes read
-  
-  </span>
-</div>
-<article class="post-content">
-  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<h3>Introduction </h3>
-<p>Normally .java files are compiled using java compiler which generates binary in a file called .class files.
- Similarly, Java Card applications written in java are compiled to class files using Java compiler.
- Java Card convertor used then to convert class files from java card applets to CAP(converted applet) file.
- In this process along with the .class files .exp (export) files of the imported packages are also provided to the convertor.</p> 
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: #ffffff;
+            overflow-x: hidden;
+        }
 
-<strong>Note - </strong>&ensp;Please read Oracle <a href="https://www.oracle.com/java/technologies/javacard-downloads.html">Java Card 3.0.5</a> Specification for more details.<br /><br /> 
- 
- 
- <figure>
-  <center><img src="/JavaCardBinaryParser/assets/Cap_Convertor.png" /><center>
-  <figcaption><center><span class="post-meta small">CAP Conversion</span><center></figcaption>
-</figure>
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
 
-<h3> Export File  </h3>
-<p>The export file contains information about the public APIs of the entire package.
-It is used by java card convertor to convert a java package into a CAP file.</p>
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, #66c7ea 0%, #754438 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            color: white;
+        }
 
-<h3> CAP File  </h3>
-<p>CAP file contains information about all the items in the package like class, method, instance fields etc. Package items are represented by tokens.
-A CAP consists of a set of components each has significant information about the package items. Each component is a stream of bytes stored in
-big endian order. </p>
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            width: 100%;
+            position: relative;
+            z-index: 2;
+        }
 
- <figure>
-  <center><img src="/JavaCardBinaryParser/assets/cap_format.png" /><center>
-  <figcaption><center><span class="post-meta small">Cap Component Format </span><center></figcaption>
-</figure>
+        .hero-text {
+            flex: 1;
+            max-width: 550px;
+        }
 
-<h3> Header </h3>
-<p>This component contains general information about the CAP file such as AID of the package which identifies the package 
-along with the major and a minor version numbers.<p>
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
 
-<figure>
-  <center><img src="/JavaCardBinaryParser/assets/parser_out_all.PNG" /><center>
-  <figcaption><center><span class="post-meta small">Header Component </span><center></figcaption>
-</figure>
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
 
-<h3> Applet Component </h3>
-<p>An applet component contains an entry for each of the applets(AID) defined in this package. If no applets are defined in the current package, this component must not be
-present in this CAP file.<p>
+        .hero-description {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
 
-<figure>
-  <center><img src="/JavaCardBinaryParser/assets/applet.PNG" /><center>
-  <figcaption><center><span class="post-meta small">Applet Component </span><center></figcaption>
-</figure>
+        .hero-meta {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
 
-<h3> Directory Component </h3>
-<p>The directory component lists size of each of the components defined in this CAP file.<p>
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255,255,255,0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
 
-<figure>
-  <center><img src="/JavaCardBinaryParser/assets/directry.PNG" /><center>
-  <figcaption><center><span class="post-meta small">Directory Component </span><center></figcaption>
-</figure>
+        .meta-item i {
+            color: var(--accent-color);
+        }
 
-<h3> Constant Pool Component </h3>
-<p>This component contains an entry for each of the classes, methods, and fields referenced
-by elements in the Method Component of this CAP file. Each entry is four byte long. 
-ByteCode accesses each entry by using index into the constant pool table. 
-Entry in the table pointed by an index contains item tokens. Tokens are resolved by VM on the card to access item in the memory.<p>
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
 
-<figure>
-  <center><img src="/JavaCardBinaryParser/assets/constantpool.PNG" /><center>
-  <figcaption><center><span class="post-meta small">Constant Pool Component </span><center></figcaption>
-</figure>
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 500;
+            text-decoration: none;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
 
-<h3> Class Component </h3>
-<p>The class component describes all classes and interfaces defined in this package. It contains enough
-information to create instances, to perform method or field access and to check cast of the instance. 
-For invoking  methods it references method component. If the superclasses are defined in outside of 
-the package, then they are referenced through Import component.<p>
+        .btn-primary {
+            background: white;
+            color: var(--primary-color);
+        }
 
-<figure>
-  <center><img src="/JavaCardBinaryParser/assets/class.PNG" /><center>
-  <figcaption><center><span class="post-meta small">Class Component </span><center></figcaption>
-</figure>
+        .btn-primary:hover {
+            background: var(--accent-color);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
 
-<h3>  Method Component </h3> 
-<p>The component contains bytecode info of all the methods defined in the current package.
-Component also gives the information about exception handler which represents a catch or finally block defined in 
-a method of this package.<p>
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
 
-<figure>
-  <center><img src="/JavaCardBinaryParser/assets/method.PNG" /><center>
-  <figcaption><center><span class="post-meta small">Method Component </span><center></figcaption>
-</figure>
+        .btn-secondary:hover {
+            background: white;
+            color: var(--primary-color);
+            transform: translateY(-2px);
+        }
 
-<h3> Static Field Component </h3> 
-<p>The static field Component contains all the information required to create and initialize an image of all static fields defined in this package.<p>
+        .hero-visual {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
 
-<figure>
-  <center><img src="/JavaCardBinaryParser/assets/staticfield.PNG" /><center>
-  <figcaption><center><span class="post-meta small">Static Field Component </span><center></figcaption>
-</figure>
+        /* CAP File Visualization */
+        .cap-visualization {
+            position: relative;
+            width: 400px;
+            height: 400px;
+        }
 
-<h3> Import and Export Components </h3>
-<p>The import component contains information of the packages which are imported in the current package. The imported packages are identified by their AID. 
-The Export component describes all classes, static functions or fields which are offered to other packages.<p>
+        .cap-file-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 200px;
+            height: 250px;
+            background: linear-gradient(135deg, #fff, #f0f0f0);
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            animation: float 6s ease-in-out infinite;
+        }
 
-<figure>
-  <center><img src="/JavaCardBinaryParser/assets/import.PNG" /><center>
-  <figcaption><center><span class="post-meta small">Import Component </span><center></figcaption>
-</figure>
+        .cap-file-icon::before {
+            content: '.CAP';
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
 
-<h3> Reference Location Component </h3>
-<p>The reference location Component represents lists of offsets into the info item of the method
-component. Info at the offsets are indices into the constant pool table.<p>
+        .file-layers {
+            position: absolute;
+            top: 30px;
+            left: 20px;
+            right: 20px;
+        }
 
-<figure>
-  <center><img src="/JavaCardBinaryParser/assets/refloc.PNG" /><center>
-  <figcaption><center><span class="post-meta small">Reference Location Component </span><center></figcaption>
-</figure>
+        .layer {
+            height: 25px;
+            margin-bottom: 8px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            padding: 0 10px;
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: white;
+        }
 
-<h3> Descriptor Component </h3>
-<p>The descriptor component provides sufficient information to parse and verify all elements of the CAP file.<p>
+        .layer:nth-child(1) { background: linear-gradient(135deg, #667eea, #764ba2); }
+        .layer:nth-child(2) { background: linear-gradient(135deg, #f093fb, #f5576c); }
+        .layer:nth-child(3) { background: linear-gradient(135deg, #4facfe, #00f2fe); }
+        .layer:nth-child(4) { background: linear-gradient(135deg, #43e97b, #38f9d7); }
+        .layer:nth-child(5) { background: linear-gradient(135deg, #fa709a, #fee140); }
 
-<figure>
-  <center><img src="/JavaCardBinaryParser/assets/descriptor.PNG" /><center>
-  <figcaption><center><span class="post-meta small">Descriptor Component </span><center></figcaption>
-</figure>
+        .floating-components {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
 
-<h3> Debug Component </h3>
-<p>This section specifies the format for the Debug Component. The Debug Component contains all the
-metadata necessary for debugging a package on a suitably instrumented Java Card virtual machine. It is not required for executing Java Card programs in a non-debug environment.<p>
+        .component-badge {
+            position: absolute;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 8px;
+            padding: 0.5rem 0.75rem;
+            font-size: 0.8rem;
+            animation: float 3s ease-in-out infinite;
+        }
 
-<figure>
-  <center><img src="/JavaCardBinaryParser/assets/debug.PNG" /><center>
-  <figcaption><center><span class="post-meta small">Debug Component </span><center></figcaption>
-</figure>
+        .component-badge:nth-child(1) {
+            top: 10%;
+            left: -15%;
+            animation-delay: 0s;
+        }
 
-<h3> Parser </h3>
-<p>My <a href="https://github.com/MallikarjunTirlapur/JavaCard-Binary-Parser">parser</a> script interprets the java card binaries with a fixed format according <a href="https://www.oracle.com/java/technologies/javacard-downloads.html">Java Card 3.0.5</a> spec, 
-and converts the data into human readable data and prints on the console. Which can then be analyzed to know more inside into the Java Card Binary.<p>
+        .component-badge:nth-child(2) {
+            top: 30%;
+            right: -20%;
+            animation-delay: 0.5s;
+        }
 
-<h4>CapParser.py&nbsp; [option]&nbsp; .cap&nbsp; [option]&nbsp; 'component name'/'all'.</h4>
+        .component-badge:nth-child(3) {
+            bottom: 20%;
+            left: -10%;
+            animation-delay: 1s;
+        }
 
-<p>All the options are case sensitive.</p>
---help <br /><br />
+        .component-badge:nth-child(4) {
+            bottom: 10%;
+            right: -15%;
+            animation-delay: 1.5s;
+        }
 
---capPath <br />
--p&nbsp;  valid path to cap file.<br /><br />
+        /* Content Sections */
+        .content-section {
+            padding: 6rem 0;
+            position: relative;
+        }
 
---component<br />
--c&nbsp; caomponent name e.g 'header' or 'all'to get all component info in one shot. <br /><br />
+        .content-section:nth-child(even) {
+            background: var(--light-bg);
+        }
 
- <figure>
-  <center><img src="/JavaCardBinaryParser/assets/parser_out_all.PNG" /><center>
-  <figcaption><center><span class="post-meta small">Help </span><center></figcaption>
-</figure>
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
 
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
 
-  <div id="disqus_thread"></div>
-  <script type="text/javascript">
-    var disqus_shortname  = 'MallikarjunTirlapur';
-    var disqus_identifier = '/JavaCardBinaryParser';
-    var disqus_title      = '';
-    (function() {
-      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-  </script>
-  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
 
+        /* Feature Cards */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
 
+        .feature-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            border: 1px solid var(--border-color);
+            padding: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            opacity: 0;
+            transform: translateY(30px);
+        }
 
+        .feature-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
-      </div>
-    </div>
-  </div>
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-heavy);
+        }
 
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
 
+        .feature-card h4 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .feature-card p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* CAP Structure */
+        .cap-structure {
+            max-width: 900px;
+            margin: 3rem auto;
+        }
+
+        .structure-item {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            border-left: 4px solid var(--primary-color);
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            transition: var(--transition);
+        }
+
+        .structure-item:hover {
+            transform: translateX(10px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .structure-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .structure-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .structure-tag {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .structure-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Parser Output */
+        .parser-demo {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            border: 1px solid var(--border-color);
+            padding: 2rem;
+            margin: 3rem 0;
+        }
+
+        .demo-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .demo-header i {
+            font-size: 2rem;
+            color: var(--primary-color);
+        }
+
+        .demo-header h4 {
+            font-size: 1.3rem;
+            color: var(--text-primary);
+        }
+
+        .parser-output-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .output-screenshot {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow-light);
+            transition: var(--transition);
+        }
+
+        .output-screenshot:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-heavy);
+        }
+
+        .output-screenshot img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .screenshot-caption {
+            background: var(--light-bg);
+            padding: 0.75rem;
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        /* Scroll Indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            opacity: 0.8;
+            z-index: 3;
+        }
+
+        .scroll-arrow {
+            width: 2px;
+            height: 30px;
+            background: white;
+            margin: 0 auto 10px;
+            animation: scrollBounce 2s infinite;
+        }
+
+        .scroll-arrow::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 8px solid white;
+        }
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes scrollBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(10px); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 2rem;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .cap-visualization {
+                width: 300px;
+                height: 300px;
+            }
+
+            .component-badge {
+                display: none;
+            }
+
+            .parser-output-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">Java Card Binary Parser</h1>
+                <p class="hero-subtitle">CAP File Analysis & Decompilation Tool</p>
+                <p class="hero-description">
+                    A comprehensive parser for Java Card CAP (Converted Applet) files that interprets binary structures and converts them into human-readable format according to Java Card 3.0.5 specifications.
+                </p>
+                
+                <div class="hero-meta">
+                    <div class="meta-item">
+                        <i class="fas fa-calendar"></i>
+                        <span>April 2020</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fas fa-code"></i>
+                        <span>Python Parser</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fas fa-file-code"></i>
+                        <span>CAP Format</span>
+                    </div>
+                </div>
+
+                <div class="hero-buttons">
+                    <a href="https://github.com/MallikarjunTirlapur/JavaCard-Binary-Parser" class="btn btn-primary">
+                        <i class="fab fa-github"></i>
+                        View on GitHub
+                    </a>
+                    <a href="https://www.oracle.com/java/technologies/javacard-downloads.html" class="btn btn-secondary">
+                        <i class="fas fa-book"></i>
+                        Java Card Spec
+                    </a>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="cap-visualization">
+                    <div class="cap-file-icon">
+                        <div class="file-layers">
+                            <div class="layer">Header</div>
+                            <div class="layer">Directory</div>
+                            <div class="layer">Class</div>
+                            <div class="layer">Method</div>
+                            <div class="layer">Constant Pool</div>
+                        </div>
+                    </div>
+                    <div class="floating-components">
+                        <div class="component-badge">Applet</div>
+                        <div class="component-badge">Import</div>
+                        <div class="component-badge">Export</div>
+                        <div class="component-badge">Debug</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="scroll-indicator">
+            <div class="scroll-arrow"></div>
+            <p style="font-size: 0.8rem;">Scroll to explore</p>
+        </div>
+    </section>
+
+    <!-- Introduction Section -->
+    <section class="content-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">What is CAP File Conversion?</h2>
+                <p class="section-subtitle">
+                    Understanding the Java Card compilation and conversion process
+                </p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h4>Java Source to Class</h4>
+                    <p>
+                        Java Card applications written in Java are first compiled using the standard Java compiler, which generates .class files containing bytecode.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <h4>Class to CAP Conversion</h4>
+                    <p>
+                        The Java Card converter transforms .class files into CAP (Converted Applet) files along with .exp (export) files of imported packages.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                    <h4>Smart Card Deployment</h4>
+                    <p>
+                        CAP files are optimized binary packages ready for deployment on Java Card-enabled smart cards with limited memory and processing power.
+                    </p>
+                </div>
+            </div>
+
+            <figure style="margin-top: 3rem;">
+                <center><img src="/JavaCardBinaryParser/assets/Cap_Convertor.png" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.15);" /></center>
+                <figcaption><center><span class="post-meta small" style="display: block; margin-top: 1rem; color: var(--text-secondary);">CAP Conversion Process</span></center></figcaption>
+            </figure>
+        </div>
+    </section>
+
+    <!-- Export & CAP File Section -->
+    <section class="content-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Understanding Binary Formats</h2>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-file-export"></i>
+                    </div>
+                    <h4>Export File (.exp)</h4>
+                    <p>
+                        Contains information about the public APIs of the entire package. Used by the Java Card converter to transform a Java package into a CAP file.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <h4>CAP File Structure</h4>
+                    <p>
+                        Contains comprehensive information about all package items (classes, methods, fields) represented by tokens. Consists of multiple components in big-endian byte order.
+                    </p>
+                </div>
+            </div>
+
+            <figure style="margin-top: 3rem;">
+                <center><img src="/JavaCardBinaryParser/assets/cap_format.png" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.15);" /></center>
+                <figcaption><center><span class="post-meta small" style="display: block; margin-top: 1rem; color: var(--text-secondary);">CAP Component Format</span></center></figcaption>
+            </figure>
+        </div>
+    </section>
+
+    <!-- CAP Components Section -->
+    <section class="content-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">CAP File Components</h2>
+                <p class="section-subtitle">
+                    Detailed breakdown of each component in a Java Card CAP file
+                </p>
+            </div>
+
+            <div class="cap-structure">
+                <div class="structure-item">
+                    <div class="structure-header">
+                        <h4 class="structure-name"><i class="fas fa-heading"></i> Header Component</h4>
+                        <span class="structure-tag">Required</span>
+                    </div>
+                    <p class="structure-description">
+                        Contains general information about the CAP file including the package AID (Application Identifier), major and minor version numbers, and compilation metadata.
+                    </p>
+                    <figure style="margin-top: 1rem;">
+                        <img src="/JavaCardBinaryParser/assets/parser_out_all.PNG" style="max-width: 100%; height: auto; border-radius: 8px;" />
+                    </figure>
+                </div>
+
+                <div class="structure-item">
+                    <div class="structure-header">
+                        <h4 class="structure-name"><i class="fas fa-mobile-alt"></i> Applet Component</h4>
+                        <span class="structure-tag">Conditional</span>
+                    </div>
+                    <p class="structure-description">
+                        Contains an entry for each applet defined in the package with their AIDs. Not present if no applets are defined.
+                    </p>
+                    <figure style="margin-top: 1rem;">
+                        <img src="/JavaCardBinaryParser/assets/applet.PNG" style="max-width: 100%; height: auto; border-radius: 8px;" />
+                    </figure>
+                </div>
+
+                <div class="structure-item">
+                    <div class="structure-header">
+                        <h4 class="structure-name"><i class="fas fa-folder-open"></i> Directory Component</h4>
+                        <span class="structure-tag">Required</span>
+                    </div>
+                    <p class="structure-description">
+                        Lists the size of each component defined in the CAP file, providing an index for component navigation.
+                    </p>
+                    <figure style="margin-top: 1rem;">
+                        <img src="/JavaCardBinaryParser/assets/directry.PNG" style="max-width: 100%; height: auto; border-radius: 8px;" />
+                    </figure>
+                </div>
+
+                <div class="structure-item">
+                    <div class="structure-header">
+                        <h4 class="structure-name"><i class="fas fa-database"></i> Constant Pool Component</h4>
+                        <span class="structure-tag">Required</span>
+                    </div>
+                    <p class="structure-description">
+                        Contains entries for each class, method, and field referenced by the Method Component. Each 4-byte entry contains item tokens resolved by the VM at runtime.
+                    </p>
+                    <figure style="margin-top: 1rem;">
+                        <img src="/JavaCardBinaryParser/assets/constantpool.PNG" style="max-width: 100%; height: auto; border-radius: 8px;" />
+                    </figure>
+                </div>
+
+                <div class="structure-item">
+                    <div class="structure-header">
+                        <h4 class="structure-name"><i class="fas fa-cubes"></i> Class Component</h4>
+                        <span class="structure-tag">Required</span>
+                    </div>
+                    <p class="structure-description">
+                        Describes all classes and interfaces defined in the package with information for instance creation, method/field access, and cast checking. References Import Component for external superclasses.
+                    </p>
+                    <figure style="margin-top: 1rem;">
+                        <img src="/JavaCardBinaryParser/assets/class.PNG" style="max-width: 100%; height: auto; border-radius: 8px;" />
+                    </figure>
+                </div>
+
+                <div class="structure-item">
+                    <div class="structure-header">
+                        <h4 class="structure-name"><i class="fas fa-code-branch"></i> Method Component</h4>
+                        <span class="structure-tag">Required</span>
+                    </div>
+                    <p class="structure-description">
+                        Contains bytecode information for all methods defined in the package, including exception handlers representing catch and finally blocks.
+                    </p>
+                    <figure style="margin-top: 1rem;">
+                        <img src="/JavaCardBinaryParser/assets/method.PNG" style="max-width: 100%; height: auto; border-radius: 8px;" />
+                    </figure>
+                </div>
+
+                <div class="structure-item">
+                    <div class="structure-header">
+                        <h4 class="structure-name"><i class="fas fa-th"></i> Static Field Component</h4>
+                        <span class="structure-tag">Conditional</span>
+                    </div>
+                    <p class="structure-description">
+                        Contains information to create and initialize an image of all static fields defined in the package.
+                    </p>
+                    <figure style="margin-top: 1rem;">
+                        <img src="/JavaCardBinaryParser/assets/staticfield.PNG" style="max-width: 100%; height: auto; border-radius: 8px;" />
+                    </figure>
+                </div>
+
+                <div class="structure-item">
+                    <div class="structure-header">
+                        <h4 class="structure-name"><i class="fas fa-exchange-alt"></i> Import & Export Components</h4>
+                        <span class="structure-tag">Required & Conditional</span>
+                    </div>
+                    <p class="structure-description">
+                        Import Component: Lists imported packages identified by AIDs. Export Component: Describes classes, static functions, and fields offered to other packages.
+                    </p>
+                    <figure style="margin-top: 1rem;">
+                        <img src="/JavaCardBinaryParser/assets/import.PNG" style="max-width: 100%; height: auto; border-radius: 8px;" />
+                    </figure>
+                </div>
+
+                <div class="structure-item">
+                    <div class="structure-header">
+                        <h4 class="structure-name"><i class="fas fa-map-marker-alt"></i> Reference Location Component</h4>
+                        <span class="structure-tag">Required</span>
+                    </div>
+                    <p class="structure-description">
+                        Contains lists of offsets into the Method Component's info items, which are indices into the constant pool table.
+                    </p>
+                    <figure style="margin-top: 1rem;">
+                        <img src="/JavaCardBinaryParser/assets/refloc.PNG" style="max-width: 100%; height: auto; border-radius: 8px;" />
+                    </figure>
+                </div>
+
+                <div class="structure-item">
+                    <div class="structure-header">
+                        <h4 class="structure-name"><i class="fas fa-file-alt"></i> Descriptor Component</h4>
+                        <span class="structure-tag">Optional</span>
+                    </div>
+                    <p class="structure-description">
+                        Provides sufficient information to parse and verify all elements of the CAP file, ensuring structural integrity.
+                    </p>
+                    <figure style="margin-top: 1rem;">
+                        <img src="/JavaCardBinaryParser/assets/descriptor.PNG" style="max-width: 100%; height: auto; border-radius: 8px;" />
+                    </figure>
+                </div>
+
+                <div class="structure-item">
+                    <div class="structure-header">
+                        <h4 class="structure-name"><i class="fas fa-bug"></i> Debug Component</h4>
+                        <span class="structure-tag">Optional</span>
+                    </div>
+                    <p class="structure-description">
+                        Contains metadata necessary for debugging a package on an instrumented Java Card VM. Not required for production execution.
+                    </p>
+                    <figure style="margin-top: 1rem;">
+                        <img src="/JavaCardBinaryParser/assets/debug.PNG" style="max-width: 100%; height: auto; border-radius: 8px;" />
+                    </figure>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Parser Tool Section -->
+    <section class="content-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">The Parser Tool</h2>
+                <p class="section-subtitle">
+                    Python-based CAP file analyzer conforming to Java Card 3.0.5 specifications
+                </p>
+            </div>
+
+            <div class="parser-demo">
+                <div class="demo-header">
+                    <i class="fas fa-terminal"></i>
+                    <div>
+                        <h4>Parser Usage</h4>
+                        <p style="color: var(--text-secondary); margin-top: 0.5rem;">
+                            My <a href="https://github.com/MallikarjunTirlapur/JavaCard-Binary-Parser" style="color: var(--primary-color); text-decoration: none; font-weight: 600;">parser script</a> interprets Java Card binaries and converts binary data into human-readable format for analysis.
+                        </p>
+                    </div>
+                </div>
+
+                <div style="background: var(--light-bg); border-radius: 8px; padding: 1.5rem; margin-bottom: 2rem; font-family: 'Courier New', monospace;">
+                    <code style="color: var(--primary-color); font-weight: 600;">
+                        CapParser.py [option] .cap [option] 'component name'/'all'
+                    </code>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h4 style="color: var(--primary-color);"><i class="fas fa-question-circle"></i> --help</h4>
+                        <p>Display help information and usage instructions</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <h4 style="color: var(--primary-color);"><i class="fas fa-folder"></i> --capPath / -p</h4>
+                        <p>Specify valid path to the CAP file for analysis</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <h4 style="color: var(--primary-color);"><i class="fas fa-layer-group"></i> --component / -c</h4>
+                        <p>Component name (e.g., 'header') or 'all' to get all component info</p>
+                    </div>
+                </div>
+
+                <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 12px; padding: 2rem; color: white; margin-top: 2rem; text-align: center;">
+                    <i class="fas fa-info-circle" style="font-size: 2.5rem; margin-bottom: 1rem; opacity: 0.9;"></i>
+                    <p style="font-size: 1.1rem; margin-bottom: 0.5rem; font-weight: 600;">Important Note</p>
+                    <p style="opacity: 0.9;">All options are case sensitive. Refer to <a href="https://www.oracle.com/java/technologies/javacard-downloads.html" style="color: white; text-decoration: underline;">Java Card 3.0.5 Specification</a> for detailed component structures.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- JavaScript for Scroll Animations -->
+    <script>
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all feature cards
+        document.querySelectorAll('.feature-card').forEach(card => {
+            observer.observe(card);
+        });
+
+        // Smooth scroll for scroll indicator
+        document.querySelector('.scroll-indicator').addEventListener('click', () => {
+            window.scrollTo({
+                top: window.innerHeight,
+                behavior: 'smooth'
+            });
+        });
+
+        // Add stagger delay to feature cards
+        document.querySelectorAll('.feature-card').forEach((card, index) => {
+            card.style.transitionDelay = `${index * 0.1}s`;
+        });
+
+        // Add stagger delay to structure items
+        document.querySelectorAll('.structure-item').forEach((item, index) => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateX(-30px)';
+            item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            item.style.transitionDelay = `${index * 0.05}s`;
+            
+            observer.observe(item);
+        });
+
+        // Update structure items visible class
+        const structureObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateX(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.structure-item').forEach(item => {
+            structureObserver.observe(item);
+        });
+    </script>
+
+    <!-- Disqus Comments Section -->
+    <section class="content-section">
+        <div class="container">
+            <div id="disqus_thread"></div>
+            <script type="text/javascript">
+                var disqus_shortname  = 'MallikarjunTirlapur';
+                var disqus_identifier = '/JavaCardBinaryParser';
+                var disqus_title      = 'JavaCard Binary Parser - CAP File Analysis Tool';
+                var disqus_url        = 'https://MallikarjunTirlapur.github.io/JavaCardBinaryParser/';
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+    </section>
 </body>
 </html>

@@ -1,75 +1,825 @@
----
-layout: default
----
-<body class="site">
-  <div class="site-wrap">
-    <header class="site-header px2 px-responsive">
-  
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Master Thesis - Non-Expert Robot Programming Framework</title>
     
+    <!-- Visitor Counter -->
+    <script type="text/javascript" src="https://counter4.01counter.com/private/countertab.js?c=fd589b7fcbbb6761218a25ec12f6b186"></script>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* CSS Variables and Base Styles */
+        :root {
+            --primary-color: #667eea;
+            --secondary-color: #764ba2;
+            --accent-color: #f093fb;
+            --success-color: #4facfe;
+            --text-primary: #2c3e50;
+            --text-secondary: #7f8c8d;
+            --text-muted: #95a5a6;
+            --light-bg: #f8f9fa;
+            --card-bg: #ffffff;
+            --border-color: #e1e8ed;
+            --shadow-light: 0 2px 10px rgba(0,0,0,0.1);
+            --shadow-medium: 0 5px 20px rgba(0,0,0,0.15);
+            --shadow-heavy: 0 10px 30px rgba(0,0,0,0.2);
+            --border-radius: 12px;
+            --transition: all 0.3s ease;
+        }
 
-      
-    </div>
-  </div>
-</header>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: #ffffff;
+            overflow-x: hidden;
+        }
 
-    <div class="post p2 p-responsive wrap" role="main">
-      <div class="measure">
-<div class="post-header mb2">
-  <h2>A framework for non-expert robot programming facilitated by a self-localizing smart device</h2>
-  <span class="post-meta">April 1, 2015 to September 30, 2015</span><br>
-  
-  <span class="post-meta small">
-  
-    1 minute read
-  
-  </span>
-</div>
-<article class="post-content">
-  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<p>This was my master thesis project at KUKA Roboter GmbH, Augsburg.
- The duration of the project was 6 months. For this project, 
- I created requirement analysis, implemented algorithms <a href="http://docs.opencv.org/modules/imgproc/doc/feature_detection.html?highlight=houghcircles#houghcircles">Hough Circle</a> 
- and <a href="https://pcl.readthedocs.io/projects/tutorials/en/master/cylinder_segmentation.html">Cylinder Model Segmentation</a> 
- using <a href="http://opencv.org/"> OpenCV</a> and <a href="http://pointclouds.org/">PCL</a> C++ libraries for the better performance, 
- developed algorithms and implemented them in C++ on <a href="http://www.ros.org/">ROS</a> platform, developed Java APIs to teach the LBR iiwa to pick-and-place the objects. </p>.   
-</article>
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
 
-<h2 id="demo">Demo</h2>
-<p>Kuka LBR iiwa robot taught to pick and place an object on the table.</p>
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, #9966ea 0%, #6f5031 100%);
+            color: white;
+            padding: 6rem 0 4rem;
+            position: relative;
+            overflow: hidden;
+        }
 
-<style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style>
-<div class="embed-container"><iframe src="https://www.youtube.com/embed/0hkdq4gdWyc" frameborder="0" allowfullscreen=""></iframe></div><br />
-  
-<p>As you have watched in the video, the robot was taught by an android appliction on Google Tango. I developed an <a href="https://github.com/MallikarjunTirlapur/RosOnPeanut">android application</a> containing 3 bottons (pick, place and play) and a camera preview. 
-Using camera preview, I did select an object on the table and asked robot by pressing pick button to pick it up. Then I chose a hole to place the object using the place button.
-Next time, Robot does the same action without being taught (without using pick-place button). Which means, when I press play button, 
-robot picks the same object no matter where it is on the table and places in the same hole.</p>
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 4rem;
+        }
 
+        .hero-text {
+            flex: 1;
+            z-index: 2;
+        }
 
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
 
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            opacity: 0.95;
+            font-weight: 500;
+        }
 
-  <div id="disqus_thread"></div>
-  <script type="text/javascript">
-    var disqus_shortname  = 'MallikarjunTirlapur';
-    var disqus_identifier = '/MasterThesis';
-    var disqus_title      = '';
-    (function() {
-      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-  </script>
-  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        .hero-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
 
+        .hero-meta {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
 
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+        }
 
+        .meta-item i {
+            font-size: 1.2rem;
+        }
 
-      </div>
-    </div>
-  </div>
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
 
+        .btn {
+            padding: 0.875rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
 
+        .btn-primary {
+            background: white;
+            color: var(--primary-color);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255,255,255,0.3);
+        }
+
+        .btn-secondary {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        /* Hero Visual */
+        .hero-visual {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .robot-icon {
+            width: 350px;
+            height: 350px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            animation: float 6s ease-in-out infinite;
+            backdrop-filter: blur(10px);
+        }
+
+        .robot-icon i {
+            font-size: 8rem;
+            opacity: 0.9;
+        }
+
+        .floating-badge {
+            position: absolute;
+            background: white;
+            color: var(--primary-color);
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            animation: floatBadge 4s ease-in-out infinite;
+        }
+
+        .badge-1 {
+            top: 10%;
+            right: 5%;
+            animation-delay: 0s;
+        }
+
+        .badge-2 {
+            bottom: 15%;
+            left: 0%;
+            animation-delay: 1s;
+        }
+
+        .badge-3 {
+            top: 50%;
+            right: -10%;
+            animation-delay: 2s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes floatBadge {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Content Sections */
+        .content-section {
+            padding: 5rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Feature Cards */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .feature-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-medium);
+            border-color: var(--primary-color);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-title {
+            font-size: 1.3rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .feature-description {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        /* Technologies Section */
+        .tech-section {
+            background: var(--light-bg);
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .tech-card {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            text-align: center;
+            box-shadow: var(--shadow-light);
+            transition: var(--transition);
+        }
+
+        .tech-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .tech-card i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .tech-card h4 {
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .tech-card p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Demo Section */
+        .demo-section {
+            background: #f8fafc;
+        }
+
+        .demo-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .demo-description {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-light);
+        }
+
+        .demo-description h3 {
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .demo-description p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .demo-features {
+            list-style: none;
+            padding: 0;
+        }
+
+        .demo-features li {
+            padding: 0.75rem 0;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .demo-features li i {
+            color: var(--success-color);
+            font-size: 1.2rem;
+        }
+
+        /* Process Section */
+        .process-card {
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .process-card h3 {
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .process-card h3 i {
+            color: var(--primary-color);
+        }
+
+        .process-card p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .process-card ul {
+            margin-top: 1rem;
+            padding-left: 1.5rem;
+        }
+
+        .process-card ul li {
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 968px) {
+            .demo-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 2rem;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .robot-icon {
+                width: 250px;
+                height: 250px;
+            }
+
+            .robot-icon i {
+                font-size: 5rem;
+            }
+
+            .floating-badge {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">Non-Expert Robot Programming Framework</h1>
+                    <p class="hero-subtitle">Master Thesis Project at KUKA Roboter GmbH</p>
+                    <p class="hero-description">
+                        A framework for intuitive robot programming facilitated by a self-localizing smart device. 
+                        This innovative system enables non-experts to teach industrial robots complex pick-and-place 
+                        operations using augmented reality and computer vision, eliminating the need for traditional 
+                        programming expertise.
+                    </p>
+                    
+                    <div class="hero-meta">
+                        <div class="meta-item">
+                            <i class="fas fa-calendar"></i>
+                            <span>April - September 2015</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-building"></i>
+                            <span>KUKA Roboter GmbH</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Augsburg, Germany</span>
+                        </div>
+                    </div>
+                    
+                    <div class="hero-buttons">
+                        <a href="https://github.com/MallikarjunTirlapur/RosOnPeanut" class="btn btn-primary" target="_blank">
+                            <i class="fab fa-github"></i>
+                            View Android App
+                        </a>
+                        <a href="#demo" class="btn btn-secondary">
+                            <i class="fas fa-play-circle"></i>
+                            Watch Demo
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="hero-visual">
+                    <div class="robot-icon">
+                        <i class="fas fa-robot"></i>
+                        <div class="floating-badge badge-1">KUKA LBR iiwa</div>
+                        <div class="floating-badge badge-2">Google Tango</div>
+                        <div class="floating-badge badge-3">ROS</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Features Section -->
+    <section class="content-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Project Highlights</h2>
+                <p class="section-subtitle">
+                    Comprehensive research and development spanning computer vision, robotics, and mobile computing
+                </p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3 class="feature-title">Computer Vision</h3>
+                    <p class="feature-description">
+                        Implemented advanced algorithms including Hough Circle detection and Cylinder Model 
+                        Segmentation using OpenCV and PCL C++ libraries for robust object recognition and tracking.
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3 class="feature-title">AR-Based Teaching</h3>
+                    <p class="feature-description">
+                        Developed an Android application on Google Tango platform enabling intuitive robot 
+                        programming through augmented reality, eliminating complex coding requirements.
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3 class="feature-title">Industrial Robotics</h3>
+                    <p class="feature-description">
+                        Created Java APIs for KUKA LBR iiwa robot control, enabling precise pick-and-place 
+                        operations with real-time position feedback and collision avoidance.
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3 class="feature-title">ROS Integration</h3>
+                    <p class="feature-description">
+                        Implemented algorithms in C++ on Robot Operating System (ROS) platform for seamless 
+                        communication between vision systems, mobile device, and robot controller.
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="feature-title">Smart Localization</h3>
+                    <p class="feature-description">
+                        Leveraged Google Tango's self-localization capabilities to establish precise spatial 
+                        relationships between mobile device, objects, and robot workspace.
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <h3 class="feature-title">Adaptive Learning</h3>
+                    <p class="feature-description">
+                        Developed intelligent learning system allowing robots to remember taught tasks and 
+                        autonomously execute them even when object positions change.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technologies Section -->
+    <section class="content-section tech-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Technologies Used</h2>
+                <p class="section-subtitle">
+                    Industry-standard tools and frameworks for robotics and computer vision development
+                </p>
+            </div>
+            
+            <div class="tech-grid">
+                <div class="tech-card">
+                    <i class="fas fa-camera"></i>
+                    <h4>OpenCV</h4>
+                    <p>Computer Vision Library</p>
+                </div>
+                
+                <div class="tech-card">
+                    <i class="fas fa-cube"></i>
+                    <h4>PCL</h4>
+                    <p>Point Cloud Library</p>
+                </div>
+                
+                <div class="tech-card">
+                    <i class="fas fa-cog"></i>
+                    <h4>ROS</h4>
+                    <p>Robot Operating System</p>
+                </div>
+                
+                <div class="tech-card">
+                    <i class="fab fa-java"></i>
+                    <h4>Java</h4>
+                    <p>API Development</p>
+                </div>
+                
+                <div class="tech-card">
+                    <i class="fab fa-android"></i>
+                    <h4>Android</h4>
+                    <p>Mobile Application</p>
+                </div>
+                
+                <div class="tech-card">
+                    <i class="fas fa-code"></i>
+                    <h4>C++</h4>
+                    <p>High-Performance Computing</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Development Process Section -->
+    <section class="content-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Development Process</h2>
+                <p class="section-subtitle">
+                    Six months of intensive research, development, and implementation
+                </p>
+            </div>
+
+            <div class="process-card">
+                <h3><i class="fas fa-clipboard-list"></i>Requirement Analysis</h3>
+                <p>
+                    Conducted comprehensive requirement analysis to identify key challenges in traditional robot 
+                    programming and define the scope for an intuitive, non-expert-friendly programming framework.
+                </p>
+            </div>
+
+            <div class="process-card">
+                <h3><i class="fas fa-code-branch"></i>Algorithm Development</h3>
+                <p>
+                    Implemented and optimized computer vision algorithms for object detection and localization:
+                </p>
+                <ul>
+                    <li><strong>Hough Circle Transform:</strong> For circular object detection and tracking</li>
+                    <li><strong>Cylinder Model Segmentation:</strong> For 3D object recognition using point clouds</li>
+                    <li>Performance optimization using C++ for real-time processing</li>
+                </ul>
+            </div>
+
+            <div class="process-card">
+                <h3><i class="fas fa-network-wired"></i>ROS Platform Integration</h3>
+                <p>
+                    Developed C++ nodes on ROS platform for seamless integration between vision processing, 
+                    mobile device communication, and robot control systems with publish-subscribe architecture.
+                </p>
+            </div>
+
+            <div class="process-card">
+                <h3><i class="fas fa-mobile-screen"></i>Mobile Application Development</h3>
+                <p>
+                    Created an Android application on Google Tango with three-button interface (Pick, Place, Play) 
+                    and camera preview for intuitive object selection and robot teaching.
+                </p>
+            </div>
+
+            <div class="process-card">
+                <h3><i class="fas fa-plug"></i>Java API Integration</h3>
+                <p>
+                    Developed comprehensive Java APIs to interface with KUKA LBR iiwa robot controller, 
+                    enabling precise motion control and task execution with safety constraints.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Section -->
+    <section class="content-section demo-section" id="demo">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Live Demonstration</h2>
+                <p class="section-subtitle">
+                    Watch the KUKA LBR iiwa robot execute pick-and-place operations taught via smartphone
+                </p>
+            </div>
+
+            <div class="demo-container">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/0hkdq4gdWyc" allowfullscreen></iframe>
+                </div>
+
+                <div class="demo-description">
+                    <h3>How It Works</h3>
+                    <p>
+                        The demonstration showcases the complete workflow of teaching a KUKA LBR iiwa robot 
+                        using an Android application running on Google Tango.
+                    </p>
+
+                    <ul class="demo-features">
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <span><strong>Pick:</strong> Select object on table using camera preview</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <span><strong>Place:</strong> Choose target hole for placement</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <span><strong>Play:</strong> Robot autonomously repeats the task</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <span><strong>Adaptive:</strong> Works regardless of object position</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <span><strong>No Coding:</strong> Zero programming knowledge required</span>
+                        </li>
+                    </ul>
+
+                    <p style="margin-top: 1.5rem;">
+                        The robot learns the task once and can autonomously execute it repeatedly, adapting to 
+                        different object positions on the table through computer vision and spatial mapping.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Disqus Comments Section -->
+    <section class="content-section">
+        <div class="container">
+            <div id="disqus_thread"></div>
+            <script type="text/javascript">
+                var disqus_shortname  = 'MallikarjunTirlapur';
+                var disqus_identifier = '/MasterThesis';
+                var disqus_title      = 'Master Thesis - Non-Expert Robot Programming Framework';
+                var disqus_url        = 'https://MallikarjunTirlapur.github.io/MasterThesis/';
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+    </section>
+
+    <!-- JavaScript for Scroll Animations -->
+    <script>
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all feature cards
+        document.querySelectorAll('.feature-card').forEach(card => {
+            observer.observe(card);
+        });
+
+        // Add stagger delay to feature cards
+        document.querySelectorAll('.feature-card').forEach((card, index) => {
+            card.style.transitionDelay = `${index * 0.1}s`;
+        });
+    </script>
 </body>
 </html>

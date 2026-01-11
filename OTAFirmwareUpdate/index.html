@@ -1,164 +1,987 @@
----
-layout: default
----
-<body class="site">
-  <div class="site-wrap">
-    <header class="site-header px2 px-responsive">
-  
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTA Firmware Update - Over-The-Air IoT System</title>
     
+    <!-- Visitor Counter -->
+    <script type="text/javascript" src="https://counter4.01counter.com/private/countertab.js?c=fd589b7fcbbb6761218a25ec12f6b186"></script>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* CSS Variables and Base Styles */
+        :root {
+            --primary-color: #667eea;
+            --secondary-color: #764ba2;
+            --accent-color: #f093fb;
+            --success-color: #4facfe;
+            --text-primary: #2c3e50;
+            --text-secondary: #7f8c8d;
+            --text-muted: #95a5a6;
+            --light-bg: #f8f9fa;
+            --card-bg: #ffffff;
+            --border-color: #e1e8ed;
+            --shadow-light: 0 2px 10px rgba(0,0,0,0.1);
+            --shadow-medium: 0 5px 20px rgba(0,0,0,0.15);
+            --shadow-heavy: 0 10px 30px rgba(0,0,0,0.2);
+            --border-radius: 12px;
+            --transition: all 0.3s ease;
+        }
 
-      </header>
-    </div>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-	<style>
-	.boxes{
-	width:50%;
-	float:left;
-	}
-	#mainDiv{
-		width:50%;
-margin:auto;
-	}
-	img{
-		max-width:100%;
-	}
-</style>
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: #ffffff;
+            overflow-x: hidden;
+        }
 
-<br/> <script type="text/javascript" src="https://counter4.01counter.com/private/countertab.js?c=fd589b7fcbbb6761218a25ec12f6b186"></script> <noscript><a href="http://www.freecounterstat.com" title="free counter"><img src="https://counter4.01counter.com/private/freecounterstat.php?c=fd589b7fcbbb6761218a25ec12f6b186" border="0" title="free counter" alt="free counter"></a> </noscript> 
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
 
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(150deg, #eac966 0%, #3e52b8 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            color: white;
+        }
 
-    <div class="post p2 p-responsive wrap" role="main">
-      <div class="measure">
-<div class="post-header mb2">
-  <h2>Over-The-Air Firmware Update</h2>
-  <span class="post-meta">May, 2016 to October, 2016</span><br>
-  
-  <span class="post-meta small">
-  
-    13 minutes read
-  
-  </span>
-</div>
-<article class="post-content">
-  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<p>In this post, I will be talking about the solution that can be used in the IoT systems. </p>
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            width: 100%;
+            position: relative;
+            z-index: 2;
+        }
 
-<p>The solution is being demonstrated by a small application which updates microcontroller firmware over-the-air through Bluetooth enabled android device.</p>
+        .hero-text {
+            flex: 1;
+            max-width: 550px;
+        }
 
-<h3> Use Cases </h3>
-<strong>1.</strong>&ensp;At one shot updating the firmware of the distributed embedded devices from a centralized server.<br />
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;     E.g: Bluetooth enabled - headphone, speakers, home automation system, television etc<br />
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
 
-<strong>2.</strong>&ensp;Program PIC without using Microchip programmer/debugger.
-<br/>
-<p>These use cases motivated me for building this small system.</p>
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
 
-<h2 id="demo">Demo</h2>
+        .hero-description {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
 
+        .hero-meta {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
 
-<style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style>
-<div class="embed-container"><iframe src="https://www.youtube.com/embed/uS3xlvWdbrw" frameborder="0" allowfullscreen=""></iframe></div>
- 
-<p>The system consists of <a href="http://www.microchip.com/wwwproducts/en/PIC18F4431">PIC18f4431</a> and <a href="http://www.microchip.com/wwwproducts/en/PIC32MX795F512H">pic32mx795f512h</a> microcontrollers, android device and Bluetooth interface module. 
-This post would be focusing on PIC18f microcontroller boot loader, Android application, and implementation of them.</p>
-  
-<h3>PIC Boot Loader </h3>
-<p>Boot loader is a special firmware loaded upfront into the microcontroller. 
-The boot loader receives application firmware binaries externally via one of the microcontroller serial port (Ex: UART, SPI etc.) 
-and writes data into a pre-determined section of the flash memory.</p>
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255,255,255,0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
 
-<figure>
-  <center><img src="/OTAFirmwareUpdate/flsh.png" /><center>
-  <figcaption><center><span class="post-meta small"> flash memory regions</span><center></figcaption>
-</figure>
-  
-<p>The processor will always start executing a code from a particular (start-up) memory location upon reset. Generally, microcontroller flashes the application code into start-up memory location when the bootloader is absent. In the presence of boot loader as shown in the figure "flash memory regions", the boot loader writes application code into any part of the memory location which user determines (ex: 0x0A00). In this demo, boot loader code will be flashed into microcontroller start-up memory location.</p> 
+        .meta-item i {
+            color: var(--accent-color);
+        }
 
-<p>The job of the boot loader is to erase the application program memory and write received binaries into pre-determined program memory. The firmware has the reset vector pointer (0x0A00). Right after writing the binaries, the boot loader sets the program counter to reset vector pointer of the firmware to execute the code.</p> 
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
 
-<p>Before building application source code, one must specify the ROM range (after 0x0800h) which must be other than a start-up memory location. ROM range can be specified in the IDE project->properties->xc8linker->memory model->rom ranges</p> 
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 500;
+            text-decoration: none;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--primary-color);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-color);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        .hero-visual {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        /* OTA System Visualization */
+        .ota-visualization {
+            position: relative;
+            width: 450px;
+            height: 450px;
+        }
+
+        .device-showcase {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: deviceFloat 6s ease-in-out infinite;
+        }
+
+        .device-screen {
+            width: 300px;
+            height: 200px;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .screen-content {
+            padding: 1.5rem;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .update-progress {
+            background: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            padding: 1rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 0.5rem;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #4facfe, #00f2fe);
+            border-radius: 4px;
+            animation: progressAnimation 3s ease-in-out infinite;
+        }
+
+        .update-status {
+            color: white;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .status-icon {
+            width: 12px;
+            height: 12px;
+            background: #4facfe;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        .wireless-signals {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .signal-wave {
+            position: absolute;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+            font-size: 0.85rem;
+            animation: signalFloat 3s ease-in-out infinite;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .signal-wave i {
+            color: var(--accent-color);
+        }
+
+        .signal-wave:nth-child(1) {
+            top: 10%;
+            left: -15%;
+            animation-delay: 0s;
+        }
+
+        .signal-wave:nth-child(2) {
+            top: 30%;
+            right: -18%;
+            animation-delay: 0.5s;
+        }
+
+        .signal-wave:nth-child(3) {
+            bottom: 25%;
+            left: -12%;
+            animation-delay: 1s;
+        }
+
+        .signal-wave:nth-child(4) {
+            bottom: 10%;
+            right: -15%;
+            animation-delay: 1.5s;
+        }
+
+        /* Stats Section */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            border: 1px solid var(--border-color);
+            padding: 2rem;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-heavy);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        /* Content Sections */
+        .content-section {
+            padding: 6rem 0;
+            position: relative;
+        }
+
+        .content-section:nth-child(even) {
+            background: var(--light-bg);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Feature Cards */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            border: 1px solid var(--border-color);
+            padding: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .feature-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-heavy);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-card h4 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .feature-card p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Scroll Indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            opacity: 0.8;
+            z-index: 3;
+        }
+
+        .scroll-arrow {
+            width: 2px;
+            height: 30px;
+            background: white;
+            margin: 0 auto 10px;
+            animation: scrollBounce 2s infinite;
+        }
+
+        .scroll-arrow::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 8px solid white;
+        }
+
+        /* Animations */
+        @keyframes deviceFloat {
+            0%, 100% { transform: translate(-50%, -50%) translateY(0); }
+            50% { transform: translate(-50%, -50%) translateY(-20px); }
+        }
+
+        @keyframes signalFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        @keyframes progressAnimation {
+            0% { width: 0%; }
+            50% { width: 75%; }
+            100% { width: 95%; }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+        }
+
+        @keyframes scrollBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(10px); }
+        }
+
+        /* Demo Section */
+        .demo-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+            margin: 2rem 0;
+            align-items: start;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            background: var(--card-bg);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 12px;
+        }
+
+        .demo-description {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+        }
+
+        .demo-description h4 {
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        .demo-features {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .demo-features li {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 0;
+            color: var(--text-secondary);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .demo-features li:last-child {
+            border-bottom: none;
+        }
+
+        .demo-features li i {
+            color: var(--primary-color);
+            margin-right: 1rem;
+            width: 16px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 2rem;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .ota-visualization {
+                width: 300px;
+                height: 300px;
+            }
+
+            .device-screen {
+                width: 250px;
+                height: 160px;
+            }
+
+            .signal-wave {
+                display: none;
+            }
+
+            .demo-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
 
 <body>
-<div id="mainDiv">
-    <div id="divOne" class="boxes">
-	<img src="/OTAFirmwareUpdate/set2.JPG">
- <figcaption><right><span class="post-meta small"> PIC32 setup</span><right></figcaption>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">OTA Firmware Update</h1>
+                <p class="hero-subtitle">Over-The-Air IoT Update System</p>
+                <p class="hero-description">
+                    Revolutionary IoT solution enabling wireless firmware updates for distributed embedded devices 
+                    through Bluetooth-enabled Android devices. Features custom bootloader implementation and 
+                    seamless binary deployment system.
+                </p>
+                
+                <div class="hero-meta">
+                    <div class="meta-item">
+                        <i class="fas fa-bluetooth"></i>
+                        <span>Bluetooth Wireless</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fas fa-microchip"></i>
+                        <span>PIC32 & PIC18</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fas fa-mobile-alt"></i>
+                        <span>Android App</span>
+                    </div>
+                </div>
+
+                <div class="hero-buttons">
+                    <a href="https://github.com/MallikarjunTirlapur/PIC_Bootloader" class="btn btn-primary">
+                        <i class="fab fa-github"></i>
+                        Bootloader Code
+                    </a>
+                    <a href="https://github.com/MallikarjunTirlapur/Android_RN-31_Bluetooth" class="btn btn-primary">
+                        <i class="fab fa-github"></i>
+                        Android App
+                    </a>
+                    <a href="#demo" class="btn btn-secondary">
+                        <i class="fas fa-play"></i>
+                        Watch Demo
+                    </a>
+                </div>
+            </div>
+            
+            <div class="hero-visual">
+                <div class="ota-visualization">
+                    <div class="device-showcase">
+                        <div class="device-screen">
+                            <div class="screen-content">
+                                <div style="color: white; font-size: 0.9rem; font-weight: 600; margin-bottom: 0.5rem;">
+                                    <i class="fas fa-download"></i> Firmware Update
+                                </div>
+                                <div class="update-progress">
+                                    <div style="font-size: 0.8rem; color: rgba(255,255,255,0.8);">Updating firmware...</div>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill"></div>
+                                    </div>
+                                    <div class="update-status">
+                                        <div class="status-icon"></div>
+                                        <span>Transferring via Bluetooth</span>
+                                    </div>
+                                </div>
+                                <div style="margin-top: auto; display: flex; justify-content: space-between; font-size: 0.75rem; color: rgba(255,255,255,0.6);">
+                                    <span><i class="fas fa-signal"></i> Connected</span>
+                                    <span><i class="fas fa-battery-three-quarters"></i> 85%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wireless-signals">
+                        <div class="signal-wave">
+                            <i class="fas fa-wifi"></i>
+                            <span>Wireless</span>
+                        </div>
+                        <div class="signal-wave">
+                            <i class="fas fa-microchip"></i>
+                            <span>Bootloader</span>
+                        </div>
+                        <div class="signal-wave">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Secure</span>
+                        </div>
+                        <div class="signal-wave">
+                            <i class="fas fa-mobile-alt"></i>
+                            <span>Android</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="scroll-indicator">
+            <div class="scroll-arrow"></div>
+            <p style="font-size: 0.8rem;">Scroll to explore</p>
+        </div>
+    </section>
+
+<!-- Overview Stats -->
+<section class="content-section">
+    <div class="container">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">2016</div>
+                <div class="stat-label">Development Year</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">2</div>
+                <div class="stat-label">Microcontrollers</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">115200</div>
+                <div class="stat-label">UART Baud Rate</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Wireless</div>
+            </div>
+        </div>
     </div>
-    <div id="divTwo" class="boxes">
-	<img src="/OTAFirmwareUpdate/set1.JPG">
-<figcaption><left><span class="post-meta small"> PIC18F setup</span><left></figcaption>
+</section>
+
+<!-- Use Cases Section -->
+<section class="content-section" style="background-color: #f8fafc;">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Use Cases & Applications</h2>
+            <p class="section-subtitle">
+                Versatile OTA update system designed for modern IoT deployments
+            </p>
+        </div>
+        
+        <div class="use-cases-grid">
+            <div class="use-case-card">
+                <div class="use-case-header">
+                    <i class="fas fa-broadcast-tower"></i>
+                    <h4>Centralized Updates</h4>
+                </div>
+                <div class="use-case-content">
+                    <p>Update firmware of distributed embedded devices from a centralized server at one shot</p>
+                    <div class="use-case-examples">
+                        <span class="example-tag">Bluetooth Headphones</span>
+                        <span class="example-tag">Smart Speakers</span>
+                        <span class="example-tag">Home Automation</span>
+                        <span class="example-tag">Smart TVs</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="use-case-card">
+                <div class="use-case-header">
+                    <i class="fas fa-tools"></i>
+                    <h4>Programmer-Free Updates</h4>
+                </div>
+                <div class="use-case-content">
+                    <p>Program PIC microcontrollers without using traditional Microchip programmer/debugger hardware</p>
+                    <div class="use-case-examples">
+                        <span class="example-tag">Field Updates</span>
+                        <span class="example-tag">Remote Programming</span>
+                        <span class="example-tag">Cost Effective</span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
-</body><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-  
- <h3>Boot Loader Source Code</h3>
-  
- <p>The boot loader is basically the low level driver of PIC and is implemented in C.  The <a href="https://github.com/MallikarjunTirlapur/PIC_Bootloader">source code</a> of it is made freely available on the GitHub.</p>
-  
- <h4>Algorithm</h4>
-1.	Configure IO port<br />
-2.	Configure UART baud rate with <strong>115200</strong> to communicate with the Android device.<br />
-3.  Receive NVM address range request command from the host (Android device), in return PIC sends back NVM programmable program memory start and end address. <br />
-4.	Receive START command  <br />
-5.	Send ready for FIRMWARE_HEADER command to the host.<br />
-6.	Receive firmware header. Header consists of Application firmware size, and reset vector address. <br />
-7.	Erase application program area and update flash base pointer with the reset vector address of the application.<br />
-8.	Receive application binary chunks in packets each of NVM page size of the PIC microcontroller. Load the binaries into the program memory.<br />
-9.	Jump to the reset vector location of the app to execute it.<br />
+</section>
 
- <h3>Android application (Host)</h3>
- <p> Android device is the host which initiates the firmware update process. The host application has been written in Java and consists of user friendly GUI on font end through which user can interact with the app. </p>
-  
- <h4>GUI</h4>
- <p>It consists of 3 buttons to select and connect one of the Bluetooth modules from the list, to select one of the hex files from the internal storage of the android device and to update the firmware. List Views displays available hex files and paired Bluetooth devices.</p>
- 
-<figure>
-  <center><img src="/OTAFirmwareUpdate/gui.png" /><center>
-  <figcaption><center><span class="post-meta small"> GUI</span><center></figcaption>
-</figure>
+<!-- System Architecture -->
+<section class="content-section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">System Architecture</h2>
+            <p class="section-subtitle">
+                Professional-grade hardware and software components working in harmony
+            </p>
+        </div>
+        
+        <div class="architecture-flow">
+            <div class="flow-step">
+                <div class="step-icon">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <h4>Android Device</h4>
+                <p>Host application with user-friendly GUI for firmware management and deployment</p>
+            </div>
+            
+            <div class="step-arrow">
+                <i class="fas fa-arrow-right"></i>
+            </div>
+            
+            <div class="flow-step">
+                <div class="step-icon">
+                    <i class="fab fa-bluetooth-b"></i>
+                </div>
+                <h4>Bluetooth Link</h4>
+                <p>Wireless communication channel for secure binary transfer at 115200 baud</p>
+            </div>
+            
+            <div class="step-arrow">
+                <i class="fas fa-arrow-right"></i>
+            </div>
+            
+            <div class="flow-step">
+                <div class="step-icon">
+                    <i class="fas fa-microchip"></i>
+                </div>
+                <h4>PIC Bootloader</h4>
+                <p>Custom bootloader handling binary reception, flash programming, and execution</p>
+            </div>
+        </div>
+    </section>
 
-
-<h4> Software</h4>
-  
-<p>Software is implemented in JAVA, again the <a href="https://github.com/MallikarjunTirlapur/Android_RN-31_Bluetooth">source code</a> of it is freely available on the GitHub. </p>
-
-<p>Application firmware hex file must be converted to binary file before loading it into the PIC flash memory.</p> 
-
-<p>To convert hex to binary I defined couple of JAVA classes on the android platform. It basically takes hex file as an input and decodes it for the binary, for more information please have look at my another project <a href="/IntelHexToBin/index.html">IntelHexToBin</a> Convertor. For the app, .hex file must be in the Intel format. MPLAB C compiler generates .hex in the Intel hex format.</p> 
-
-<p>The generated application firmware hex file is stored on the internal storage of the android device. Any number of hex files can be stored on the device. The GUI facilitates user to search the available hex files from the storage and select one of them to send it through Bluetooth communication link to PIC. </p> 
-  
-<h4>Algorithm</h4>
-1. List paired Bluetooth modules and select one of them to establish communication link. <br />
-2. Read selected hex file.<br />
-3. Decode hex file to get the binary data.<br />
-4. Divide the huge number of binary data into packets.<br />
-5. Send the START command to PIC.<br />
-6. Receive FIRMWARE_HEADER request from PIC.<br />
-7. Send firmware header. Header consists of Application firmware size, and reset vector address. <br />
-8. Receive Header acknowledgement.<br />
-9. Send application binary chunks in packets each of NVM page size of the PIC microcontroller.<br />
-
-
-  
-  <div id="disqus_thread"></div>
-  <script type="text/javascript">
-    var disqus_shortname  = 'MallikarjunTirlapur';
-    var disqus_identifier = '/OTA Firmware Update';
-    var disqus_title      = '';
-    (function() {
-      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-  </script>
-  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-  
-  </div>
+<!-- Hardware Components -->
+<section class="content-section" style="background-color: #f8fafc;">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Hardware Components</h2>
+            <p class="section-subtitle">
+                Professional microcontroller platforms with advanced capabilities
+            </p>
+        </div>
+        
+        <div class="hardware-grid">
+            <div class="hardware-card">
+                <div class="hardware-header">
+                    <i class="fas fa-microchip"></i>
+                    <h4>PIC18F4431 Microcontroller</h4>
+                </div>
+                <div class="hardware-content">
+                    <p>Primary target microcontroller with advanced bootloader implementation and UART communication.</p>
+                    <div class="hardware-specs">
+                        <span class="spec-tag">8-bit Architecture</span>
+                        <span class="spec-tag">40MHz</span>
+                        <span class="spec-tag">Flash Memory</span>
+                        <span class="spec-tag">UART Support</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hardware-card">
+                <div class="hardware-header">
+                    <i class="fas fa-processor"></i>
+                    <h4>PIC32MX795F512H</h4>
+                </div>
+                <div class="hardware-content">
+                    <p>High-performance 32-bit microcontroller demonstrating scalable OTA update capabilities.</p>
+                    <div class="hardware-specs">
+                        <span class="spec-tag">32-bit MIPS</span>
+                        <span class="spec-tag">512KB Flash</span>
+                        <span class="spec-tag">128KB RAM</span>
+                        <span class="spec-tag">80MHz</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hardware-card">
+                <div class="hardware-header">
+                    <i class="fab fa-bluetooth-b"></i>
+                    <h4>Bluetooth Interface</h4>
+                </div>
+                <div class="hardware-content">
+                    <p>Wireless communication module enabling seamless Android device connectivity and data transfer.</p>
+                    <div class="hardware-specs">
+                        <span class="spec-tag">115200 Baud</span>
+                        <span class="spec-tag">UART Protocol</span>
+                        <span class="spec-tag">Wireless Range</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hardware-card">
+                <div class="hardware-header">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h4>Android Platform</h4>
+                </div>
+                <div class="hardware-content">
+                    <p>Mobile platform hosting the update management application with intuitive user interface.</p>
+                    <div class="hardware-specs">
+                        <span class="spec-tag">Java Application</span>
+                        <span class="spec-tag">File Management</span>
+                        <span class="spec-tag">Bluetooth API</span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
+</section>
 
+<!-- Demo Section -->
+<section class="content-section" id="demo" style="background-color: #f8fafc;">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Live Demonstration</h2>
+            <p class="section-subtitle">
+                Watch the complete OTA firmware update process in action
+            </p>
+        </div>
+        
+        <div class="demo-container">
+            <div class="video-wrapper">
+                <div class="video-container">
+                    <iframe 
+                        src="https://www.youtube.com/embed/uS3xlvWdbrw" 
+                        title="OTA Firmware Update Demo" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+            
+            <div class="demo-description">
+                <h4>Update Process Features</h4>
+                <ul class="demo-features">
+                    <li><i class="fas fa-check"></i>Wireless Firmware Transfer</li>
+                    <li><i class="fas fa-check"></i>Custom Bootloader Operation</li>
+                    <li><i class="fas fa-check"></i>Android App Control</li>
+                    <li><i class="fas fa-check"></i>Binary Conversion</li>
+                    <li><i class="fas fa-check"></i>Flash Memory Management</li>
+                    <li><i class="fas fa-check"></i>Automatic Execution</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
 
+<!-- Disqus Comments Section -->
+<section class="content-section">
+    <div class="container">
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            var disqus_shortname  = 'MallikarjunTirlapur';
+            var disqus_identifier = '/OTAFirmwareUpdate';
+            var disqus_title      = 'OTA Firmware Update';
+            var disqus_url        = 'https://MallikarjunTirlapur.github.io/OTAFirmwareUpdate/';
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+</section>
+
+    <!-- JavaScript for Scroll Animations -->
+    <script>
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all feature cards
+        document.querySelectorAll('.feature-card').forEach(card => {
+            observer.observe(card);
+        });
+
+        // Observe stat cards
+        document.querySelectorAll('.stat-card').forEach(card => {
+            observer.observe(card);
+        });
+
+        // Smooth scroll for scroll indicator
+        const scrollIndicator = document.querySelector('.scroll-indicator');
+        if (scrollIndicator) {
+            scrollIndicator.addEventListener('click', () => {
+                window.scrollTo({
+                    top: window.innerHeight,
+                    behavior: 'smooth'
+                });
+            });
+        }
+
+        // Add stagger delay to feature cards
+        document.querySelectorAll('.feature-card').forEach((card, index) => {
+            card.style.transitionDelay = `${index * 0.1}s`;
+        });
+
+        // Add stagger delay to stat cards
+        document.querySelectorAll('.stat-card').forEach((card, index) => {
+            card.style.transitionDelay = `${index * 0.1}s`;
+        });
+
+        // Device showcase hover effect
+        const deviceShowcase = document.querySelector('.device-showcase');
+        if (deviceShowcase) {
+            deviceShowcase.addEventListener('mouseenter', () => {
+                deviceShowcase.style.transform = 'translate(-50%, -50%) translateY(-10px) scale(1.05)';
+                deviceShowcase.style.transition = 'all 0.3s ease';
+            });
+            
+            deviceShowcase.addEventListener('mouseleave', () => {
+                deviceShowcase.style.animation = 'deviceFloat 6s ease-in-out infinite';
+            });
+        }
+    </script>
 </body>
 </html>
+
