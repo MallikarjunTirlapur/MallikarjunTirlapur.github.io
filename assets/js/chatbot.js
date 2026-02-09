@@ -294,7 +294,8 @@
         } catch (error) {
             removeTypingIndicator();
             console.error('Error calling AI API:', error);
-            addBotMessage('Looks like something went wrong! Please check your API configuration and try again. Error: ' + error.message);
+            // Show user-friendly error message without exposing technical details
+            addBotMessage('Looks like something went wrong! Please check your API configuration and try again. If the problem persists, check the browser console for more details.');
         } finally {
             chatState.isProcessing = false;
         }
@@ -315,6 +316,11 @@
      * Call Claude (Anthropic) API
      */
     async function callClaudeAPI(message) {
+        // Include conversation history for context
+        const messages = chatState.conversationHistory.length > 0 
+            ? chatState.conversationHistory 
+            : [{ role: 'user', content: message }];
+        
         const response = await fetch(CHATBOT_CONFIG.apiEndpoint, {
             method: 'POST',
             headers: {
@@ -325,12 +331,7 @@
             body: JSON.stringify({
                 model: CHATBOT_CONFIG.model,
                 max_tokens: 1024,
-                messages: [
-                    {
-                        role: 'user',
-                        content: message
-                    }
-                ]
+                messages: messages
             })
         });
         
