@@ -316,11 +316,7 @@
      * Call Claude (Anthropic) API
      */
     async function callClaudeAPI(message) {
-        // Include conversation history for context
-        const messages = chatState.conversationHistory.length > 0 
-            ? chatState.conversationHistory 
-            : [{ role: 'user', content: message }];
-        
+        // Use conversation history which already includes the current message
         const response = await fetch(CHATBOT_CONFIG.apiEndpoint, {
             method: 'POST',
             headers: {
@@ -331,7 +327,7 @@
             body: JSON.stringify({
                 model: CHATBOT_CONFIG.model,
                 max_tokens: 1024,
-                messages: messages
+                messages: chatState.conversationHistory
             })
         });
         
